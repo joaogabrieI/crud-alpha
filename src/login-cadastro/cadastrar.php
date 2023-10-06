@@ -16,7 +16,7 @@ try {
     $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
 
     $stmt->execute();
-    header("location: admin.php");
+    header("location: ../admin/admin.php");
 } catch (PDOException $e){
     echo 'erro ao inserir os dados' . $e->getMessage();
 }
