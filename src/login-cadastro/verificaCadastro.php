@@ -5,6 +5,7 @@ require '../conexao-banco.php';
 $nome = filter_input(INPUT_POST, 'nome');
 $email = filter_input(INPUT_POST, 'email');
 $senha = filter_input(INPUT_POST, 'senha');
+$senha = password_hash($senha, PASSWORD_DEFAULT);
 
 try {
     $sql = "INSERT INTO admin (nome, email, senha) VALUES (:nome, :email, :senha)";

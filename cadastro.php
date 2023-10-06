@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="src/login-cadastro/cadastrar.php" method="post">
+    <form action="src/login-cadastro/verificaCadastro.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome">
 
