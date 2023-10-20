@@ -8,7 +8,7 @@ $senha = filter_input(INPUT_POST, 'senha');
 $senha = password_hash($senha, PASSWORD_DEFAULT);
 
 try {
-    $sql = "INSERT INTO admin (nome, email, senha) VALUES (:nome, :email, :senha)";
+    $sql = "INSERT INTO administrador (adm_nome, adm_email, adm_senha) VALUES (:nome, :email, :senha)";
 
     $stmt = $pdo->prepare($sql);
 
