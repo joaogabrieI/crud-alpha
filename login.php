@@ -11,10 +11,10 @@
 <body>
     <form action="src/login-cadastro/verificaLogin.php" method="post">
         <label for="email">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required="1">
 
         <label for="senha">Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required="1">
 
         <input type="submit" value="entrar">
     </form>
@@ -24,7 +24,7 @@
             unset($_SESSION['erroLogin']);
         }
         ?></p>
-    <a href="cadastro.php">cadastrar</a>
+    <a href="cadastro.php">Cadastre-se</a>
 </body>
 
 </html>

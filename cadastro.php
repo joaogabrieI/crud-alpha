@@ -10,16 +10,17 @@
 <body>
     <form action="src/login-cadastro/verificaCadastro.php" method="post">
         <label for="nome">Nome:</label>
-        <input type="text" name="nome">
+        <input type="text" name="nome" required>
 
         <label for="email">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
 
         <label for="senha">Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required>
 
         <input type="submit" value="Cadastrar">
     </form>
+    <a href="login.php">Login</a>
 </body>
 
 </html>
