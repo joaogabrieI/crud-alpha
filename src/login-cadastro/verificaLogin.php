@@ -10,7 +10,7 @@ $sql = "SELECT COUNT(*) FROM administrador WHERE adm_email = :emailDigitado";
 $stmt = $pdo->prepare($sql);
 $_SESSION['erroLogin'] = '';
 
-$sql2 = "SELECT adm_senha FROM administrador WHERE adm_email = :emailDigitado";
+$sql2 = "SELECT adm_senha, adm_id FROM administrador WHERE adm_email = :emailDigitado";
 $stmt2 = $pdo->prepare($sql2);
 
 try {
@@ -29,6 +29,7 @@ try {
     $resultado = $stmt->fetchColumn();
     if ($resultado > 0) {
         if ($senhaDoBanco) {
+            $_SESSION["usuario"] = $senha["adm_id"];
             header("location: ../admin/admin.php");
         } else {
             $_SESSION['erroLogin'] = 'senha incorreta';
