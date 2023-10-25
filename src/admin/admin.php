@@ -23,9 +23,22 @@
 </head>
 <body>
     <?php foreach ($usuarios as $usuario): ?>
-    <div>
-        
-    </div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ativo</th>
+        </tr>
+        <tr>
+            <td><?= $usuario['adm_id'] ?></td>
+            <td><?= $usuario['adm_nome'] ?></td>
+            <td><?= $usuario['adm_email'] ?></td>
+            <td><?= $usuario['adm_ativo'] ?></td>
+            <td><a href="#">Editar</a></td>
+            <td><a href="#">Excluir</a></td>
+        </tr>
+    </table>
     <?php endforeach; ?>
     <a href="logout.php">Sair</a>
 </body>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require '../conexao-banco.php';
 
@@ -18,5 +19,6 @@ try {
     $stmt->execute();
     header("location: ../admin/admin.php");
 } catch (PDOException $e){
-    echo 'erro ao inserir os dados' . $e->getMessage();
+    header("location: ../../cadastro.php");
+    $_SESSION['erroCadastro'] = 'erro ao cadastrar usuario ' . $e->getMessage();  
 }

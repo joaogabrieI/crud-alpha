@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +21,12 @@
 
         <input type="submit" value="Cadastrar">
     </form>
+    <p><?php
+        if (isset($_SESSION['erroCadastro'])) {
+            echo $_SESSION['erroCadastro'];
+            unset($_SESSION['erroCadastro']);
+        }
+        ?></p>
     <a href="login.php">Login</a>
 </body>
 
