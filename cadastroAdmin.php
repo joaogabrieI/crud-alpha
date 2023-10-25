@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="src/login-cadastro/verificaCadastro.php" method="post">
+    <form action="src/admin/cadastraUsuario.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
 
@@ -22,12 +22,12 @@
         <input type="submit" value="Cadastrar">
     </form>
     <p><?php
-        if (isset($_SESSION['erroCadastro'])) {
-            echo $_SESSION['erroCadastro'];
-            unset($_SESSION['erroCadastro']);
+        if (isset($_SESSION['msgCadastro'])) {
+            echo $_SESSION['msgCadastro'];
+            unset($_SESSION['msgCadastro']);
         }
         ?></p>
-    <a href="login.php">Login</a>
+    <a href="src/admin/admin.php">Voltar</a>
 </body>
 
 </html>
