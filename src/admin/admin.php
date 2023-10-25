@@ -39,11 +39,22 @@
             <td><?= $usuario['adm_ativo'] === null ? 'Sim' : 'Não' ?></td>
             <td>
                 <a href="#">Editar</a>
-                <a href="excluiUsuario.php?id=<?= $usuario['adm_id'] ?>">Excluir</a>
+            </td>
+            <td>
+                <form action="excluiUsuario.php">
+                    <input type="hidden" name="id" value="<?= $usuario['adm_id']?>">
+                    <input type="submit" value="Excluir"></input>
+                </form>
             </td>
         </tr>
     </table>
     <?php endforeach; ?>
+    <p><?php
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+        ?></p>
     <a href="logout.php">Sair</a>
 </body>
 </html>
