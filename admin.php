@@ -1,10 +1,22 @@
 <?php
 session_start();
 
+require "src/conexao-banco.php";
+
 if (!isset($_SESSION['usuario'])) {
     header('Location: ../../login.php');
     exit();
 }
+
+$id = $_SESSION["usuario"];
+
+$sql = "SELECT adm_nome FROM administrador WHERE adm_id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(":id", $id, PDO::PARAM_STR);
+$stmt->execute();
+
+$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,17 +55,19 @@ if (!isset($_SESSION['usuario'])) {
                 <a href=""><img src="assets/img/tags-icon.png" alt="">Categorias</a>
             </li>
             <li>
-                <a href=""><img src="assets/img/person-icon.png" alt="">Usuários</a>
+                <a href="src/usuario/usuarios.php"><img src="assets/img/person-icon.png" alt="">Usuários</a>
             </li>
         </ul>
 
 
     </section>
 
+    <?php foreach ($usuarios as $usuario): ?>
     <section id="usuario">
-        <p id="nomeUsuario">Usuário1</p>
-        <a href="#"> Sair</a>
+        <p id="nomeUsuario"><?= $usuario["adm_nome"]?></p>
+        <a href="src/usuario/logout.php">Sair</a>
     </section>
+    <?php endforeach; ?>
 
 
 </body>
