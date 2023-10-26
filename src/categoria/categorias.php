@@ -86,7 +86,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $dado['CATEGORIA_DESC'] ?></td>
                     <td><?= $dado['CATEGORIA_ATIVO'] === null ? 'Sim' : 'Não' ?></td>
                     <td>
-                        <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>">Editar</a>
+                        <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID']?>">Editar</a>
                     </td>
                     <td>
                         <form action="excluiCategoria.php">
