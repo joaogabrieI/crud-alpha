@@ -17,7 +17,7 @@ try {
     $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
 
     $stmt->execute();
-    header("location: ../admin/admin.php");
+    header("location: ../usuario/usuarios.php");
 } catch (PDOException $e){
     header("location: ../../cadastro.php");
     $_SESSION['erroCadastro'] = 'erro ao cadastrar usuario ' . $e->getMessage();  

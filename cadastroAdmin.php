@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="src/admin/cadastraUsuario.php" method="post">
+    <form action="src/usuario/cadastraUsuario.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
 
@@ -27,7 +27,7 @@
             unset($_SESSION['msgCadastro']);
         }
         ?></p>
-    <a href="src/admin/admin.php">Voltar</a>
+    <a href="src/usuario/usuarios.php">Voltar</a>
 </body>
 
 </html>

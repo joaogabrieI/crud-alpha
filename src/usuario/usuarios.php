@@ -13,6 +13,7 @@
     $stmt->execute();
 
     $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +24,6 @@
 </head>
 <body>
     <a href="../../cadastroAdmin.php">Cadastrar novo usuário</a>
-    <?php foreach ($usuarios as $usuario): ?>
     <table>
         <tr>
             <th>Id</th>
@@ -32,13 +32,15 @@
             <th>Ativo</th>
             <th>Ações</th>
         </tr>
+        <?php foreach ($usuarios as $usuario): ?>
         <tr>
             <td><?= $usuario['adm_id'] ?></td>
             <td><?= $usuario['adm_nome'] ?></td>
             <td><?= $usuario['adm_email'] ?></td>
             <td><?= $usuario['adm_ativo'] === null ? 'Sim' : 'Não' ?></td>
             <td>
-                <a href="#">Editar</a>
+                <a href="editaUsuarioForm.php?id=<?= $usuario['adm_id']?>">Editar</a>
+                <a href="alteraSenhaForm.php?id=<?= $usuario['adm_id']?>">Alterar Senha</a>
             </td>
             <td>
                 <form action="excluiUsuario.php">

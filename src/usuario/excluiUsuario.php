@@ -15,4 +15,4 @@ if($stmt->execute()){
     $_SESSION["msg"] = "Erro ao excluir o usuário" . $stmt->errorInfo();
 }
 
-header("Location: admin.php");
+header("Location: usuarios.php");
