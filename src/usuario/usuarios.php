@@ -109,7 +109,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($usuarios as $usuario) : ?>
         <section id="usuario">
             <p id="nomeUsuario"><?= $usuario["adm_nome"] ?></p>
-            <a href="src/usuario/logout.php">Sair</a>
+            <a href="logout.php">Sair</a>
         </section>
     <?php endforeach; ?>
 
