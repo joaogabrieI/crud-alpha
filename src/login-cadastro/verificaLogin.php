@@ -30,7 +30,7 @@ try {
     if ($resultado > 0) {
         if ($senhaDoBanco) {
             $_SESSION["usuario"] = $senha["adm_id"];
-            header("location: ../usuario/usuarios.php");
+            header("location: ../../admin.php");
         } else {
             $_SESSION['erroLogin'] = 'senha incorreta';
             header("location: ../../login.php");

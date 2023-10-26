@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="src/usuario/cadastraUsuario.php" method="post">
+    <form action="cadastraUsuario.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
 
@@ -22,12 +22,12 @@
         <input type="submit" value="Cadastrar">
     </form>
     <p><?php
-        if (isset($_SESSION['msgCadastro'])) {
-            echo $_SESSION['msgCadastro'];
-            unset($_SESSION['msgCadastro']);
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
         }
         ?></p>
-    <a href="src/usuario/usuarios.php">Voltar</a>
+    <a href="usuarios.php">Voltar</a>
 </body>
 
 </html>

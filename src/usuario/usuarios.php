@@ -1,11 +1,4 @@
 <?php
-    session_start();
-
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: ../../login.php');
-        exit();
-    }
-    
     require "../conexao-banco.php";
 
     $sql = "SELECT * FROM administrador";
@@ -23,7 +16,7 @@
     <title>Adm</title>
 </head>
 <body>
-    <a href="../../cadastroAdmin.php">Cadastrar novo usuário</a>
+    <a href="cadastroUsuarioForm.php">Cadastrar novo usuário</a>
     <table>
         <tr>
             <th>Id</th>

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0B2447;
+}
+
+header {
+    margin: 0 100px 0px 100px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav p {
+    color: #FAFAFA;
+}
+
+#logo {
+    height: 100px;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.logo p {
+    padding-left: 150px;
+    
+}
+
+nav p {
+    font-size: 25px;
+}
+
+.acoes {
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.acoes li{
+    list-style: none;
+    padding-top: 10px;
+}
+
+.acoes a {
+    text-decoration: none;
+    color: #FAFAFA;
+    font-weight: bolder;
+}
+
+#linha {
+    width: 100%;
+    height: 1px;
+    background-color: #FAFAFA;
+}
+
+#linhaVertical {
+    width: 1px;
+    height: 100vh;
+    background-color: #FAFAFA;
+    margin-left: 308px;
+    position: fixed;
+}
+
+#usuario {
+    position: absolute;
+    bottom: 0px;
+    width: 300px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#usuario p {
+    color: #FAFAFA;
+    background-color: #FFD411;
+    height: 70px;
+    padding-right: 65%;
+}
+
+#usuario a{
+    color: #FAFAFA;
+    background-color: #FFD411;
+    height: 70px;
+    padding-left: 1px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+#nomeUsuario {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
