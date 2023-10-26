@@ -17,7 +17,7 @@ $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql2 = "SELECT * FROM administrador";
+$sql2 = "SELECT * FROM categoria";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
@@ -44,7 +44,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <img id="logo" src="../../assets/img/logo.png" alt="">
                 <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Usuários</p>
+            <p>Categorias</p>
         </nav>
     </header>
     <p id="linha"></p>
@@ -59,39 +59,38 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <a href=""><img src="../../assets/img/database-icon.png" alt="">Produtos</a>
             </li>
             <li>
-                <a href="../categoria/categorias.php"><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
+                <a href="categorias.php"><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
             </li>
             <li>
-                <a href="usuarios.php"><img src="../../assets/img/person-icon.png" alt="">Usuários</a>
+                <a href="../usuario/usuarios.php"><img src="../../assets/img/person-icon.png" alt="">Usuários</a>
             </li>
         </ul>
     </section>
 
     <section>
         <div>
-            <a href="cadastroUsuarioForm.php">Cadastrar novo usuário</a>
+            <a href="adicionaCategoriaForm.php">Cadastrar novo usuário</a>
         </div>
         <table>
             <tr>
                 <th>Id</th>
-                <th>Nome</th>
-                <th>Email</th>
+                <th>Nome Categoria</th>
+                <th>Descrição</th>
                 <th>Ativo</th>
                 <th>Ações</th>
             </tr>
             <?php foreach ($dados as $dado) : ?>
                 <tr>
-                    <td><?= $dado['ADM_ID'] ?></td>
-                    <td><?= $dado['ADM_NOME'] ?></td>
-                    <td><?= $dado['ADM_EMAIL'] ?></td>
-                    <td><?= $dado['ADM_ATIVO'] === null ? 'Sim' : 'Não' ?></td>
+                    <td><?= $dado['CATEGORIA_ID'] ?></td>
+                    <td><?= $dado['CATEGORIA_NOME'] ?></td>
+                    <td><?= $dado['CATEGORIA_DESC'] ?></td>
+                    <td><?= $dado['CATEGORIA_ATIVO'] === null ? 'Sim' : 'Não' ?></td>
                     <td>
-                        <a href="editaUsuarioForm.php?id=<?= $dado['ADM_ID'] ?>">Editar</a>
-                        <a href="alteraSenhaForm.php?id=<?= $dado['ADM_ID'] ?>">Alterar Senha</a>
+                        <a href="editaUsuarioForm.php?id=<?= $dado['CATEGORIA_ID'] ?>">Editar</a>
                     </td>
                     <td>
                         <form action="excluiUsuario.php">
-                            <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
+                            <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
                             <input type="submit" value="Excluir"></input>
                         </form>
                     </td>
