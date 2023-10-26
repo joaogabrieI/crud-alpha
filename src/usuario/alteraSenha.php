@@ -5,14 +5,14 @@ require "../conexao-banco.php";
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM administrador WHERE adm_id = :id";
+$sql = "SELECT * FROM administrador WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($usuarios as $usuario) {
-    $idUsuario = $usuario["adm_id"];
+    $idUsuario = $usuario["ADM_ID"];
 }
 
 $senha = filter_input(INPUT_POST, 'senha');
@@ -26,7 +26,7 @@ if ($senha != $senhaConfirmada) {
     $senha = password_hash($senha, PASSWORD_DEFAULT);
 }
 
-$sql = "UPDATE administrador SET adm_senha = :senha WHERE adm_id = :id";
+$sql = "UPDATE administrador SET ADM_SENHA = :senha WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":senha", $senha, PDO::PARAM_STR);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);

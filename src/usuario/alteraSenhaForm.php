@@ -4,7 +4,7 @@
     
     $id = $_GET["id"];
     
-    $sql = "SELECT * FROM administrador WHERE adm_id = :id";
+    $sql = "SELECT * FROM administrador WHERE ADM_ID = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":id", $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -22,7 +22,7 @@
 
 <body>
     <?php foreach ($usuarios as $usuario) : ?>
-    <form action="alteraSenha.php?id=<?= $usuario['adm_id']?>" method="post">
+    <form action="alteraSenha.php?id=<?= $usuario['ADM_ID']?>" method="post">
         <label for="senha">Senha</label>
         <input type="password" name="senha" required>
 

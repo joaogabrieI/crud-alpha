@@ -6,11 +6,11 @@ require_once "../conexao-banco.php";
 $emailDigitado = filter_input(INPUT_POST, 'email');
 $senhaDigitada = filter_input(INPUT_POST, 'senha');
 
-$sql = "SELECT COUNT(*) FROM administrador WHERE adm_email = :emailDigitado";
+$sql = "SELECT COUNT(*) FROM administrador WHERE ADM_EMAIL = :emailDigitado";
 $stmt = $pdo->prepare($sql);
 $_SESSION['erroLogin'] = '';
 
-$sql2 = "SELECT adm_senha, adm_id FROM administrador WHERE adm_email = :emailDigitado";
+$sql2 = "SELECT ADM_SENHA, ADM_ID FROM administrador WHERE ADM_EMAIL = :emailDigitado";
 $stmt2 = $pdo->prepare($sql2);
 
 try {
@@ -25,11 +25,11 @@ try {
         $senha = $dado;
     }
 
-    $senhaDoBanco = password_verify($senhaDigitada, $senha['adm_senha']);
+    $senhaDoBanco = password_verify($senhaDigitada, $senha['ADM_SENHA']);
     $resultado = $stmt->fetchColumn();
     if ($resultado > 0) {
         if ($senhaDoBanco) {
-            $_SESSION["usuario"] = $senha["adm_id"];
+            $_SESSION["usuario"] = $senha["ADM_ID"];
             header("location: ../../admin.php");
         } else {
             $_SESSION['erroLogin'] = 'senha incorreta';

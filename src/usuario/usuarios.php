@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_SESSION["usuario"];
 
-$sql = "SELECT adm_nome FROM administrador WHERE adm_id = :id";
+$sql = "SELECT ADM_NOME FROM administrador WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 $stmt->execute();
@@ -44,7 +44,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <img id="logo" src="../../assets/img/logo.png" alt="">
                 <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Administração</p>
+            <p>Usuários</p>
         </nav>
     </header>
     <p id="linha"></p>
@@ -81,17 +81,17 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </tr>
             <?php foreach ($dados as $dado) : ?>
                 <tr>
-                    <td><?= $dado['adm_id'] ?></td>
-                    <td><?= $dado['adm_nome'] ?></td>
-                    <td><?= $dado['adm_email'] ?></td>
-                    <td><?= $dado['adm_ativo'] === null ? 'Sim' : 'Não' ?></td>
+                    <td><?= $dado['ADM_ID'] ?></td>
+                    <td><?= $dado['ADM_NOME'] ?></td>
+                    <td><?= $dado['ADM_EMAIL'] ?></td>
+                    <td><?= $dado['ADM_ATIVO'] === null ? 'Sim' : 'Não' ?></td>
                     <td>
-                        <a href="editaUsuarioForm.php?id=<?= $dado['adm_id'] ?>">Editar</a>
-                        <a href="alteraSenhaForm.php?id=<?= $dado['adm_id'] ?>">Alterar Senha</a>
+                        <a href="editaUsuarioForm.php?id=<?= $dado['ADM_ID'] ?>">Editar</a>
+                        <a href="alteraSenhaForm.php?id=<?= $dado['ADM_ID'] ?>">Alterar Senha</a>
                     </td>
                     <td>
                         <form action="excluiUsuario.php">
-                            <input type="hidden" name="id" value="<?= $dado['adm_id'] ?>">
+                            <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
                             <input type="submit" value="Excluir"></input>
                         </form>
                     </td>
@@ -108,7 +108,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     <?php foreach ($usuarios as $usuario) : ?>
         <section id="usuario">
-            <p id="nomeUsuario"><?= $usuario["adm_nome"] ?></p>
+            <p id="nomeUsuario"><?= $usuario["ADM_NOME"] ?></p>
             <a href="logout.php">Sair</a>
         </section>
     <?php endforeach; ?>

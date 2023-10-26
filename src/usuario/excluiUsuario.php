@@ -5,7 +5,7 @@ require "../conexao-banco.php";
 
 $id = $_GET["id"];
 
-$sql = "DELETE FROM administrador WHERE adm_id = :id";
+$sql = "DELETE FROM administrador WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 

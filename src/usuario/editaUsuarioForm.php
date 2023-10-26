@@ -3,7 +3,7 @@ require "../conexao-banco.php";
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM administrador WHERE adm_id = :id";
+$sql = "SELECT * FROM administrador WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();
@@ -22,12 +22,12 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php foreach ($usuarios as $usuario) : ?>
-        <form action="editaUsuario.php?id=<?= $usuario['adm_id']?>" method="post">
+        <form action="editaUsuario.php?id=<?= $usuario['ADM_ID']?>" method="post">
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" required value="<?= $usuario['adm_nome'] ?>">
+            <input type="text" name="nome" required value="<?= $usuario['ADM_NOME'] ?>">
 
             <label for="email">Email</label>
-            <input type="email" name="email" value="<?= $usuario['adm_email'] ?>" required>
+            <input type="email" name="email" value="<?= $usuario['ADM_EMAIL'] ?>" required>
 
             <input type="submit" value="Atualizar">
         </form>

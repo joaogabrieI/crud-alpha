@@ -7,7 +7,7 @@ $id = $_GET["id"];
 $nome = filter_input(INPUT_POST, 'nome');
 $email = filter_input(INPUT_POST, 'email');
 
-$sql = "UPDATE administrador SET adm_nome = :nome, adm_email = :email WHERE adm_id = :id";
+$sql = "UPDATE administrador SET ADM_NOME = :nome, ADM_EMAIL = :email WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
 $stmt->bindParam(":email", $email, PDO::PARAM_STR);

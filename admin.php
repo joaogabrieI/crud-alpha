@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_SESSION["usuario"];
 
-$sql = "SELECT adm_nome FROM administrador WHERE adm_id = :id";
+$sql = "SELECT ADM_NOME FROM administrador WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 $stmt->execute();
@@ -64,7 +64,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <?php foreach ($usuarios as $usuario): ?>
     <section id="usuario">
-        <p id="nomeUsuario"><?= $usuario["adm_nome"]?></p>
+        <p id="nomeUsuario"><?= $usuario["ADM_NOME"]?></p>
         <a href="src/usuario/logout.php">Sair</a>
     </section>
     <?php endforeach; ?>
