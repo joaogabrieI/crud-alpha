@@ -53,13 +53,13 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <section class="acoes">
         <ul>
             <li>
-                <a href=""><img src="../../assets/img/house-icon.png" alt="">Inicio</a>
+                <a href="../../admin.php"><img src="../../assets/img/house-icon.png" alt="">Inicio</a>
             </li>
             <li>
                 <a href=""><img src="../../assets/img/database-icon.png" alt="">Produtos</a>
             </li>
             <li>
-                <a href=""><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
+                <a href="../categoria/adicionaCategoriaForm.php"><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
             </li>
             <li>
                 <a href="usuarios.php"><img src="../../assets/img/person-icon.png" alt="">Usuários</a>
