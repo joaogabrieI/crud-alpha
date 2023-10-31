@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "src/conexao-banco.php";
+require "../conexao-banco.php";
 
 if (!isset($_SESSION['usuario'])) {
     header('Location: ../../login.php');
@@ -25,7 +25,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="../../assets/style.css">
     <title>Admin</title>
 </head>
 
@@ -34,10 +34,10 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <nav>
             <div class="logo">
-                <img id="logo" src="assets/img/logo.png" alt="">
+                <img id="logo" src="../../assets/img/logo.png" alt="">
                 <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Administração</p>
+            <p>Produtos</p>
         </nav>
     </header>
     <p id="linha"></p>
@@ -46,20 +46,26 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <section class="acoes">
         <ul>
             <li> 
-                <a href="admin.php"><img src="assets/img/house-icon.png" alt="">Inicio</a>
+                <a href="../../admin.php"><img src="../../assets/img/house-icon.png" alt="">Inicio</a>
             </li>
             <li>
-                <a href="src/produtos/produtos.php"><img src="assets/img/database-icon.png" alt="">Produtos</a>
+                <a href="../produtos/produtos.php"><img src="../../assets/img/database-icon.png" alt="">Produtos</a>
             </li>
             <li>
-                <a href="src/categoria/categorias.php"><img src="assets/img/tags-icon.png" alt="">Categorias</a>
+                <a href="../categoria/categorias.php"><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
             </li>
             <li>
-                <a href="src/usuario/usuarios.php"><img src="assets/img/person-icon.png" alt="">Usuários</a>
+                <a href="../usuario/usuarios.php"><img src="../../assets/img/person-icon.png" alt="">Usuários</a>
             </li>
         </ul>
 
 
+    </section>
+
+    <section>
+        <div>
+            <a href="adicionaProdutoForm.php">Cadastrar novo produto</a>
+        </div>
     </section>
 
     <?php foreach ($usuarios as $usuario): ?>
