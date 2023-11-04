@@ -3,6 +3,9 @@
 session_start();
 
 require "../conexao-banco.php";
+require '../../vendor/autoload.php'; // Carregue o Guzzle
+
+use GuzzleHttp\Client;
 
 $nome = filter_input(INPUT_POST, "nome", FILTER_DEFAULT);
 $descricao = filter_input(INPUT_POST, "descricao", FILTER_DEFAULT);
@@ -19,13 +22,56 @@ $stmt->bindParam(":preco", $preco, PDO::PARAM_INT);
 $stmt->bindParam(":desconto", $desconto, PDO::PARAM_INT);
 $stmt->bindParam(":categoria", $categoria, PDO::PARAM_INT);
 
+$clientId = '649d99453e33b99';
+
 if ($stmt->execute()) {
-    $_SESSION['msg'] = 'Produto adicionado com sucesso!';
-    header("location: adicionaProdutoForm.php");
+    $produto_id = $pdo->lastInsertId();
+
+    if (isset($_FILES['imagem']['tmp_name'])) {
+        $tmp_name = $_FILES['imagem']['tmp_name'];
+
+        // Configuração do cliente Guzzle
+        $client = new Client(['verify' => false]);
+
+        try {
+            // upload da imagem para o Imgur
+            $response = $client->request('POST', 'https://api.imgur.com/3/image', [
+                'headers' => [
+                    'Authorization' => 'Client-ID ' . $clientId,
+                ],
+                'multipart' => [
+                    [
+                        'name' => 'image',
+                        'contents' => fopen($tmp_name, 'r'),
+                    ],
+                ],
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+
+            if (isset($data['data']['link'])) {
+                $url_imagem = $data['data']['link'];
+
+                $sql2 = "INSERT INTO produto_imagem(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (1, :produtoid, :url)";
+                $stmt2 = $pdo->prepare($sql2);
+
+                $stmt2->bindParam(":produtoid", $produto_id, PDO::PARAM_INT);
+                $stmt2->bindParam(":url", $url_imagem, PDO::PARAM_STR);
+
+                if ($stmt2->execute()) {
+                    $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
+                    header("Location: adicionaProdutoForm.php");
+                } else {
+                    $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
+                    header("location: adicionaProdutoForm.php");
+                }
+            }
+        } catch (\Exception $e) {
+            $_SESSION['msg'] = 'Erro: ' . $e->getMessage();
+            header('Location: adicionaProdutoForm.php');
+        }
+    }
 } else {
     $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
     header("location: adicionaProdutoForm.php");
 }
-
-
-

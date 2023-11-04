@@ -19,7 +19,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <form action="adicionaProdutos.php" method="post">
+    <form action="adicionaProdutos.php" method="post" enctype="multipart/form-data">
         <label for="nome">Nome do Produto</label>
         <input type="text" name="nome" id="">
         <label for="descricao">Descrição do Produto</label>
@@ -36,8 +36,8 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </select>
                 
-        <!-- <label for="imagem">Imagem Produto</label>
-        <input type="file" name="imagem" id=""> -->
+        <label for="imagem">Imagem Produto</label>
+        <input type="file" name="imagem" id="">
 
         <input type="submit" value="Cadastrar">
     </form>
