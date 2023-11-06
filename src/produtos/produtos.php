@@ -17,6 +17,12 @@ $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$sql2 = "SELECT * FROM PRODUTO p JOIN PRODUTO_IMAGEM pi ON p.PRODUTO_ID = pi.PRODUTO_ID JOIN CATEGORIA c ON p.CATEGORIA_ID = c.CATEGORIA_ID";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->execute();
+
+$produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -45,7 +51,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="acoes">
         <ul>
-            <li> 
+            <li>
                 <a href="../../admin.php"><img src="../../assets/img/house-icon.png" alt="">Inicio</a>
             </li>
             <li>
@@ -68,11 +74,44 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
 
-    <?php foreach ($usuarios as $usuario): ?>
-    <section id="usuario">
-        <p id="nomeUsuario"><?= $usuario["ADM_NOME"]?></p>
-        <a href="src/usuario/logout.php">Sair</a>
+    <section>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Desconto</th>
+                <th>Categoria</th>
+                <th>Ativo</th>
+                <th>Imagem</th>
+            </tr>
+            <?php foreach ($produtos as $produto) : ?>
+                <tr>
+                    <td><?= $produto['PRODUTO_ID'] ?></td>
+                    <td><?= $produto['PRODUTO_NOME'] ?></td>
+                    <td><?= $produto['PRODUTO_DESC'] ?></td>
+                    <td><?= $produto['PRODUTO_PRECO'] ?></td>
+                    <td><?= $produto['PRODUTO_DESCONTO']?></td>
+                    <td><?= $produto['CATEGORIA_NOME']?></td>
+                    <td><?= $produto['PRODUTO_ATIVO']?></td>    
+                    <td><img src="<?= $produto['IMAGEM_URL']?>" alt="" height="50px" weight="50px"></td>             
+                </tr>
+        </table>
+    <?php endforeach; ?>
+    <p><?php
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+        ?></p>
     </section>
+
+    <?php foreach ($usuarios as $usuario) : ?>
+        <section id="usuario">
+            <p id="nomeUsuario"><?= $usuario["ADM_NOME"] ?></p>
+            <a href="src/usuario/logout.php">Sair</a>
+        </section>
     <?php endforeach; ?>
 
 
