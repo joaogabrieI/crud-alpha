@@ -1,6 +1,6 @@
 <?php
 try{
-    $pdo = new PDO('mysql:host=localhost;dbname=alpha', 'root' , 'Ch@bar345');
+    $pdo = new PDO( "sqlsrv:server=DESKTOP-POF56EJ\SQLEXPRESS; Database = Alpha", "", "");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e){
     echo "erro na conexao" . $e->getMessage();
