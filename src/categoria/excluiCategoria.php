@@ -5,7 +5,7 @@ require "../conexao-banco.php";
 
 $id = $_GET["id"];
 
-$sql = "DELETE FROM categoria WHERE CATEGORIA_ID = :id";
+$sql = "DELETE FROM CATEGORIA WHERE CATEGORIA_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 

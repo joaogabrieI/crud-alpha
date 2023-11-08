@@ -3,7 +3,7 @@ session_start();
 
 require "../src/conexao-banco.php";
 
-$sql = "SELECT * FROM categoria";
+$sql = "SELECT * FROM CATEGORIA";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 

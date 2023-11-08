@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_SESSION["usuario"];
 
-$sql = "SELECT ADM_NOME FROM administrador WHERE ADM_ID = :id";
+$sql = "SELECT ADM_NOME FROM ADMINISTRADOR WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 $stmt->execute();

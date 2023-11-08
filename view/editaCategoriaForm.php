@@ -5,7 +5,7 @@ require "../src/conexao-banco.php";
 
 $id = $_GET["id"];
 
-$sql = "SELECT * FROM categoria WHERE CATEGORIA_ID = :id";
+$sql = "SELECT * FROM CATEGORIA WHERE CATEGORIA_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();

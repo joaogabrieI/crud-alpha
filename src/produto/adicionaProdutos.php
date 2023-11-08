@@ -14,7 +14,7 @@ $desconto = floatval(filter_input(INPUT_POST, "desconto", FILTER_DEFAULT));
 $categoria = filter_input(INPUT_POST, "categoria", FILTER_DEFAULT);
 
 
-$sql = "INSERT INTO produto (PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_DESCONTO, CATEGORIA_ID, PRODUTO_ATIVO) VALUES (:nome, :descricao, :preco, :desconto, :categoria, 1)";
+$sql = "INSERT INTO PRODUTO (PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_DESCONTO, CATEGORIA_ID, PRODUTO_ATIVO) VALUES (:nome, :descricao, :preco, :desconto, :categoria, 1)";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
 $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
@@ -52,7 +52,7 @@ if ($stmt->execute()) {
             if (isset($data['data']['link'])) {
                 $url_imagem = $data['data']['link'];
 
-                $sql2 = "INSERT INTO produto_imagem(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (1, :produtoid, :url)";
+                $sql2 = "INSERT INTO PRODUTO_IMAGEM(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (1, :produtoid, :url)";
                 $stmt2 = $pdo->prepare($sql2);
 
                 $stmt2->bindParam(":produtoid", $produto_id, PDO::PARAM_INT);

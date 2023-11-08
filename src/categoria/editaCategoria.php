@@ -9,7 +9,7 @@ $id = $_GET["id"];
 $nomeCategoria = filter_input(INPUT_POST, 'nomeCategoria');
 $descricao = filter_input(INPUT_POST, 'descricao');
 
-$sql = "UPDATE categoria SET CATEGORIA_NOME = :nomeCategoria, CATEGORIA_DESC = :descricao WHERE CATEGORIA_ID = :id";
+$sql = "UPDATE CATEGORIA SET CATEGORIA_NOME = :nomeCategoria, CATEGORIA_DESC = :descricao WHERE CATEGORIA_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nomeCategoria", $nomeCategoria, PDO::PARAM_STR);
 $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);

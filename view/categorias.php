@@ -10,14 +10,14 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_SESSION["usuario"];
 
-$sql = "SELECT ADM_NOME FROM administrador WHERE ADM_ID = :id";
+$sql = "SELECT ADM_NOME FROM ADMINISTRADOR WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql2 = "SELECT * FROM categoria";
+$sql2 = "SELECT * FROM CATEGORIA";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 

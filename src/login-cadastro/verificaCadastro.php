@@ -8,7 +8,7 @@ $email = filter_input(INPUT_POST, 'email');
 $senha = filter_input(INPUT_POST, 'senha');
 $senha = password_hash($senha, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO administrador (ADM_NOME, ADM_EMAIL, ADM_SENHA) VALUES (:nome, :email, :senha)";
+$sql = "INSERT INTO ADMINISTRADOR (ADM_NOME, ADM_EMAIL, ADM_SENHA) VALUES (:nome, :email, :senha)";
 $stmt = $pdo->prepare($sql);
 
 try {
@@ -20,6 +20,6 @@ try {
     $_SESSION["usuario"] = $pdo->lastInsertId();
     header("location: ../../view/admin.php");
 } catch (PDOException $e){
-    header("location: ../../view/cadastro.php");
+    header("location: ../../view/login.php");
     $_SESSION['erroCadastro'] = 'erro ao cadastrar usuario ' . $e->getMessage();  
 }

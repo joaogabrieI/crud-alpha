@@ -4,7 +4,7 @@
     
     $id = $_GET["id"];
     
-    $sql = "SELECT * FROM administrador WHERE ADM_ID = :id";
+    $sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":id", $id, PDO::PARAM_INT);
     $stmt->execute();

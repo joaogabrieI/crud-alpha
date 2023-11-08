@@ -7,7 +7,7 @@ require "../conexao-banco.php";
 $nome = filter_input(INPUT_POST, 'nomeCategoria');
 $descricao = filter_input(INPUT_POST, 'descricao');
 
-$sql = "INSERT INTO categoria (CATEGORIA_NOME, CATEGORIA_DESC) VALUES (:nome, :descricao)";
+$sql = "INSERT INTO CATEGORIA (CATEGORIA_NOME, CATEGORIA_DESC) VALUES (:nome, :descricao)";
 $stmt = $pdo->prepare($sql);
 
 $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);

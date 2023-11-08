@@ -6,11 +6,11 @@ require_once "../conexao-banco.php";
 $emailDigitado = filter_input(INPUT_POST, 'email');
 $senhaDigitada = filter_input(INPUT_POST, 'senha');
 
-$sql = "SELECT COUNT(*) FROM administrador WHERE ADM_EMAIL = :emailDigitado";
+$sql = "SELECT COUNT(*) FROM ADMINISTRADOR WHERE ADM_EMAIL = :emailDigitado";
 $stmt = $pdo->prepare($sql);
 $_SESSION['erroLogin'] = '';
 
-$sql2 = "SELECT ADM_SENHA, ADM_ID FROM administrador WHERE ADM_EMAIL = :emailDigitado";
+$sql2 = "SELECT ADM_SENHA, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL = :emailDigitado";
 $stmt2 = $pdo->prepare($sql2);
 
 try {
