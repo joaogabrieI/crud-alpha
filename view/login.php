@@ -1,30 +1,74 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../assets/style/login.css">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
 </head>
 
 <body>
-    <form action="../src/login-cadastro/verificaLogin.php" method="post">
-        <label for="email">Email</label>
-        <input type="email" name="email" required="1">
+    <div class="container" id="container">
 
-        <label for="senha">Senha</label>
-        <input type="password" name="senha" required="1">
+        <div class="form-container register-container">
+            <form action="../src/login-cadastro/verificaCadastro.php" method="post">
+                <img src="../assets/img/logo.png" alt="">
+                <h1>Registre - se</h1>
+                <input type="text" placeholder="Name" class="registrar-login" name="nome">
+                <input type="email" placeholder="Email" class="registrar-login" name="email">
+                <input type="password" placeholder="Password" class="registrar-login" name="senha">
+                <input type="submit" value="Registrar" class="login-btn">
+            </form>
+            <p><?php
+                    if (isset($_SESSION['erroCadastro'])) {
+                        echo $_SESSION['erroCadastro'];
+                        unset($_SESSION['erroCadastro']);
+                    }
+                    ?></p>
+        </div>
 
-        <input type="submit" value="entrar">
-    </form>
-    <p><?php
-        if (isset($_SESSION['erroLogin'])) {
-            echo $_SESSION['erroLogin'];
-            unset($_SESSION['erroLogin']);
-        }
-        ?></p>
-    <a href="cadastro.php">Cadastre-se</a>
+        <div class="form-container login-container">
+            <form action="../src/login-cadastro/verificaLogin.php" method="post">
+                <img src="../assets/img/logo.png" alt="">
+                <h1>Login</h1>
+                <input type="email" placeholder="Email" id="email" class="login-email-senha" name="email">
+                <input type="password" placeholder="Password" id="senha" class="login-email-senha" name="senha">
+                <input type="submit" value="Login" class="login-btn">
+            </form>
+            <p><?php
+                if (isset($_SESSION['erroCadastro'])) {
+                    echo $_SESSION['erroCadastro'];
+                    unset($_SESSION['erroCadastro']);
+                }
+                ?></p>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1 class="title">Seja Bem-Vindo</h1>
+                    <p>se já possuí uma conta, faça o login aqui e divirta-se</p>
+                    <button class="ghost" id="login">Login
+                        <i class="lni lni-arrow-left login"></i>
+                    </button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">Comece sua jornada agora</h1>
+                    <p>se você ainda não tem uma conta, junte-se a nós e comece sua jornada</p>
+                    <button class="ghost" id="register">Registrar
+                        <i class="lni lni-arrow-right register"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../assets/login.js"></script>
 </body>
 
 </html>
