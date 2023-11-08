@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require "../conexao-banco.php";
+    require "../src/conexao-banco.php";
     
     $id = $_GET["id"];
     
@@ -22,7 +22,7 @@
 
 <body>
     <?php foreach ($usuarios as $usuario) : ?>
-    <form action="alteraSenha.php?id=<?= $usuario['ADM_ID']?>" method="post">
+    <form action="../src/usuario/alteraSenha.php?id=<?= $usuario['ADM_ID']?>" method="post">
         <label for="senha">Senha</label>
         <input type="password" name="senha" required>
 

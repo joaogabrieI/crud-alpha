@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="adicionaCategoria.php" method="post">
+    <form action="../src/categoria/adicionaCategoria.php" method="post">
         <label for="nomeCategoria">Nome categoria: </label>
         <input type="text" name="nomeCategoria">
 

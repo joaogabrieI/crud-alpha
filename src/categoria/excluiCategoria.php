@@ -15,4 +15,4 @@ if($stmt->execute()){
     $_SESSION["msg"] = "Erro ao excluir categoria" . $stmt->errorInfo();
 }
 
-header("Location: categorias.php");
+header("Location: ../../view/categorias.php");

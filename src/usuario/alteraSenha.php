@@ -37,4 +37,4 @@ if ($stmt->execute()) {
     $_SESSION["msg"] = "Erro ao alterar a senha" . $stmt->errorInfo();
 }
 
-header("Location: alteraSenhaForm.php?id=$idUsuario");
+header("Location: ../../view/alteraSenhaForm.php?id=$idUsuario");

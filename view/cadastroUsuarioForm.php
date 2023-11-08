@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="cadastraUsuario.php" method="post">
+    <form action="../src/usuario/cadastraUsuario.php" method="post">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
 

@@ -30,14 +30,14 @@ try {
     if ($resultado > 0) {
         if ($senhaDoBanco) {
             $_SESSION["usuario"] = $senha["ADM_ID"];
-            header("location: ../../admin.php");
+            header("location: ../../view/admin.php");
         } else {
             $_SESSION['erroLogin'] = 'senha incorreta';
-            header("location: ../../login.php");
+            header("location: ../../view/login.php");
         }
     } else {
         $_SESSION['erroLogin'] = 'email não cadastrado!';
-        header("location: ../../login.php");
+        header("location: ../../view/login.php");
     }
 } catch (PDOException $e) {
     echo $e->getMessage();

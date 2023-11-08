@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 
-require "../conexao-banco.php";
+require "../src/conexao-banco.php";
 
 $id = $_GET["id"];
 
@@ -23,7 +23,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php foreach ($usuarios as $usuario): ?> 
-    <form action="editaCategoria.php?id=<?= $usuario['CATEGORIA_ID']?>" method="post">
+    <form action="../src/categoria/editaCategoria.php?id=<?= $usuario['CATEGORIA_ID']?>" method="post">
         <label for="nomeCategoria">Nome categoria: </label>
         <input type="text" name="nomeCategoria" value="<?= $usuario["CATEGORIA_NOME"]?>">
 

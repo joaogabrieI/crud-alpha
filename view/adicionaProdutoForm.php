@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "../conexao-banco.php";
+require "../src/conexao-banco.php";
 
 $sql = "SELECT * FROM categoria";
 $stmt = $pdo->prepare($sql);
@@ -19,7 +19,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <form action="adicionaProdutos.php" method="post" enctype="multipart/form-data">
+    <form action="../src/produto/adicionaProdutos.php" method="post" enctype="multipart/form-data">
         <label for="nome">Nome do Produto</label>
         <input type="text" name="nome" id="">
         <label for="descricao">Descrição do Produto</label>

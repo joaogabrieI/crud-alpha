@@ -1,5 +1,5 @@
 <?php session_start();
-require "../conexao-banco.php";
+require "../src/conexao-banco.php";
 
 $id = $_GET["id"];
 
@@ -22,7 +22,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php foreach ($usuarios as $usuario) : ?>
-        <form action="editaUsuario.php?id=<?= $usuario['ADM_ID']?>" method="post">
+        <form action="../src/usuario/editaUsuario.php?id=<?= $usuario['ADM_ID']?>" method="post">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" required value="<?= $usuario['ADM_NOME'] ?>">
 

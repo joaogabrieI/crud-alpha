@@ -15,8 +15,8 @@ $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
 
 if ($stmt->execute()) {
     $_SESSION['msg'] = 'Categoria adicionada com sucesso!';
-    header("location: adicionaCategoriaForm.php");
+    header("location: ../../view/adicionaCategoriaForm.php");
 } else {
     $_SESSION['msg'] = 'Erro ao adicionar categoria: ' . $stmt->errorInfo();
-    header("location: adicionaCategoriaForm.php");
+    header("location: ../../view/adicionaCategoriaForm.php");
 }

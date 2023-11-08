@@ -19,6 +19,6 @@ try {
     $stmt->execute();
     header("location: ../usuario/usuarios.php");
 } catch (PDOException $e){
-    header("location: ../../cadastro.php");
+    header("location: ../../view/cadastro.php");
     $_SESSION['erroCadastro'] = 'erro ao cadastrar usuario ' . $e->getMessage();  
 }

@@ -16,9 +16,9 @@ $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
 if($stmt->execute()){
-    $_SESSION["msg"] = "Usuário alterado com sucesso!";
+    $_SESSION["msg"] = "Categoria alterada com sucesso!";
 } else {
-    $_SESSION["msg"] = "Erro ao alterar o usuário" . $stmt->errorInfo();
+    $_SESSION["msg"] = "Erro ao alterar a categoria" . $stmt->errorInfo();
 }
 
-header("Location: categorias.php");
+header("Location: ../../view/categorias.php");

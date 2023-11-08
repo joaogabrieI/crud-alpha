@@ -19,4 +19,4 @@ if($stmt->execute()){
     $_SESSION["msg"] = "Erro ao alterar o usuário" . $stmt->errorInfo();
 }
 
-header("Location: usuarios.php");
+header("Location: ../../view/usuarios.php");

@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require "../conexao-banco.php";
+require "../src/conexao-banco.php";
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: ../../login.php');
+    header('Location: login.php');
     exit();
 }
 
@@ -17,7 +17,11 @@ $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql2 = "SELECT * FROM PRODUTO p JOIN PRODUTO_IMAGEM pi ON p.PRODUTO_ID = pi.PRODUTO_ID JOIN CATEGORIA c ON p.CATEGORIA_ID = c.CATEGORIA_ID";
+$sql2 = "SELECT * FROM PRODUTO p 
+    JOIN PRODUTO_IMAGEM pi 
+        ON p.PRODUTO_ID = pi.PRODUTO_ID 
+    JOIN CATEGORIA c 
+        ON p.CATEGORIA_ID = c.CATEGORIA_ID";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
@@ -31,7 +35,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
     <title>Admin</title>
 </head>
 
@@ -40,7 +44,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         <nav>
             <div class="logo">
-                <img id="logo" src="../../assets/img/logo.png" alt="">
+                <img id="logo" src="../assets/img/logo.png" alt="">
                 <p>Olá, Seja Bem-vindo!</p>
             </div>
             <p>Produtos</p>
@@ -52,16 +56,16 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <section class="acoes">
         <ul>
             <li>
-                <a href="../../admin.php"><img src="../../assets/img/house-icon.png" alt="">Inicio</a>
+                <a href="admin.php"><img src="../assets/img/house-icon.png" alt="">Inicio</a>
             </li>
             <li>
-                <a href="../produtos/produtos.php"><img src="../../assets/img/database-icon.png" alt="">Produtos</a>
+                <a href="produtos.php"><img src="../assets/img/database-icon.png" alt="">Produtos</a>
             </li>
             <li>
-                <a href="../categoria/categorias.php"><img src="../../assets/img/tags-icon.png" alt="">Categorias</a>
+                <a href="categorias.php"><img src="../assets/img/tags-icon.png" alt="">Categorias</a>
             </li>
             <li>
-                <a href="../usuario/usuarios.php"><img src="../../assets/img/person-icon.png" alt="">Usuários</a>
+                <a href="usuarios.php"><img src="../assets/img/person-icon.png" alt="">Usuários</a>
             </li>
         </ul>
 
@@ -110,7 +114,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($usuarios as $usuario) : ?>
         <section id="usuario">
             <p id="nomeUsuario"><?= $usuario["ADM_NOME"] ?></p>
-            <a href="src/usuario/logout.php">Sair</a>
+            <a href="../src/login-cadastro/logout.php">Sair</a>
         </section>
     <?php endforeach; ?>
 

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="src/login-cadastro/verificaLogin.php" method="post">
+    <form action="../src/login-cadastro/verificaLogin.php" method="post">
         <label for="email">Email</label>
         <input type="email" name="email" required="1">
 

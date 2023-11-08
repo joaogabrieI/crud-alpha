@@ -60,18 +60,18 @@ if ($stmt->execute()) {
 
                 if ($stmt2->execute()) {
                     $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
-                    header("Location: adicionaProdutoForm.php");
+                    header("Location: ../../view/adicionaProdutoForm.php");
                 } else {
                     $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
-                    header("location: adicionaProdutoForm.php");
+                    header("location: ../../view/adicionaProdutoForm.php");
                 }
             }
         } catch (\Exception $e) {
             $_SESSION['msg'] = 'Erro: ' . $e->getMessage();
-            header('Location: adicionaProdutoForm.php');
+            header('Location: ../../view/adicionaProdutoForm.php');
         }
     }
 } else {
     $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
-    header("location: adicionaProdutoForm.php");
+    header("location: ../../view/adicionaProdutoForm.php");
 }

@@ -18,8 +18,8 @@ try {
 
     $stmt->execute();
     $_SESSION['msg'] = 'Usuário cadastrado com sucesso!';
-    header("location: usuarios.php");
+    header("location: ../../view/usuarios.php");
 } catch (PDOException $e){
     $_SESSION['msg'] = 'Erro ao cadastrar usuario: ' . $e->getMessage();  
-    header("location: ../../cadastraUsuario.php");
+    header("location: ../../view/cadastraUsuario.php");
 }
