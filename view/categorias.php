@@ -69,7 +69,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     <section>
         <div>
-            <a href="adicionaCategoriaForm.php">Cadastrar novo usuário</a>
+            <a href="adicionaCategoriaForm.php">Cadastrar nova categoria</a>
         </div>
         <table>
             <tr>
