@@ -59,16 +59,16 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <section class="acoes">
             <ul>
                 <li>
-                    <a href="admin.php"><img src="img/house-icon.png" alt="" />Inicio</a>
+                    <a href="admin.php"><img src="../assets/img/house-icon.png" alt="" />Inicio</a>
                 </li>
                 <li>
-                    <a href="produtos.php"><img src="img/database-icon.png" alt="" />Produtos</a>
+                    <a href="produtos.php"><img src="../assets/img/database-icon.png" alt="" />Produtos</a>
                 </li>
                 <li>
-                    <a href="categorias.php"><img src="img/tags-icon.png" alt="" />Categorias</a>
+                    <a href="categorias.php"><img src="../assets/img/tags-icon.png" alt="" />Categorias</a>
                 </li>
                 <li>
-                    <a href="usuarios.php"><img src="img/person-icon.png" alt="" />Usuários</a>
+                    <a href="usuarios.php"><img src="../assets/img/person-icon.png" alt="" />Usuários</a>
                 </li>
             </ul>
         </section>
@@ -108,7 +108,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         </ul>
                     </nav>
 
-                    <?php foreach ($produtos as $produto): ?>
+                    <?php foreach ($produtos as $produto) : ?>
                         <div class="dados-acoes">
                             <p>
                                 <?= $produto['PRODUTO_ID'] ?>
@@ -155,7 +155,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     </main>
 
-    <?php foreach ($usuarios as $usuario): ?>
+    <?php foreach ($usuarios as $usuario) : ?>
         <footer>
             <div id="usuario">
                 <p id="nomeUsuario">
