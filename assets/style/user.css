@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #0b2447;
+}
+
+header {
+  margin: 0 100px 0px 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav p {
+  color: #fafafa;
+}
+
+main {
+  display: inline-flex;
+  width: 100%;
+}
+
+#logo {
+  height: 100px;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo p {
+  padding-left: 150px;
+}
+
+nav p {
+  font-size: 25px;
+}
+
+.acoes {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 300px;
+  height: 400px;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+.acoes li {
+  list-style: none;
+  padding-top: 10px;
+}
+
+.acoes a {
+  text-decoration: none;
+  color: #fafafa;
+  font-weight: bolder;
+}
+
+#linha {
+  width: 100%;
+  height: 1px;
+  background-color: #fafafa;
+}
+
+#linhaVertical {
+  width: 1px;
+  height: 100vh;
+  background-color: #fafafa;
+  margin-left: 300px;
+  position: fixed;
+}
+
+#usuario {
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffd411;
+  height: 70px;
+  width: 300px;
+  color: #fafafa;
+}
+
+#usuario a {
+  padding-left: 20px;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#nomeUsuario {
+  font-weight: 900;
+  padding-left: 20px;
+}
+
+#containerCadastro {
+  display: block;
+  height: 200px;
+}
+
+#cadastro {
+  margin-top: 20px;
+  margin-left: 120px;
+  padding: 35px 0 35px 35px;
+  width: 800px;
+  background-color: #163868;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  height: 150px;
+}
+
+#voltarParaLista {
+  background-color: #163868;
+  padding: 15px;
+  width: 800px;
+  height: 50px;
+  display: inline-flex;
+  margin-left: 120px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+#produtoadd {
+  background-color: #163868;
+  padding: 15px;
+  width: 800px;
+  height: 50px;
+  display: inline-flex;
+  margin-left: 120px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+#cabecalhoListaProdutos {
+  background-color: #0b2447;
+}
+
+#containerCadastro{
+  width: 100%;
+}
+
+.nav-adm-produto{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #163868;
+  gap: 20px;
+  margin-top: 100px;
+  position: absolute;
+  margin-left: 5%;
+  width: 1600px;
+  height: 80px;
+  border-radius: 20px;
+}
+
+.dados{
+  background-color: #ffd411;
+  padding: 8px;
+  border-radius: 5px;
+  color: #0b2447;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.dados:hover{
+    cursor: pointer;
+}
+
+.icon-m{
+  width: 30px;
+  margin-left: 20px;
+}
+
+.dados-produtos{
+  display: flex;
+  margin-top: 300px;
+  margin-left: 5%;
+  background-color: #163868;
+  width: 75%;
+  height: 600px;
+  border-radius: 30px;
+}
+
+.nav-produtos{
+  font-size: 20px;
+  color: #fafafa;
+  list-style: none;
+  padding: 20px;
+  width: 170px;
+}
+
+.nav-produtos-dados{
+  background-color: #0b2447;
+  gap: 20px;
+  display: flex;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-left: 3%;
+}
+
+.xbox{
+  width: 150px;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.acoes-img{
+  width: 20px;
+}
+
+.dados-acoes{
+  display: flex;
+  margin-left: 70px;
+  margin-top: 30px;
+  align-items: center;
+  font-size: 20px;
+  color: #fafafa;
+}
+
+.dados-acoes p{
+  width: 150px;
+}
+
+.desconto{
+  margin-left: 100px;
+}
+
+.produto{
+  margin-left: 35px;
+}
+
+.produto{
+  margin-right: 30px;
+}
+
+.qtd{
+  margin-left: 20px;
+}
+
+.qtd{
+  margin-right: 50px;
+}
+
+.categorias-produtos{
+  margin-right: 40px;
+}
+
+#acao{
+    margin-left: 800px ;
+}
+
+.acoes-edv{
+    margin-left: 850px ;
+    cursor: pointer;
+}
