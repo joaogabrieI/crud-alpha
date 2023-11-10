@@ -39,6 +39,7 @@ h1.title{
 .login-email-senha{
     background-color: #11366b;
     font-size: 15px;
+    color: #FAFAFA;
 }
 
 .registrar-login{
@@ -345,7 +346,8 @@ input{
 
 .login-btn{
     font-size: 15px;
-    color: white;
+    color: #0b2447;
+    font-weight: bold;
     padding: 10px;
     border: 1px solid #FAFAFA;
     background-color: #FFD411;
@@ -356,6 +358,16 @@ input{
 .login-btn:hover{
     width: 230px;
     letter-spacing: 3px;
-    color: #FAFAFA;
+    color: #0b2447;
     transition: 0.3s ease-in-out;
+}
+
+
+.teste{
+    font-size: 20px;
+    color: #FAFAFA;
+    position: absolute;
+    margin-left: 20px;
+    z-index: 10;
+    margin-left: 80px;
 }

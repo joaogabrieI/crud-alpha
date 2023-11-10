@@ -73,9 +73,6 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </ul>
         </section>
 
-
-        </section>
-
         <section>
 
             <div class="nav-adm-produto">
@@ -90,16 +87,17 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         </section>
 
-        <section>
+        <section class="section">
             <div class="dados-produtos">
 
                 <div>
+                    
                     <nav>
                         <ul class="nav-produtos-dados">
                             <li class="nav-produtos">ID</li>
                             <li class="nav-produtos">Imagem</li>
                             <li class="nav-produtos">Produtos</li>
-                            <li class="nav-produtos">Preço</li>
+                            <li class="nav-produtos" id="preco">Preço</li>
                             <li class="nav-produtos">Desconto%</li>
                             <li class="nav-produtos">QTD</li>
                             <li class="nav-produtos">Categoria</li>
@@ -110,24 +108,25 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                     <?php foreach ($produtos as $produto) : ?>
                         <div class="dados-acoes">
-                            <p>
+                            <p class="id-valor">
                                 <?= $produto['PRODUTO_ID'] ?>
                             </p>
-                            <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="xbox">
+                            <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
                             <p class="produto">
                                 <?= $produto['PRODUTO_NOME'] ?>
                             </p>
-                            <p id="preco">
+                            <p id="preco-valor">
                                 <?= $produto['PRODUTO_PRECO'] ?>
                             </p>
                             <p class="desconto">
                                 <?= $produto['PRODUTO_DESCONTO'] ?>
                             </p>
                             <p class="qtd">1</p>
+
                             <p class="categorias-produtos">
                                 <?= $produto['CATEGORIA_NOME'] ?>
                             </p>
-                            <p class="categorias-produtos">
+                            <p class="categorias-ativo">
                                 <?= $produto['PRODUTO_ATIVO']  === 1 ? 'Sim' : 'Não' ?>
                             </p>
                             <a href="editarProduto.html"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>

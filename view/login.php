@@ -23,15 +23,16 @@
                 <input type="password" placeholder="Password" class="registrar-login" name="senha">
                 <input type="submit" value="Registrar" class="login-btn">
             </form>
-            <p><?php
-                    if (isset($_SESSION['erroCadastro'])) {
-                        echo $_SESSION['erroCadastro'];
-                        unset($_SESSION['erroCadastro']);
-                    }
-                    ?></p>
 
-                    
-        </div>
+
+</div>
+
+            <p class='teste'><?php
+                    if (isset($_SESSION['erroLogin'])) {
+                        echo $_SESSION['erroLogin'];
+                        unset($_SESSION['erroLogin']);
+                    }
+            ?></p>
 
         <div class="form-container login-container">
             <form action="../src/login-cadastro/verificaLogin.php" method="post">

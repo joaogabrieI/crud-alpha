@@ -105,6 +105,8 @@ nav p {
 #nomeUsuario {
   font-weight: 900;
   padding-left: 20px;
+  color: #0b2447;
+  font-weight: bold;
 }
 
 #containerCadastro {

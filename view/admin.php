@@ -69,7 +69,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados">Novo Produto</div>
-                <div class="dados">Filtrar</div>
 
             </div>
 
