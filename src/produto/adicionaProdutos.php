@@ -31,13 +31,15 @@ if ($stmt->execute()) {
     $sql3 = "INSERT INTO PRODUTO_ESTOQUE (PRODUTO_ID, PRODUTO_QTD) VALUES (:produtoid, :qtd)";
     $stmt3 = $pdo->prepare($sql3);
     $stmt3->bindParam(":produtoid", $produto_id, PDO::PARAM_INT);
-    $stmt3->bindParam(":qtd", $url_imagem, PDO::PARAM_INT);
+    $stmt3->bindParam(":qtd", $qtd, PDO::PARAM_INT);
 
     if ($stmt3->execute()) {
         if (isset($_FILES['imagem']['tmp_name'])) {
             foreach ($_FILES['imagem']['tmp_name'] as $key => $tmp_name) {
                 // Configuração do cliente Guzzle
                 $client = new Client(['verify' => false]);
+                $ordem = $key + 1;
+
 
                 try {
                     // upload da imagem para o Imgur
@@ -57,8 +59,7 @@ if ($stmt->execute()) {
 
                     if (isset($data['data']['link'])) {
                         $url_imagem = $data['data']['link'];
-                        $ordem = 1;
-
+                        
                         $sql2 = "INSERT INTO PRODUTO_IMAGEM(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (:ordem, :produtoid, :url)";
                         $stmt2 = $pdo->prepare($sql2);
 
