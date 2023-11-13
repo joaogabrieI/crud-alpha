@@ -28,47 +28,49 @@ if ($stmt->execute()) {
     $produto_id = $pdo->lastInsertId();
 
     if (isset($_FILES['imagem']['tmp_name'])) {
-        $tmp_name = $_FILES['imagem']['tmp_name'];
+        foreach ($_FILES['imagem']['tmp_name'] as $key => $tmp_name) {
+            // Configuração do cliente Guzzle
+            $client = new Client(['verify' => false]);
 
-        // Configuração do cliente Guzzle
-        $client = new Client(['verify' => false]);
-
-        try {
-            // upload da imagem para o Imgur
-            $response = $client->request('POST', 'https://api.imgur.com/3/image', [
-                'headers' => [
-                    'Authorization' => 'Client-ID ' . $clientId,
-                ],
-                'multipart' => [
-                    [
-                        'name' => 'image',
-                        'contents' => fopen($tmp_name, 'r'),
+            try {
+                // upload da imagem para o Imgur
+                $response = $client->request('POST', 'https://api.imgur.com/3/image', [
+                    'headers' => [
+                        'Authorization' => 'Client-ID ' . $clientId,
                     ],
-                ],
-            ]);
+                    'multipart' => [
+                        [
+                            'name' => 'image',
+                            'contents' => fopen($tmp_name, 'r'),
+                        ],
+                    ],
+                ]);
 
-            $data = json_decode($response->getBody(), true);
+                $data = json_decode($response->getBody(), true);
 
-            if (isset($data['data']['link'])) {
-                $url_imagem = $data['data']['link'];
+                if (isset($data['data']['link'])) {
+                    $url_imagem = $data['data']['link'];
+                    $ordem = 1;
 
-                $sql2 = "INSERT INTO PRODUTO_IMAGEM(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (1, :produtoid, :url)";
-                $stmt2 = $pdo->prepare($sql2);
+                    $sql2 = "INSERT INTO PRODUTO_IMAGEM(IMAGEM_ORDEM, PRODUTO_ID, IMAGEM_URL) VALUES (:ordem, :produtoid, :url)";
+                    $stmt2 = $pdo->prepare($sql2);
 
-                $stmt2->bindParam(":produtoid", $produto_id, PDO::PARAM_INT);
-                $stmt2->bindParam(":url", $url_imagem, PDO::PARAM_STR);
+                    $stmt2->bindParam(":produtoid", $produto_id, PDO::PARAM_INT);
+                    $stmt2->bindParam(":url", $url_imagem, PDO::PARAM_STR);
+                    $stmt2->bindParam(":ordem", $ordem, PDO::PARAM_INT);
 
-                if ($stmt2->execute()) {
-                    $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
-                    header("Location: ../../view/adicionaProdutoForm.php");
-                } else {
-                    $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
-                    header("location: ../../view/adicionaProdutoForm.php");
+                    if ($stmt2->execute()) {
+                        $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
+                        header("Location: ../../view/adicionaProdutoForm.php");
+                    } else {
+                        $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
+                        header("location: ../../view/adicionaProdutoForm.php");
+                    }
                 }
+            } catch (\Exception $e) {
+                $_SESSION['msg'] = 'Erro: ' . $e->getMessage();
+                header('Location: ../../view/adicionaProdutoForm.php');
             }
-        } catch (\Exception $e) {
-            $_SESSION['msg'] = 'Erro: ' . $e->getMessage();
-            header('Location: ../../view/adicionaProdutoForm.php');
         }
     }
 } else {

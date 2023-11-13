@@ -21,7 +21,7 @@ $sql2 = "SELECT * FROM PRODUTO p
     JOIN PRODUTO_IMAGEM pi 
         ON p.PRODUTO_ID = pi.PRODUTO_ID 
     JOIN CATEGORIA c 
-        ON p.CATEGORIA_ID = c.CATEGORIA_ID";
+        ON p.CATEGORIA_ID = c.CATEGORIA_ID WHERE IMAGEM_ORDEM = 1";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 

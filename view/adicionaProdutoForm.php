@@ -86,7 +86,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </select>
                   
           <label for="imagem">Imagem Produto</label>
-          <input type="file" name="imagem" id="">
+          <input type="file" name="imagem[]" multiple accept="image/*">
   
           <input type="submit" value="Cadastrar" class="botaoCadastro">
       </form>
