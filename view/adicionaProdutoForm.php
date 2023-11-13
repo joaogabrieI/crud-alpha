@@ -75,6 +75,8 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <input type="text" name="descricao" id="">
           <label for="preco">Preço do Produto</label>
           <input type="number" name="preco" id="">
+          <label for="qtd">Quantidade</label>
+          <input type="number" name="qtd" id="">
           <label for="desconto">Desconto a ser aplicado</label>
           <input type="number" name="desconto" id="">
           <label for="categoria">Categoria</label>
