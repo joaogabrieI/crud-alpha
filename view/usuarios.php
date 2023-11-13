@@ -99,7 +99,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         <p><?= $dado['ADM_ID'] ?></p>
                         <p class="produto"><?= $dado['ADM_NOME'] ?></p>
                         <p><?= $dado['ADM_EMAIL'] ?></p>
-                        <p><?= $dado['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?></p>
+                        <p><?= $dado['ADM_ATIVO'] === '1' ? 'Sim' : 'Não' ?></p>
                         <div class="acoes-edv">
                             <a href="editaUsuarioForm.php?id=<?= $dado['ADM_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                             <a href="alteraSenhaForm.php?id=<?= $dado['ADM_ID'] ?>">Alterar Senha</a>
