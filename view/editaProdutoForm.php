@@ -88,21 +88,21 @@ $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
         <button><a href="produtos.php">Voltar</a></button>
       </div>
       <?php foreach ($produtos as $produto) : ?>
-        <form action="../src/produto/editaProdutos.php?id=<?= $produto['PRODUTO_ID'] ?>" method="post" enctype="multipart/form-data" id="cadastro">
+        <form action="../src/produto/editaProdutos.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?=$produto['CATEGORIA_ID']?>" method="post" enctype="multipart/form-data" id="cadastro">
 
           <label for="nome">Nome do Produto</label>
-          <input type="text" name="nome" id="" value="<?= $produto['PRODUTO_NOME'] ?>">
+          <input type="text" name="nome" id="" value="<?= $produto['PRODUTO_NOME'] ?>" required>
           <label for="descricao">Descrição do Produto</label>
-          <input type="text" name="descricao" id="" value="<?= $produto['PRODUTO_DESC'] ?>">
+          <input type="text" name="descricao" id="" value="<?= $produto['PRODUTO_DESC'] ?>" required>
           <label for="preco">Preço do Produto</label>
-          <input type="text" name="preco" id="" value="<?= str_replace('.', ',',$produto['PRODUTO_PRECO']) ?>">
+          <input type="number" name="preco" id="" step=".01" value="<?= $produto['PRODUTO_PRECO'] ?>" required>
           <label for="desconto">Desconto a ser aplicado</label>
-          <input type="text" name="desconto" id="" value="<?= str_replace('.', ',',$produto['PRODUTO_DESCONTO']) ?>">
+          <input type="number" name="desconto" id="" step=".01" value="<?= $produto['PRODUTO_DESCONTO'] ?>" required>
           <label for="qtd">Quantidade</label>
-          <input type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>">
+          <input type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>" required>
           <label for="categoria">Categoria</label>
 
-          <select name="categoria" id="">
+          <select name="categoria" id="" required>
             <?php foreach ($categorias as $categoria) : ?>
               <option value="<?= $produto['CATEGORIA_ID'] ?>"><?= $produto['CATEGORIA_NOME'] ?></option>
               <option value="<?= $categoria['CATEGORIA_ID'] ?>"><?= $categoria['CATEGORIA_NOME'] ?></option>
@@ -125,6 +125,14 @@ $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
         </form>
       <?php endforeach; ?>
 
+      <p>
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+            </p>
     </section>
   </main>
 

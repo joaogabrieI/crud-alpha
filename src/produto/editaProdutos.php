@@ -5,11 +5,12 @@ session_start();
 require "../conexao-banco.php";
 
 $id = $_GET["id"];
+$category = $_GET["categoria"];
 
 $nome = filter_input(INPUT_POST, "nome", FILTER_DEFAULT);
 $descricao = filter_input(INPUT_POST, "descricao", FILTER_DEFAULT);
-$preco = str_replace(',', '.',filter_input(INPUT_POST, "preco", FILTER_DEFAULT));
-$desconto = str_replace(',', '.',filter_input(INPUT_POST, "desconto", FILTER_DEFAULT));
+$preco = str_replace(',', '.', floatval(filter_input(INPUT_POST, "preco", FILTER_DEFAULT)));
+$desconto = str_replace(',', '.', floatval(filter_input(INPUT_POST, "desconto", FILTER_DEFAULT)));
 $categoria = filter_input(INPUT_POST, "categoria", FILTER_DEFAULT);
 $qtd = filter_input(INPUT_POST, "qtd", FILTER_DEFAULT);
 $ativo = filter_input(INPUT_POST, "ativo", FILTER_DEFAULT);
@@ -26,7 +27,7 @@ $stmt->bindParam(":ativo", $ativo, PDO::PARAM_INT);
 $stmt->bindParam(":qtd", $qtd, PDO::PARAM_INT);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-if($stmt->execute()){
+if ($stmt->execute()) {
     $_SESSION["msg"] = "Produto alterado com sucesso!";
 } else {
     $_SESSION["msg"] = "Erro ao alterar o produto" . $stmt->errorInfo();
