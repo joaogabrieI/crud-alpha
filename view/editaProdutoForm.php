@@ -40,6 +40,13 @@ $stmt3->execute();
 
 $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
+$sql4 = "SELECT * FROM PRODUTO_IMAGEM WHERE PRODUTO_ID = :id";
+$stmt4 = $pdo->prepare($sql4);
+$stmt4->bindParam(":id", $idProduto, PDO::PARAM_INT);
+$stmt4->execute();
+
+$imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -88,7 +95,7 @@ $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
         <button><a href="produtos.php">Voltar</a></button>
       </div>
       <?php foreach ($produtos as $produto) : ?>
-        <form action="../src/produto/editaProdutos.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?=$produto['CATEGORIA_ID']?>" method="post" enctype="multipart/form-data" id="cadastro">
+        <form action="../src/produto/editaProdutos.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>" method="post" enctype="multipart/form-data" id="cadastro">
 
           <label for="nome">Nome do Produto</label>
           <input type="text" name="nome" id="" value="<?= $produto['PRODUTO_NOME'] ?>" required>
@@ -119,20 +126,26 @@ $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
           <label for="imagem">Imagem Produto</label>
           <input type="file" name="imagem[]" multiple accept="image/*">
 
+          <p id="imagemProduto">
+            <?php foreach ($imagens as $imagem) : ?>
+              <img src="<?= $imagem['IMAGEM_URL'] ?>" alt="" height="50px" width="50px">
+              <p>Ordem: <?= $imagem['IMAGEM_ORDEM'] ?></p>
+            <?php endforeach; ?>
+          </p>
 
-          <input type="submit" value="Editar" class="botaoCadastro">
+        <input type="submit" value="Editar" class="botaoCadastro">
 
         </form>
       <?php endforeach; ?>
 
       <p>
-                <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-                ?>
-            </p>
+        <?php
+        if (isset($_SESSION['msg'])) {
+          echo $_SESSION['msg'];
+          unset($_SESSION['msg']);
+        }
+        ?>
+      </p>
     </section>
   </main>
 
