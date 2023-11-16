@@ -68,10 +68,10 @@ if ($stmt->execute()) {
                         $stmt2->bindParam(":ordem", $ordem, PDO::PARAM_INT);
 
                         if ($stmt2->execute()) {
-                            $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
+                            $_SESSION['msg'] = "Imagem adicionada com sucesso!";
                             header("Location: ../../view/adicionaProdutoForm.php");
                         } else {
-                            $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
+                            $_SESSION['msg'] = 'Erro ao adicionar imagem: ' . $stmt->errorInfo();
                             header("location: ../../view/adicionaProdutoForm.php");
                         }
                     }
