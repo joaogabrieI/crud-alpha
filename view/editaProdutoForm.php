@@ -104,7 +104,7 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
           <label for="preco">Preço do Produto</label>
           <input type="number" name="preco" id="" step=".01" value="<?= $produto['PRODUTO_PRECO'] ?>" required>
           <label for="desconto">Desconto a ser aplicado</label>
-          <input type="number" name="desconto" id="" step=".01" value="<?= $produto['PRODUTO_DESCONTO'] ?>" required>
+          <input type="number" name="desconto" id="" value="<?= $produto['PRODUTO_DESCONTO'] ?>" required>
           <label for="qtd">Quantidade</label>
           <input type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>" required>
           <label for="categoria">Categoria</label>
@@ -125,13 +125,6 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
           <label for="imagem">Imagem Produto</label>
           <input type="file" name="imagem[]" multiple accept="image/*">
-
-          <p id="imagemProduto">
-            <?php foreach ($imagens as $imagem) : ?>
-              <img src="<?= $imagem['IMAGEM_URL'] ?>" alt="" height="50px" width="50px">
-              <p>Ordem: <?= $imagem['IMAGEM_ORDEM'] ?></p>
-            <?php endforeach; ?>
-          </p>
 
         <input type="submit" value="Editar" class="botaoCadastro">
 

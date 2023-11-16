@@ -73,8 +73,8 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <input type="text" name="nome" id="">
           <label for="descricao">Descrição do Produto</label>
           <input type="text" name="descricao" id="">
-          <label for="preco">Preço do Produto</label>
-          <input type="number" name="preco" id="">
+          <label for="preco" >Preço do Produto</label>
+          <input type="number" name="preco" step=".01" id="">
           <label for="qtd">Quantidade</label>
           <input type="number" name="qtd" id="">
           <label for="desconto">Desconto a ser aplicado</label>
@@ -92,6 +92,15 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
   
           <input type="submit" value="Cadastrar" class="botaoCadastro">
       </form>
+
+      <p>
+        <?php
+        if (isset($_SESSION['msg'])) {
+          echo $_SESSION['msg'];
+          unset($_SESSION['msg']);
+        }
+        ?>
+      </p>
       </section>
     </main>
 
