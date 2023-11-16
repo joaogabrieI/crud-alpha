@@ -49,6 +49,7 @@ if (!empty($_FILES['imagem']['tmp_name'])) {
                 if ($stmt2->execute()) {
                     $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
                     header("Location: ../../view/adicionaImagens.php?id=".$id);
+                    $ordem++;
                 } else {
                     $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
                     header("location: ../../view/adicionaImagens.php?id=".$id);
