@@ -260,3 +260,7 @@ nav p {
 .categorias-produtos{
   margin-right: 40px;
 }
+
+#imagemProduto {
+  display: flexbox;
+}

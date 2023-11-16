@@ -21,7 +21,10 @@ $sql2 = "SELECT * FROM PRODUTO p
     JOIN PRODUTO_IMAGEM pi 
         ON p.PRODUTO_ID = pi.PRODUTO_ID 
     JOIN CATEGORIA c 
-        ON p.CATEGORIA_ID = c.CATEGORIA_ID";
+        ON p.CATEGORIA_ID = c.CATEGORIA_ID 
+    JOIN PRODUTO_ESTOQUE pe
+        ON p.PRODUTO_ID = pe.PRODUTO_ID
+    WHERE IMAGEM_ORDEM = 1";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
@@ -121,15 +124,15 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <p class="desconto">
                                 <?= $produto['PRODUTO_DESCONTO'] ?>
                             </p>
-                            <p class="qtd">1</p>
-
+                            <p class="qtd"><?= $produto['PRODUTO_QTD'] ?></p>
                             <p class="categorias-produtos">
                                 <?= $produto['CATEGORIA_NOME'] ?>
                             </p>
-                            <p class="categorias-ativo">
-                                <?= $produto['PRODUTO_ATIVO']  === 1 ? 'Sim' : 'Não' ?>
+                            <p class="categorias-produtos">
+                                <?= $produto['PRODUTO_ATIVO']  === '1' ? 'Sim' : 'Não' ?>
                             </p>
-                            <a href="editarProduto.html"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID']?>&categoria=<?=$produto['CATEGORIA_ID']?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <a href="adicionaImagens.php?id=<?= $produto['PRODUTO_ID']?>">Add Imagem</a>
                             <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
                             <img src="../assets/img/view.png" alt="" class="acoes-img">
                         </div>

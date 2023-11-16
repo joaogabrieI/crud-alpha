@@ -30,7 +30,14 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <label for="descricao">Descrição: </label>
         <input type="text" name="descricao" value="<?= $usuario["CATEGORIA_DESC"]?>">
 
-        <input type="submit" value="Adicionar">
+        <p>Ativo</p>
+        <label for="ativo">Sim</label>
+        <input type="radio" name="ativo" id="" value="1" <?= $usuario["CATEGORIA_ATIVO"] === '1' ? "checked" : ""?>>
+
+        <label for="ativo">Não</label>
+        <input type="radio" name="ativo" id="" value="0" <?= $usuario["CATEGORIA_ATIVO"] === '0' ? "checked" : ""?>>
+
+        <input type="submit" value="Editar">
     </form>
     <?php endforeach ?>
     <p><?php

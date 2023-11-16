@@ -29,6 +29,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <label for="email">Email</label>
             <input type="email" name="email" value="<?= $usuario['ADM_EMAIL'] ?>" required>
 
+            <p>Ativo</p>
+            <label for="ativoSim">Sim</label>
+            <input type="radio" name="ativo" id="" value="1" <?= $usuario['ADM_ATIVO'] === '1' ? 'checked' : '' ?>>
+
+            <label for="ativoNão">Não</label>
+            <input type="radio" name="ativo" id="" value="0" <?= $usuario['ADM_ATIVO'] === '0' ? 'checked' : '' ?>>
+
             <input type="submit" value="Atualizar">
         </form>
     <?php endforeach ?>

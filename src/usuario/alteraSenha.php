@@ -20,7 +20,7 @@ $senhaConfirmada = filter_input(INPUT_POST, 'senha2');
 
 if ($senha != $senhaConfirmada) {
     $_SESSION["msg"] = "as senhas não são iguais";
-    header("Location: alteraSenhaForm.php?id=$idUsuario");
+    header("Location:../../view/alteraSenhaForm.php?id=$idUsuario");
     exit;
 } else {
     $senha = password_hash($senha, PASSWORD_DEFAULT);

@@ -99,7 +99,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         <p><?= $dado['CATEGORIA_ID'] ?></p>
                         <p class="produto"><?= $dado['CATEGORIA_NOME'] ?></p>
                         <p><?= $dado['CATEGORIA_DESC'] ?></p>
-                        <p><?= $dado['CATEGORIA_ATIVO'] === 1 ? 'Sim' : 'Não' ?></p>
+                        <p><?= $dado['CATEGORIA_ATIVO'] === '1' ? 'Sim' : 'Não' ?></p>
                         <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                         <form action="../src/categoria/excluiCategoria.php">
                             <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
