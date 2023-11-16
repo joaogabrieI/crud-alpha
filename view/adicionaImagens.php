@@ -33,6 +33,8 @@
             </p>
 
         </section>
+
+        <a href="produtos.php">Voltar</a>
     </main>
 </body>
 
