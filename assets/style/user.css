@@ -162,7 +162,7 @@ nav p {
   margin-top: 100px;
   position: absolute;
   margin-left: 5%;
-  width: 1600px;
+  width: 1100px;
   height: 80px;
   border-radius: 20px;
 }
@@ -187,29 +187,12 @@ nav p {
 
 .dados-produtos{
   display: flex;
-  margin-top: 300px;
-  margin-left: 5%;
+  margin-top: 200px;
+  margin-left: 10%;
   background-color: #163868;
-  width: 75%;
-  height: 600px;
+  width: 80%;
+  height: 370px;
   border-radius: 30px;
-}
-
-.nav-produtos{
-  font-size: 20px;
-  color: #fafafa;
-  list-style: none;
-  padding: 20px;
-  width: 170px;
-}
-
-.nav-produtos-dados{
-  background-color: #0b2447;
-  gap: 20px;
-  display: flex;
-  margin-top: 20px;
-  border-radius: 10px;
-  margin-left: 3%;
 }
 
 .xbox{
@@ -222,6 +205,10 @@ nav p {
   width: 20px;
 }
 
+button{
+  margin-right: 20px;
+}
+
 .dados-acoes{
   display: flex;
   margin-left: 70px;
@@ -231,39 +218,47 @@ nav p {
   color: #fafafa;
 }
 
-.dados-acoes p{
-  width: 150px;
+
+.dados-acoes{
 }
 
-.desconto{
-  margin-left: 100px;
-}
-
-.produto{
-  margin-left: 35px;
-}
-
-.produto{
-  margin-right: 30px;
-}
-
-.qtd{
-  margin-left: 20px;
-}
-
-.qtd{
-  margin-right: 50px;
-}
-
-.categorias-produtos{
-  margin-right: 40px;
+.senha-dados{
+  font-size: 20px;
+  color: #fafafa;
+  text-decoration: none;
+  list-style: none;
 }
 
 #acao{
-    margin-left: 800px ;
+  margin-left: 800px ;
 }
 
-.acoes-edv{
-    margin-left: 850px ;
-    cursor: pointer;
+.dados-geral{
+  background-color: #0b2447;
 }
+
+.nav-produtos{
+  font-size: 20px;
+  color: #fafafa;
+  padding: 20px;
+  width: 300px;
+}
+
+.id-dados, .nome-dados{
+  margin-top: 30px;
+  font-size: 20px;
+  color: #fafafa;
+}
+
+table{
+  display: flex;
+  justify-content: center;
+  margin-left: 100px;
+}
+
+/* 
+.nome-dados, 
+.email-dados,
+.ativo-dados,
+.img-dados,
+.senha-dados */

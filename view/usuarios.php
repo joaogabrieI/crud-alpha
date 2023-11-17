@@ -82,51 +82,82 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         </section>
 
-        <section class="dados-produtos">
+        <section>
 
-            <div>
-                <nav>
-                    <ul class="nav-produtos-dados">
-                        <li class="nav-produtos">ID</li>
-                        <li class="nav-produtos">Nome</li>
-                        <li class="nav-produtos">Email</li>
-                        <li class="nav-produtos">Ativo</li>
-                        <li class="nav-produtos" id="acao">Ação</li>
-                    </ul>
-                </nav>
-                <?php foreach ($dados as $dado) : ?>
-                    <div class="dados-acoes">
-                        <p><?= $dado['ADM_ID'] ?></p>
-                        <p class="produto"><?= $dado['ADM_NOME'] ?></p>
-                        <p><?= $dado['ADM_EMAIL'] ?></p>
-                        <p><?= $dado['ADM_ATIVO'] === '1' ? 'Sim' : 'Não' ?></p>
-                        <div class="acoes-edv">
-                            <a href="editaUsuarioForm.php?id=<?= $dado['ADM_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <a href="alteraSenhaForm.php?id=<?= $dado['ADM_ID'] ?>">Alterar Senha</a>
-                            <form action="../src/usuario/excluiUsuario.php">
-                                <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
-                                <button type="submit">
-                                    <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <p><?php
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
-                    ?></p>
+            <div class="dados-produtos">
+
+                <table>
+
+                    <tr class="dados-geral">
+                        <th class="nav-produtos">ID</th>
+                        <th class="nav-produtos">Nome</th>
+                        <th class="nav-produtos">Email</th>
+                        <th class="nav-produtos">Ativo</th>
+                        <th class="nav-produtos" id="acao">Ação</th>
+                    </tr>
+
+                    <?php foreach ($dados as $dado): ?>
+
+                        <tr>
+                            <td class="id-dados">
+                                <?= $dado['ADM_ID'] ?>
+                            </td>
+
+                            <td class="nome-dados">
+                                <?= $dado['ADM_NOME'] ?>
+                            </td>
+
+                            <td class="email-dados">
+                                <?= $dado['ADM_EMAIL'] ?>
+                            </td>
+
+                            <td class="ativo-dados">
+                                <?= $dado['ADM_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                            </td>
+
+                            <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $dado['ADM_ID'] ?>"><img
+                                        src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+
+                                <a href="alteraSenhaForm.php?id=<?= $dado['ADM_ID'] ?>" class="senha-dados">AlterarSenha</a>
+
+                                <form action="../src/usuario/excluiUsuario.php">
+                                    <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
+                                    <button type="submit">
+                                        <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                </table>
+
+            </div>
+
+            <p>
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+            </p>
+
+
         </section>
 
-        <?php foreach ($usuarios as $usuario) : ?>
+        <?php foreach ($usuarios as $usuario): ?>
             <section id="usuario">
-                <p id="nomeUsuario"><?= $usuario["ADM_NOME"] ?></p>
+                <p id="nomeUsuario">
+                    <?= $usuario["ADM_NOME"] ?>
+                </p>
                 <a href="../src/login-cadastro/logout.php">Sair</a>
             </section>
         <?php endforeach; ?>
 
+    </main>
 
 </body>
 
