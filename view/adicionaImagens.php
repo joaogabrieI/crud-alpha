@@ -18,7 +18,7 @@
             <!-- products.php - Página que exibe detalhes do produto e permite adicionar novas imagens -->
             <form action="../src/produto/addImagens.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
                 <label for="imagem">Adicionar Novas Imagens:</label>
-                <input type="file" name="imagem[]" multiple accept="image/*">
+                <input type="file" name="imagem[]" multiple accept="image/*" required>
 
                 <input type="submit" value="Adicionar Imagens">
             </form>
