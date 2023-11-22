@@ -33,7 +33,13 @@ $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <li>
                     <img src="<?= $imagem['IMAGEM_URL'] ?>" class="imagem-produto">
                     <label for="ordem_<?= $imagem['IMAGEM_ID'] ?>">Ordem:</label>
-                    <input type="text" id="ordem_<?= $imagem['IMAGEM_ID'] ?>" name="ordem[<?= $imagem['IMAGEM_ID'] ?>]" value="<?= $imagem['IMAGEM_ORDEM'] ?>">
+                    <input type="text" name="ordem[<?= $imagem['IMAGEM_ID'] ?>]" value="<?= $imagem['IMAGEM_ORDEM'] ?>" class="input-ordem">
+                    <form action="../src/produto/excluiImagem.php" class="form-excluir">
+                        <input type="hidden" name="id" value="<?= $imagem['IMAGEM_ID'] ?>">
+                        <button type="submit">
+                            <img src="../assets/img/lixo.png" alt="Excluir" class="botao-excluir">
+                        </button>
+                    </form>
                 </li>
             <?php endforeach; ?>
         </ol>

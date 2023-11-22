@@ -2,3 +2,16 @@
     width: 100px;
     height: 100px;
 }
+
+.botao-excluir{
+    width: 10px;
+    height: 10px;
+}
+
+.input-ordem {
+    width: 10px;
+}
+
+.form-excluir {
+    display: inline;
+}
