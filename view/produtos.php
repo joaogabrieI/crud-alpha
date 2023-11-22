@@ -134,7 +134,6 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID']?>&categoria=<?=$produto['CATEGORIA_ID']?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                             <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID']?>"><img src="../assets/img/image-fill.svg" alt=""></a>
                             <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
-                            <img src="../assets/img/view.png" alt="" class="acoes-img">
                         </div>
 
                     <?php endforeach; ?>
