@@ -24,7 +24,8 @@ $sql2 = "SELECT * FROM PRODUTO p
         ON p.CATEGORIA_ID = c.CATEGORIA_ID 
     JOIN PRODUTO_ESTOQUE pe
         ON p.PRODUTO_ID = pe.PRODUTO_ID
-    WHERE IMAGEM_ORDEM = 1";
+    WHERE IMAGEM_ORDEM = 1
+    ORDER BY p.PRODUTO_ID";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
