@@ -76,7 +76,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <div class="nav-adm-produto">
 
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <div class="dados">Nova Categoria</div>
+                <div class="dados"><a href="adicionaCategoriaForm.php">Nova Categoria</a></div>
                 <div class="dados">Filtrar</div>
 
             </div>
