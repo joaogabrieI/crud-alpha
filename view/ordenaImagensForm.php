@@ -34,12 +34,9 @@ $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <img src="<?= $imagem['IMAGEM_URL'] ?>" class="imagem-produto">
                     <label for="ordem_<?= $imagem['IMAGEM_ID'] ?>">Ordem:</label>
                     <input type="text" name="ordem[<?= $imagem['IMAGEM_ID'] ?>]" value="<?= $imagem['IMAGEM_ORDEM'] ?>" class="input-ordem">
-                    <form action="../src/produto/excluiImagem.php" class="form-excluir">
-                        <input type="hidden" name="id" value="<?= $imagem['IMAGEM_ID'] ?>">
-                        <button type="submit">
-                            <img src="../assets/img/lixo.png" alt="Excluir" class="botao-excluir">
-                        </button>
-                    </form>
+                    <a href="../src/produto/excluiImagem.php?id=<?= $imagem['IMAGEM_ID'] ?>&produto=<?= $imagem['PRODUTO_ID'] ?>" onclick="return confirm('Deseja mesmo excluir essa imagem?'); return false;">
+                        <img src="../assets/img/lixo.png" alt="Excluir" class="botao-excluir">
+                    </a>
                 </li>
             <?php endforeach; ?>
         </ol>
