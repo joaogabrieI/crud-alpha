@@ -34,7 +34,7 @@
 
         </section>
 
-        <a href="produtos.php">Voltar</a>
+        <a href="ordenaImagensForm.php?id=<?=$id?>">Voltar</a>
     </main>
 </body>
 

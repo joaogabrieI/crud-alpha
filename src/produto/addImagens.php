@@ -47,17 +47,16 @@ if (!empty($_FILES['imagem']['tmp_name'])) {
                 $stmt2->bindParam(":ordem", $ordem, PDO::PARAM_INT);
 
                 if ($stmt2->execute()) {
-                    $_SESSION['msg'] = "Produto Cadastrado com sucesso!";
-                    header("Location: ../../view/adicionaImagens.php?id=".$id);
+                    header("Location: ../../view/ordenaImagensForm.php?id=".$id);
                     $ordem++;
                 } else {
-                    $_SESSION['msg'] = 'Erro ao adicionar produto: ' . $stmt->errorInfo();
-                    header("location: ../../view/adicionaImagens.php?id=".$id);
+                    $_SESSION['msg'] = 'Erro ao adicionar imagem: ' . $stmt->errorInfo();
+                    header("Location: ../../view/ordenaImagensForm.php?id=".$id);
                 }
             }
         } catch (\Exception $e) {
-            $_SESSION['msg'] = 'Erro: ' . $e->getMessage();
-            header("Location: ../../view/adicionaImagens.php?id=".$id);
+            $_SESSION['msg'] = 'Erro ao adicionar imagem: ' . $e->getMessage();
+            header("Location: ../../view/ordenaImagensForm.php?id=".$id);
         }
     }
 }

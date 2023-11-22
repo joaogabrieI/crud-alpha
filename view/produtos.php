@@ -132,7 +132,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                                 <?= $produto['PRODUTO_ATIVO']  === '1' ? 'Sim' : 'Não' ?>
                             </p>
                             <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID']?>&categoria=<?=$produto['CATEGORIA_ID']?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <a href="adicionaImagens.php?id=<?= $produto['PRODUTO_ID']?>">Add Imagem</a>
+                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID']?>">Add Imagem</a>
                             <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
                             <img src="../assets/img/view.png" alt="" class="acoes-img">
                         </div>
