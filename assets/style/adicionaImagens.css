@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #0b2447;
+  color: #fafafa;
+  font-size: 20px;
+}
+
+#add-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 600px;
+}
+
+#erro-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+#botao-voltar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#botao-voltar a {
+    text-decoration: none;
+}
+
+#submit-add-img {
+    border: none;
+    background-color: #ffd411;
+    padding: 10px;
+    border-radius: 5px;
+    color: #0b2447;
+    font-weight: bold;
+}
+
+#submit-add-img:hover {
+    cursor: pointer;
+}
+
+.content {
+  background-color: #163868;
+  padding: 60px;
+  border-radius: 10px;
+}
+
+.botao-voltar-link {
+  background-color: #ffd411;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  color: #0b2447;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.botao-voltar-link:hover {
+    cursor: pointer;
+}
