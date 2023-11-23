@@ -18,9 +18,9 @@
             <form action="../src/login-cadastro/verificaCadastro.php" method="post">
                 <img src="../assets/img/logo.png" alt="">
                 <h1>Registre - se</h1>
-                <input type="text" placeholder="Name" class="registrar-login" name="nome">
-                <input type="email" placeholder="Email" class="registrar-login" name="email">
-                <input type="password" placeholder="Password" class="registrar-login" name="senha">
+                <input type="text" placeholder="Name" class="registrar-login" name="nome" required>
+                <input type="email" placeholder="Email" class="registrar-login" name="email" required>
+                <input type="password" placeholder="Password" class="registrar-login" name="senha" required>
                 <input type="submit" value="Registrar" class="login-btn">
             </form>
 
@@ -38,8 +38,8 @@
             <form action="../src/login-cadastro/verificaLogin.php" method="post">
                 <img src="../assets/img/logo.png" alt="">
                 <h1>Login</h1>
-                <input type="email" placeholder="Email" id="email" class="login-email-senha" name="email">
-                <input type="password" placeholder="Password" id="senha" class="login-email-senha" name="senha">
+                <input type="email" placeholder="Email" id="email" class="login-email-senha" name="email" required>
+                <input type="password" placeholder="Password" id="senha" class="login-email-senha" name="senha" required>
                 <input type="submit" value="Login" class="login-btn">
             </form>
             <p><?php
