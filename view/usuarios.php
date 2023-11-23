@@ -42,9 +42,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <nav>
             <div class="logo">
                 <img id="logo" src="../assets/img/logo.png" alt="" />
-                <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Administração</p>
+            <p>Usuários</p>
         </nav>
     </header>
 
