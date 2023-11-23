@@ -42,9 +42,8 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <nav>
             <div class="logo">
                 <img id="logo" src="../assets/img/logo.png" alt="" />
-                <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Administração</p>
+            <p>Categorias</p>
         </nav>
     </header>
 
@@ -77,8 +76,6 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados"><a href="adicionaCategoriaForm.php">Nova Categoria</a></div>
-                <div class="dados">Filtrar</div>
-
             </div>
 
         </section>
