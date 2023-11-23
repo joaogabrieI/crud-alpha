@@ -15,15 +15,6 @@ $stmt2->execute();
 
 $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-$id = $_GET["id"];
-
-$sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_INT);
-$stmt->execute();
-
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
