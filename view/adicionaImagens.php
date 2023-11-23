@@ -11,6 +11,7 @@ $id = $_GET['id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Imagens</title>
     <link rel="stylesheet" href="../assets/style/adicionaImagens.css">
+    <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
 </head>
 
 <body>

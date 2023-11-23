@@ -21,6 +21,7 @@ $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reordenar Imagens</title>
     <link rel="stylesheet" href="../assets/style/ordenaImagens.css">
+    <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
 </head>
 
 <body>

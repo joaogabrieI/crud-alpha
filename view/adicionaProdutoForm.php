@@ -30,6 +30,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/style/produtos.css" />
+    <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
     <title>Admin</title>
   </head>
 

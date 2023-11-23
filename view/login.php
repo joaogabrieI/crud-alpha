@@ -9,6 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/style/login.css">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
 </head>
 
 <body>
