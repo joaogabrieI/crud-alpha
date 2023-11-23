@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #0b2447;
+}
+
+header {
+  margin: 0 100px 0px 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav p {
+  color: #fafafa;
+}
+
+main {
+  display: inline-flex;
+  width: 100%;
+}
+
+#logo {
+  height: 100px;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo p {
+  padding-left: 150px;
+}
+
+nav p {
+  font-size: 25px;
+}
+
+.acoes {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 300px;
+  height: 400px;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+
+.acoes li {
+  list-style: none;
+  padding-top: 10px;
+}
+
+.acoes a {
+  text-decoration: none;
+  color: #fafafa;
+  font-weight: bolder;
+}
+
+#linha {
+  width: 100%;
+  height: 1px;
+  background-color: #fafafa;
+}
+
+#linhaVertical {
+  width: 1px;
+  height: 100vh;
+  background-color: #fafafa;
+  margin-left: 300px;
+  position: fixed;
+}
+
+#usuario {
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffd411;
+  height: 70px;
+  width: 300px;
+  color: #fafafa;
+}
+
+#usuario a {
+  padding-left: 20px;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#nomeUsuario {
+  font-weight: 900;
+  padding-left: 20px;
+  color: #0b2447;
+  font-weight: bold;
+}
+
+#containerCadastro {
+  display: block;
+  height: 200px;
+}
+
+#cadastro {
+  margin-top: 20px;
+  margin-left: 220px;
+  padding: 5px 5px 10px 20px;
+  width: 650px;
+  background-color: #163868;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  height: 250px;
+}
+
+#voltarParaLista {
+  background-color: #163868;
+  padding: 15px;
+  width: 650px;
+  height: 60px;
+  display: inline-flex;
+  margin-left: 220px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+#containerCadastro{
+  width: 100%;
+}
+
+#botao-voltar {
+    border: none;
+    background-color: #ffd411;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    color: #0b2447;
+    font-weight: bold;
+}
+
+#botao-voltar:hover {
+    cursor: pointer;
+    background-color: #f8de6c;
+}
+
+#botao-voltar a {
+    text-decoration: none;
+}
+
+form, input, label{
+    display: block;
+    color: #fafafa;
+    padding-top: 10px;
+}
+
+.input-text {
+    width: 600px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    color: #0b2447;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+.botaoCadastro {
+    margin-top: 10px;
+    border: none;
+    background-color: #ffd411;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    color: #0b2447;
+    font-weight: bold;
+    height: 40px;
+    width: 600px;
+}
+
+.botaoCadastro:hover {
+    cursor: pointer;
+    background-color: #f8de6c;
+}
+
+#error-msg {
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+form p {
+    margin-top: 10px;
+}
+
+.radio {
+    display: flex;
+    gap: 15px;
+    margin-top: -5px;
+}
+
+.radio input {
+    margin-top: 12px;
+}
