@@ -76,7 +76,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados"><a href="cadastroUsuarioForm.php">Novo Usuário</a></div>
-                <div class="dados">Filtrar</div>
 
             </div>
 
@@ -86,7 +85,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="dados-produtos">
 
-                <table>
+                <table class="tbl-pai">
 
                     <tr class="dados-geral">
                         <th class="nav-produtos">ID</th>
@@ -98,7 +97,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <?php foreach ($usuarios as $usuario): ?>
 
-                        <tr>
+                        <tr class="teste">
                             <td class="id-dados">
                                 <?= $usuario['ADM_ID'] ?>
                             </td>
@@ -118,7 +117,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img
                                         src="../assets/img/editar.png" alt="" class="acoes-img"></a>
 
-                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados">AlterarSenha</a>
+                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img src="../assets/img/key.svg" alt="" class="chave"></a>
+
 
                                 <form action="../src/usuario/excluiUsuario.php">
                                     <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">

@@ -41,7 +41,6 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/style/listaprodutos.css" />
     <title>Admin</title>
-
 </head>
 
 <body>
@@ -80,70 +79,67 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <section>
 
             <div class="nav-adm-produto">
-
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <a href="adicionaProdutoForm.php" class="link">
                     <div class="dados">Novo Produto</div>
                 </a>
-                <div class="dados">Filtrar</div>
-
             </div>
 
         </section>
 
         <section class="section">
-            <div class="dados-produtos">
-
-                <div>
+            
+                <table class="dados-produtos">
                     
-                    <nav>
-                        <ul class="nav-produtos-dados">
-                            <li class="nav-produtos">ID</li>
-                            <li class="nav-produtos">Imagem</li>
-                            <li class="nav-produtos">Produtos</li>
-                            <li class="nav-produtos" id="preco">Preço</li>
-                            <li class="nav-produtos">Desconto%</li>
-                            <li class="nav-produtos">QTD</li>
-                            <li class="nav-produtos">Categoria</li>
-                            <li class="nav-produtos">Ativo</li>
-                            <li class="nav-produtos">Ação</li>
-                        </ul>
-                    </nav>
+                    <tr class="dados-geral">
+                        <th class="nav-produtos">ID</th>
+                        <th class="nav-produtos">Imagem</th>
+                        <th class="nav-produtos">Nome</th>
+                        <th class="nav-produtos" id="preco">Preço</th>
+                        <th class="nav-produtos">Desconto%</th>
+                        <th class="nav-produtos">QTD</th>
+                        <th class="nav-produtos">Categoria</th>
+                        <th class="nav-produtos">Ativo</th>
+                        <th class="nav-produtos">Ação</th>
+                    </tr>
 
-                    <?php foreach ($produtos as $produto) : ?>
-                        <div class="dados-acoes">
-                            <p class="id-valor">
+                    <?php foreach ($produtos as $produto): ?>
+                        <tr class="dados-acoes">
+                            <td class="id-valor">
                                 <?= $produto['PRODUTO_ID'] ?>
-                            </p>
-                            <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
-                            <p class="produto">
+                            </td>
+                            <td>
+                                <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
+                            </td>
+                            <td class="produto" id="nome-produto">
                                 <?= $produto['PRODUTO_NOME'] ?>
-                            </p>
-                            <p id="preco-valor">
+                            </td>
+                            <td id="preco-valor">
                                 <?= $produto['PRODUTO_PRECO'] ?>
-                            </p>
-                            <p class="desconto">
+                            </td>
+                            <td class="desconto">
                                 <?= $produto['PRODUTO_DESCONTO'] ?>
-                            </p>
-                            <p class="qtd"><?= $produto['PRODUTO_QTD'] ?></p>
-                            <p class="categorias-produtos">
+                            </td>
+                            <td class="qtd">
+                                <?= $produto['PRODUTO_QTD'] ?>
+                            </td>
+                            <td class="categorias-produtos">
                                 <?= $produto['CATEGORIA_NOME'] ?>
-                            </p>
-                            <p class="categorias-produtos">
-                                <?= $produto['PRODUTO_ATIVO']  === '1' ? 'Sim' : 'Não' ?>
-                            </p>
-                            <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID']?>&categoria=<?=$produto['CATEGORIA_ID']?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID']?>"><img src="../assets/img/image-fill.svg" alt=""></a>
-                            <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
-                        </div>
-
+                            </td>
+                            <td class="categorias-produtos">
+                                <?= $produto['PRODUTO_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                            </td>
+                            <td>
+                                <a
+                                    href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img
+                                        src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                                <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img
+                                        src="../assets/img/image-fill.svg" alt=""></a>
+                                <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
-
-                </div>
-
-
-            </div>
-
+                </table>
 
             <p>
                 <?php
@@ -157,7 +153,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     </main>
 
-    <?php foreach ($usuarios as $usuario) : ?>
+    <?php foreach ($usuarios as $usuario): ?>
         <footer>
             <div id="usuario">
                 <p id="nomeUsuario">
