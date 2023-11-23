@@ -121,7 +121,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                 <form action="../src/usuario/excluiUsuario.php">
                                     <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
-                                    <button type="submit">
+                                    <button type="submit" onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                     </button>
                                 </form>
