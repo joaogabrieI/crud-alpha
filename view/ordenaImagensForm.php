@@ -14,7 +14,7 @@ $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -24,38 +24,58 @@ $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+    <main>
+        <section id="ordenar-imagem">
+            <div class="content">
+                <form method="post" action="../src/produto/ordenaImagens.php?id=<?= $id ?>">
+                    <input type="hidden" name="produtoID" value="<?= $id ?>">
 
-    <form method="post" action="../src/produto/ordenaImagens.php?id=<?= $id ?>">
-        <input type="hidden" name="produtoID" value="<?= $id ?>">
+                    <ol>
+                        <?php foreach ($imagens as $imagem): ?>
+                            <li>
+                                <img src="<?= $imagem['IMAGEM_URL'] ?>" class="imagem-produto">
+                                <label for="ordem_<?= $imagem['IMAGEM_ID'] ?>">Ordem:</label>
+                                <input type="text" name="ordem[<?= $imagem['IMAGEM_ID'] ?>]"
+                                    value="<?= $imagem['IMAGEM_ORDEM'] ?>" class="input-ordem">
+                                <a class="botao-excluir"
+                                    href="../src/produto/excluiImagem.php?id=<?= $imagem['IMAGEM_ID'] ?>&produto=<?= $imagem['PRODUTO_ID'] ?>"
+                                    onclick="return confirm('Deseja mesmo excluir essa imagem?'); return false;">
+                                    <img src="../assets/img/lixo.png" alt="Excluir">
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
 
-        <ol>
-            <?php foreach ($imagens as $imagem) : ?>
-                <li>
-                    <img src="<?= $imagem['IMAGEM_URL'] ?>" class="imagem-produto">
-                    <label for="ordem_<?= $imagem['IMAGEM_ID'] ?>">Ordem:</label>
-                    <input type="text" name="ordem[<?= $imagem['IMAGEM_ID'] ?>]" value="<?= $imagem['IMAGEM_ORDEM'] ?>" class="input-ordem">
-                    <a href="../src/produto/excluiImagem.php?id=<?= $imagem['IMAGEM_ID'] ?>&produto=<?= $imagem['PRODUTO_ID'] ?>" onclick="return confirm('Deseja mesmo excluir essa imagem?'); return false;">
-                        <img src="../assets/img/lixo.png" alt="Excluir" class="botao-excluir">
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ol>
+                    <button type="submit" class="salvar-ordem">Salvar Ordem</button>
+                </form>
 
-        <button type="submit">Salvar Ordem</button>
-    </form>
+                <div id="botoes">
+                    <a href="produtos.php"><button class="salvar-ordem">Voltar</button></a>
+                    <a href="adicionaImagens.php?id=<?= $id ?>"><button class="salvar-ordem">Adicionar mais
+                            imagens</button></a>
+                </div>
 
-    <a href="produtos.php"><button>Voltar</button></a>
-    <a href="adicionaImagens.php?id=<?= $id ?>"><button>Adicionar mais imagens</button></a>
+                <div>
+                    <p>
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <p>
-        <?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?>
-    </p>
+        <section>
 
+        </section>
+
+        <section class="error-msg">
+
+        </section>
+    </main>
 </body>
 
 </html>
