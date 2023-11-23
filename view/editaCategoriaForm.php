@@ -1,7 +1,14 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 
 require "../src/conexao-banco.php";
+
+if (!isset($_SESSION['usuario'])) {
+    header('Location: ../../login.php');
+    exit();
+}
+
+$idUsuario = $_SESSION["usuario"];
 
 $id = $_GET["id"];
 
@@ -10,43 +17,102 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();
 
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql2 = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->bindParam(":id", $idUsuario, PDO::PARAM_STR);
+$stmt2->execute();
+
+$usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/style/editaUsuario.css" />
+    <title>Admin</title>
 </head>
 
 <body>
-    <?php foreach ($usuarios as $usuario): ?> 
-    <form action="../src/categoria/editaCategoria.php?id=<?= $usuario['CATEGORIA_ID']?>" method="post">
-        <label for="nomeCategoria">Nome categoria: </label>
-        <input type="text" name="nomeCategoria" value="<?= $usuario["CATEGORIA_NOME"]?>">
+    <header>
+        <nav>
+            <div class="logo">
+                <img id="logo" src="../assets/img/logo.png" alt="" />
+            </div>
+            <p>Edição de Categoria</p>
+        </nav>
+    </header>
+    <p id="linha"></p>
+    <p id="linhaVertical"></p>
 
-        <label for="descricao">Descrição: </label>
-        <input type="text" name="descricao" value="<?= $usuario["CATEGORIA_DESC"]?>">
+    <main>
+        <section class="acoes">
+            <ul>
+                <li>
+                    <a href="admin.php"><img src="../assets/img/house-icon.png" alt="" />Inicio</a>
+                </li>
+                <li>
+                    <a href="produtos.php"><img src="../assets/img/database-icon.png" alt="" />Produtos</a>
+                </li>
+                <li>
+                    <a href="categorias.php"><img src="../assets/img/tags-icon.png" alt="" />Categorias</a>
+                </li>
+                <li>
+                    <a href="usuarios.php"><img src="../assets/img/person-icon.png" alt="" />Usuários</a>
+                </li>
+            </ul>
+        </section>
 
-        <p>Ativo</p>
-        <label for="ativo">Sim</label>
-        <input type="radio" name="ativo" id="" value="1" <?= $usuario["CATEGORIA_ATIVO"] === '1' ? "checked" : ""?>>
+        <section id="containerCadastro">
+        <div id="voltarParaLista">
+            <button id="botao-voltar"><a href="categorias.php">Voltar</a></button>
+        </div>
+        <?php foreach ($categorias as $categoria) : ?>
+            <form action="../src/categoria/editaCategoria.php?id=<?= $categoria['CATEGORIA_ID'] ?>" method="post" id="cadastro">
+                <label for="nomeCategoria">Nome categoria: </label>
+                <input type="text" name="nomeCategoria" value="<?= $categoria["CATEGORIA_NOME"] ?>" class="input-text">
 
-        <label for="ativo">Não</label>
-        <input type="radio" name="ativo" id="" value="0" <?= $usuario["CATEGORIA_ATIVO"] === '0' ? "checked" : ""?>>
+                <label for="descricao">Descrição: </label>
+                <input type="text" name="descricao" value="<?= $categoria["CATEGORIA_DESC"] ?>" class="input-text">
 
-        <input type="submit" value="Editar">
-    </form>
-    <?php endforeach ?>
-    <p><?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?></p>
-    <a href="categorias.php">Voltar</a>
+                <p>Ativo</p>
+                <div class="radio">
+                    <label for="ativo">Sim</label>
+                    <input type="radio" name="ativo" id="" value="1" <?= $categoria["CATEGORIA_ATIVO"] === '1' ? "checked" : "" ?>>
+
+                    <label for="ativo">Não</label>
+                    <input type="radio" name="ativo" id="" value="0" <?= $categoria["CATEGORIA_ATIVO"] === '0' ? "checked" : "" ?>>
+                </div>
+                <input type="submit" value="Editar" class="botaoCadastro" onclick="return confirm('Deseja mesmo alterar a categoria?'); return false;">
+            </form>
+        <?php endforeach ?>
+        <div>
+            <p id="error-msg"><?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?></p>
+        </div>
+    </section>
+
+
+    </main>
+
+    <?php foreach ($usuarios as $usuario) : ?>
+        <footer>
+            <div id="usuario">
+                <p id="nomeUsuario">
+                    <?= $usuario["ADM_NOME"] ?>
+                </p>
+                <a href="../src/login-cadastro/logout.php">Sair</a>
+            </div>
+        </footer>
+    <?php endforeach; ?>
 </body>
 
 </html>
