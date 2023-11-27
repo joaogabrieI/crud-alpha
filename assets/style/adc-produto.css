@@ -50,7 +50,7 @@ nav p {
 .acoes {
   display: inline-flex;
   justify-content: flex-start;
-  width: 300px;
+  width: 200px;
   height: 400px;
   padding-left: 30px;
   padding-top: 10px;
@@ -75,10 +75,10 @@ nav p {
 
 #linhaVertical {
   width: 1px;
-  height: 100vh;
+  height: 84vh;
   background-color: #fafafa;
-  margin-left: 300px;
-  position: fixed;
+  margin-left: 200px;
+  position: absolute;
 }
 
 #usuario {
@@ -89,7 +89,7 @@ nav p {
   align-items: center;
   background-color: #ffd411;
   height: 70px;
-  width: 300px;
+  width: 200px;
   color: #fafafa;
 }
 
@@ -109,11 +109,15 @@ nav p {
   font-weight: bold;
 }
 
+#containerCadastro {
+  width: 100%;
+}
+
 #cadastro {
   margin-top: 20px;
-  margin-left: 95px;
+  margin-left: 45px;
   padding: 35px 0 35px 35px;
-  width: 1080px;
+  width: 95%;
   background-color: #163868;
   border-radius: 10px;
   flex-wrap: wrap;
@@ -156,8 +160,8 @@ label{
     background-color: #163868;
     gap: 20px;
     margin-top: 50px;
-    margin-left: 8%;
-    width: 1080px;
+    margin-left: 45px;
+    width: 95%;
     height: 80px;
     border-radius: 20px;
 }
