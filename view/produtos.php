@@ -89,72 +89,71 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         </section>
 
         <section class="section">
-            
-                <table class="dados-produtos">
-                    
-                    <tr class="dados-geral">
-                        <th class="nav-produtos">ID</th>
-                        <th class="nav-produtos">Imagem</th>
-                        <th class="nav-produtos">Nome</th>
-                        <th class="nav-produtos" id="preco">Preço</th>
-                        <th class="nav-produtos">Desconto%</th>
-                        <th class="nav-produtos">QTD</th>
-                        <th class="nav-produtos">Categoria</th>
-                        <th class="nav-produtos">Ativo</th>
-                        <th class="nav-produtos">Ação</th>
+
+            <table class="dados-produtos">
+
+                <tr class="dados-geral">
+                    <th class="nav-produtos">ID</th>
+                    <th class="nav-produtos">Imagem</th>
+                    <th class="nav-produtos">Nome</th>
+                    <th class="nav-produtos" id="preco">Preço</th>
+                    <th class="nav-produtos">Desconto%</th>
+                    <th class="nav-produtos">QTD</th>
+                    <th class="nav-produtos">Categoria</th>
+                    <th class="nav-produtos">Ativo</th>
+                    <th class="nav-produtos">Ação</th>
+                </tr>
+
+                <?php foreach ($produtos as $produto) : ?>
+                    <tr class="dados-acoes">
+                        <td class="id-valor">
+                            <?= $produto['PRODUTO_ID'] ?>
+                        </td>
+                        <td>
+                            <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
+                        </td>
+                        <td class="produto" id="nome-produto">
+                            <?= $produto['PRODUTO_NOME'] ?>
+                        </td>
+                        <td id="preco-valor">
+                            <?= $produto['PRODUTO_PRECO'] ?>
+                        </td>
+                        <td class="desconto">
+                            <?= $produto['PRODUTO_DESCONTO'] ?>
+                        </td>
+                        <td class="qtd">
+                            <?= $produto['PRODUTO_QTD'] ?>
+                        </td>
+                        <td class="categorias-produtos">
+                            <?= $produto['CATEGORIA_NOME'] ?>
+                        </td>
+                        <td class="categorias-produtos">
+                            <?= $produto['PRODUTO_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                        </td>
+                        <td class="edit-viw">
+                            <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img src="../assets/img/image-fill.svg" alt=""></a>
+                            <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
+                        </td>
                     </tr>
+                <?php endforeach; ?>
+            </table>
 
-                    <?php foreach ($produtos as $produto): ?>
-                        <tr class="dados-acoes">
-                            <td class="id-valor">
-                                <?= $produto['PRODUTO_ID'] ?>
-                            </td>
-                            <td>
-                                <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
-                            </td>
-                            <td class="produto" id="nome-produto">
-                                <?= $produto['PRODUTO_NOME'] ?>
-                            </td>
-                            <td id="preco-valor">
-                                <?= $produto['PRODUTO_PRECO'] ?>
-                            </td>
-                            <td class="desconto">
-                                <?= $produto['PRODUTO_DESCONTO'] ?>
-                            </td>
-                            <td class="qtd">
-                                <?= $produto['PRODUTO_QTD'] ?>
-                            </td>
-                            <td class="categorias-produtos">
-                                <?= $produto['CATEGORIA_NOME'] ?>
-                            </td>
-                            <td class="categorias-produtos">
-                                <?= $produto['PRODUTO_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
-                            </td>
-                            <td class="edit-viw">
-                                <a
-                                    href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img
-                                        src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                                <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img
-                                        src="../assets/img/image-fill.svg" alt=""></a>
-                                <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-
-            <p>
-                <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-                ?>
-            </p>
+            <div id="error-msg">
+                <p>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </p>
+            </div>
         </section>
 
     </main>
 
-    <?php foreach ($usuarios as $usuario): ?>
+    <?php foreach ($usuarios as $usuario) : ?>
         <footer>
             <div id="usuario">
                 <p id="nomeUsuario">
