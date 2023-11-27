@@ -130,7 +130,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <td class="categorias-produtos">
                                 <?= $produto['PRODUTO_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
                             </td>
-                            <td>
+                            <td class="edit-viw">
                                 <a
                                     href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img
                                         src="../assets/img/editar.png" alt="" class="acoes-img"></a>

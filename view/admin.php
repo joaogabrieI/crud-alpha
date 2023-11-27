@@ -64,13 +64,28 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </ul>
         </section>
 
-        <section>
+        <!-- <section>
 
             <div class="nav-adm-produto">
-
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <div class="dados">Novo Produto</div>
+                <a href="adicionaProdutoForm.php" class="link">
+                    <div class="dados">Novo Produto</div>
+                </a>
+            </div>
 
+        </section> -->
+
+        <section class="section-nav-home">
+
+            <div class="nav-home">
+                <a href="produtos.php"><p class="n-prod"> <img src="../assets/img/database-icon.png" alt="" />Produtos</p></a>
+                <a href="categorias.php"><p class="n-cate"><img src="../assets/img/tags-icon.png" alt=""/>Categorias</p></a>
+
+            </div>
+
+            <div class="nav-home">
+                <a href="usuarios.php"><p class="n-user"><img src="../assets/img/person-icon.png" alt=""/>Usuários</p></a>
+                <a href="usuarios.php"><p class="n-user"><img src="../assets/img/person-icon.png" alt=""/>Usuários</p></a>
             </div>
 
         </section>

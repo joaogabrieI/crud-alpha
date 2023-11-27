@@ -60,7 +60,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section id="containerCadastro">
             <div id="voltarParaLista">
-                <button id="botao-voltar"><a href="categorias.php">Voltar</a></button>
+                <a href="categorias.php"><button id="botao-voltar">Voltar</button></a>
             </div>
             <form action="../src/categoria/adicionaCategoria.php" method="post" id="cadastro">
                 <label for="nomeCategoria">Nome categoria: </label>
@@ -94,6 +94,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </footer>
     <?php endforeach; ?>
+    
 </body>
 
 </html>

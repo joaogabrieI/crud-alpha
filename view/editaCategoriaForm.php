@@ -114,6 +114,7 @@ $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </footer>
     <?php endforeach; ?>
+    
 </body>
 
 </html>

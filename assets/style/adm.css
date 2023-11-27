@@ -260,3 +260,71 @@ nav p {
 .categorias-produtos{
   margin-right: 40px;
 }
+
+
+.section-nav-home{
+  width: 100%;
+}
+
+.nav-home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 100px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.nav-home a{
+  list-style: none;
+  text-decoration: none;
+}
+
+
+.n-prod{
+  background-color: #ffd411;
+  padding: 50px;
+  border: 1px solid black;
+  color: #fafafa;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.n-cate{
+  background-color: rgb(0, 255, 64);
+  padding: 50px;
+  border: 1px solid black;
+  color: #fafafa;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.n-user{
+  background-color: rgb(0, 106, 255);
+  padding: 55px;
+  border: 1px solid black;
+  color: #fafafa;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+
+.n-prod:hover{
+  cursor: pointer;
+  background-color: #ffd000;
+  padding: 60px;
+  transition: all 0.5s;
+}
+.n-cate:hover{
+  cursor: pointer;
+  background-color: rgb(7, 182, 51);
+  padding: 60px;
+  transition: all 0.5s;
+}
+.n-user:hover{
+  cursor: pointer;
+  background-color: #294163;
+  padding: 65px;
+  transition: all 0.5s;
+}

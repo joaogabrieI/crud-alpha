@@ -74,7 +74,6 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <section>
 
             <div class="nav-adm-produto">
-
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados"><a href="adicionaCategoriaForm.php">Nova Categoria</a></div>
             </div>
@@ -82,33 +81,50 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         </section>
 
         <section>
-            <div>
-                <nav>
-                    <ul class="nav-produtos-dados">
-                        <li class="nav-produtos">ID</li>
-                        <li class="nav-produtos">Categoria</li>
-                        <li class="nav-produtos">Descrição</li>
-                        <li class="nav-produtos">Ativo</li>
-                        <li class="nav-produtos">Ação</li>
-                    </ul>
-                </nav>
+            <table class="dados-produtos">
+
+                <tr class="nav-produtos-dados">
+                    <th class="nav-produtos">ID</th>
+                    <th class="nav-produtos">Categoria</th>
+                    <th class="nav-produtos">Descrição</th>
+                    <th class="nav-produtos">Ativo</th>
+                    <th class="nav-produtos">Ação</th>
+                </tr>
+
                 <?php foreach ($dados as $dado) : ?>
-                    <div class="dados-acoes">
-                        <p><?= $dado['CATEGORIA_ID'] ?></p>
-                        <p class="produto"><?= $dado['CATEGORIA_NOME'] ?></p>
-                        <p><?= $dado['CATEGORIA_DESC'] ?></p>
-                        <p><?= $dado['CATEGORIA_ATIVO'] === '1' ? 'Sim' : 'Não' ?></p>
-                        <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                        <form action="../src/categoria/excluiCategoria.php">
-                            <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
-                            <button type="submit" class="submit-customizado">
-                                <img src="../assets/img/lixo.png" alt="" class="acoes-img">
-                            </button>
-                        </form>
-                        <img src="../assets/img/view.png" alt="" class="acoes-img">
-                    </div>
+
+                    <tr class="dados-acoes">
+                        <td>
+                            <?= $dado['CATEGORIA_ID'] ?>
+                        </td>
+
+                        <td class="produto">
+                            <?= $dado['CATEGORIA_NOME'] ?>
+                        </td>
+
+                        <td>
+                            <?= $dado['CATEGORIA_DESC'] ?>
+                        </td>
+
+                        <td>
+                            <?= $dado['CATEGORIA_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                        </td>
+
+                        <td class="icones">
+                            <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <form action="../src/categoria/excluiCategoria.php">
+                                <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
+                                <button type="submit" class="submit-customizado">
+                                    <img src="../assets/img/lixo.png" alt="" class="acoes-img">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
                 <?php endforeach; ?>
-            </div>
+
+            </table>
+
             <p><?php
                 if (isset($_SESSION['msg'])) {
                     echo $_SESSION['msg'];
@@ -132,7 +148,6 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </footer>
     <?php endforeach; ?>
-
 
 </body>
 

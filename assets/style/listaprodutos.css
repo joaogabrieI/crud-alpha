@@ -170,6 +170,11 @@ nav p {
   border-radius: 20px;
 }
 
+.nav-adm-produto a{
+  text-decoration: none;
+  list-style: none;
+}
+
 .dados{
   background-color: #ffd411;
   padding: 8px;
@@ -197,9 +202,12 @@ nav p {
   width: 80%;
   height: 500px;
   border-radius: 30px;
-  overflow: auto;  
+  overflow: auto;
 }
 
+.dados-produtos::-webkit-scrollbar{
+  background-color: transparent;
+}
 
 .imgs-jogos{
   width: 100px;
@@ -214,13 +222,14 @@ nav p {
 
 .dados-acoes{
   display: flex;
-  margin-left: 35px;
-  margin-top: 30px;
+  justify-content: center;
+  text-align: center;
   align-items: center;
+  margin-left: 35px;
+  margin-top: 80px;
   font-size: 18px;
   color: #fafafa;
   gap: 80px;
-  text-align: center;
 }
 
 .section{
@@ -236,9 +245,11 @@ nav p {
 
 .dados-geral{
   background-color: #0b2447;
-  margin: 0px 10px 10px 10px;
+  margin: 0.5px 10px 0px 10px;
   position: fixed;
   width: 65%;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 
@@ -251,4 +262,10 @@ nav p {
 
 .qtd{
   margin-left: 25px;
+}
+
+.edit-viw{
+  display: flex;
+  gap: 5px;
+  margin-left: -30px;
 }

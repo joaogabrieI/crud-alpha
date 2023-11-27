@@ -38,6 +38,7 @@ $id = $_GET['id'];
             </div>
         </section>
     </main>
+    
 </body>
 
 </html>
