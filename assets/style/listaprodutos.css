@@ -31,6 +31,7 @@ main {
 
 #logo {
   height: 100px;
+  margin-left: -60px;
 }
 
 .logo {
@@ -40,7 +41,7 @@ main {
 }
 
 .logo p {
-  padding-left: 150px;
+  padding-left: 100px;
 }
 
 nav p {
@@ -50,7 +51,7 @@ nav p {
 .acoes {
   display: inline-flex;
   justify-content: flex-start;
-  width: 300px;
+  width: 200px;
   height: 400px;
   padding-left: 30px;
   padding-top: 10px;
@@ -75,9 +76,9 @@ nav p {
 
 #linhaVertical {
   width: 1px;
-  height: 87vh;
+  height: 84vh;
   background-color: #fafafa;
-  margin-left: 300px;
+  margin-left: 200px;
   position: absolute;
 }
 
@@ -89,7 +90,7 @@ nav p {
   align-items: center;
   background-color: #ffd411;
   height: 70px;
-  width: 300px;
+  width: 200px;
   color: #fafafa;
 }
 
@@ -162,10 +163,10 @@ nav p {
   align-items: center;
   background-color: #163868;
   gap: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
   position: absolute;
-  margin-left: 8%;
-  width: 1080px;
+  margin-left: 4%;
+  width: 80%;
   height: 80px;
   border-radius: 20px;
 }
@@ -196,11 +197,11 @@ nav p {
 
 .dados-produtos{
   display: flex;
-  margin-top: 150px;
-  margin-left: 10%;
+  margin-top: 130px;
+  margin-left: 5%;
   background-color: #163868;
-  width: 80%;
-  height: 500px;
+  width: 92%;
+  height: 380px;
   border-radius: 30px;
   overflow: auto;
 }
@@ -247,7 +248,7 @@ nav p {
   background-color: #0b2447;
   margin: 0.5px 10px 0px 10px;
   position: fixed;
-  width: 65%;
+  width: 78.2%;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
