@@ -79,7 +79,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <label for="nome">Nome do Produto</label>
           <input type="text" name="nome" id="">
         </div>
-        
+
         <div>
           <label for="descricao">Descrição do Produto</label>
           <input type="text" name="descricao" id="">
@@ -102,10 +102,12 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <div>
           <label for="categoria">Categoria</label>
-  
+
           <select name="categoria" id="">
-            <?php foreach ($categorias as $categoria) : ?>
-              <option value="<?= $categoria['CATEGORIA_ID'] ?>"><?= $categoria['CATEGORIA_NOME'] ?></option>
+            <?php foreach ($categorias as $categoria): ?>
+              <option value="<?= $categoria['CATEGORIA_ID'] ?>">
+                <?= $categoria['CATEGORIA_NOME'] ?>
+              </option>
             <?php endforeach; ?>
           </select>
         </div>
@@ -119,18 +121,20 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       </form>
 
-      <p>
-        <?php
-        if (isset($_SESSION['msg'])) {
-          echo $_SESSION['msg'];
-          unset($_SESSION['msg']);
-        }
-        ?>
-      </p>
+      <div>
+        <p id="error-msg">
+          <?php
+          if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+          }
+          ?>
+        </p>
+      </div>
     </section>
   </main>
 
-  <?php foreach ($usuarios as $usuario) : ?>
+  <?php foreach ($usuarios as $usuario): ?>
     <footer>
       <div id="usuario">
         <p id="nomeUsuario">
@@ -140,7 +144,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </footer>
   <?php endforeach; ?>
-  
+
 </body>
 
 </html>

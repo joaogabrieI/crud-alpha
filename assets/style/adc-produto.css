@@ -194,3 +194,12 @@ label{
     width: 30px;
     margin-left: 18px;
 }
+
+#error-msg {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fafafa;
+}

@@ -146,7 +146,6 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    Produto Cadastrado com sucesso!
                 </p>
             </div>
         </section>
