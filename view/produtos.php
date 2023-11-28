@@ -91,7 +91,6 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <section class="section">
 
             <table class="dados-produtos">
-
                 <tr class="dados-geral">
                     <th class="nav-produtos">ID</th>
                     <th class="nav-produtos">Imagem</th>
@@ -147,6 +146,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         unset($_SESSION['msg']);
                     }
                     ?>
+                    Produto Cadastrado com sucesso!
                 </p>
             </div>
         </section>

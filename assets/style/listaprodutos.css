@@ -76,7 +76,7 @@ nav p {
 
 #linhaVertical {
   width: 1px;
-  height: 84vh;
+  height: 87.1vh;
   background-color: #fafafa;
   margin-left: 200px;
   position: absolute;
@@ -96,7 +96,7 @@ nav p {
 
 #usuario a {
   padding-left: 20px;
-  padding-right: 40px;
+  padding-right: 30px;
   display: flex;
   align-items: center;
   font-weight: bolder;
@@ -173,7 +173,7 @@ nav p {
   margin-top: 30px;
   position: absolute;
   margin-left: 4%;
-  width: 80%;
+  width: 82.1%;
   height: 80px;
   border-radius: 20px;
 }
@@ -208,7 +208,7 @@ nav p {
   margin-left: 5%;
   background-color: #163868;
   width: 92%;
-  height: 380px;
+  height: 525px;
   border-radius: 30px;
   overflow: auto;
 }
@@ -237,7 +237,7 @@ nav p {
   margin-top: 80px;
   font-size: 18px;
   color: #fafafa;
-  gap: 80px;
+  gap: 108px;
 }
 
 .section{
@@ -255,7 +255,7 @@ nav p {
   background-color: #0b2447;
   margin: 0.5px 10px 0px 10px;
   position: fixed;
-  width: 78.2%;
+  width:80%;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
