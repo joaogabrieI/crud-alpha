@@ -29,7 +29,26 @@ $sql2 = "SELECT * FROM PRODUTO p
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
-$produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$busca = filter_input(INPUT_POST, 'busca');
+
+if (!empty($busca)) {
+    $busca = '%' . $busca . '%';
+    $sqlBusca = "SELECT * FROM PRODUTO p 
+    JOIN PRODUTO_IMAGEM pi 
+        ON p.PRODUTO_ID = pi.PRODUTO_ID 
+    JOIN CATEGORIA c 
+        ON p.CATEGORIA_ID = c.CATEGORIA_ID 
+    JOIN PRODUTO_ESTOQUE pe
+        ON p.PRODUTO_ID = pe.PRODUTO_ID
+    WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_ATIVO = 1 AND p.PRODUTO_NOME LIKE :busca OR c.CATEGORIA_NOME LIKE :busca
+    ORDER BY p.PRODUTO_ID";
+    $stmt = $pdo->prepare($sqlBusca);
+    $stmt->bindParam('busca', $busca, PDO::PARAM_STR);
+    $stmt->execute();
+    $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -84,10 +103,13 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <a href="adicionaProdutoForm.php" class="link">
                     <div class="dados">Novo Produto</div>
                 </a>
-                <form action="" method="post">
-                    <input type="search">
-                    <input type="submit" value="Buscar">
+                <form method="post">
+                    <label for="busca">Buscar</label>
+                    <input type="text" name="busca" id="produto" onkeyup="buscarProdutos()">
                 </form>
+                <a href="produtos.php" class="link">
+                    <div class="dados">Todos os Produtos</div>
+                </a>
             </div>
 
         </section>
@@ -137,10 +159,10 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                             <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img src="../assets/img/image-fill.svg" alt=""></a>
                             <form action="../src/produto/excluiProduto.php">
-                                    <input type="hidden" name="id" value="<?= $produto['PRODUTO_ID'] ?>">
-                                    <button type="submit" onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
-                                        <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
-                                    </button>
+                                <input type="hidden" name="id" value="<?= $produto['PRODUTO_ID'] ?>">
+                                <button type="submit" onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
+                                    <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -172,9 +194,21 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         </footer>
     <?php endforeach; ?>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        function confirma() {
-            confirm("Deseja excluir o item?");
+        function buscarProdutos() {
+            var termoBusca = $("#produto").val();
+
+            $.ajax({
+                type: "POST",
+                url: "produtos.php", // Nome do script PHP que processa a busca
+                data: {
+                    produto: termoBusca
+                },
+                success: function(response) {
+                    $("#dados-produtos").html(response);
+                }
+            });
         }
     </script>
 
