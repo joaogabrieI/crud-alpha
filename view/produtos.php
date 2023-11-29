@@ -24,7 +24,7 @@ $sql2 = "SELECT * FROM PRODUTO p
         ON p.CATEGORIA_ID = c.CATEGORIA_ID 
     JOIN PRODUTO_ESTOQUE pe
         ON p.PRODUTO_ID = pe.PRODUTO_ID
-    WHERE IMAGEM_ORDEM = 1
+    WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_ATIVO = 1
     ORDER BY p.PRODUTO_ID";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
@@ -136,7 +136,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         <td class="edit-viw">
                             <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                             <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img src="../assets/img/image-fill.svg" alt=""></a>
-                            <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="confirma()">
+                            <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
                         </td>
                     </tr>
                 <?php endforeach; ?>
