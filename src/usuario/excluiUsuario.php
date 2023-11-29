@@ -10,9 +10,9 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
 if($stmt->execute()){
-    $_SESSION["msg"] = "Usuário excluído com sucesso!";
+    $_SESSION["erroLogin"] = "Usuário excluído com sucesso!";
 } else {
-    $_SESSION["msg"] = "Erro ao excluir o usuário" . $stmt->errorInfo();
+    $_SESSION["erroLogin"] = "Erro ao excluir o usuário" . $stmt->errorInfo();
 }
 
-header("Location: ../../view/usuarios.php");
+header("Location: ../login-cadastro/logout.php");
