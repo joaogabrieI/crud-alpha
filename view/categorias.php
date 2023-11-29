@@ -115,7 +115,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <form action="../src/categoria/excluiCategoria.php">
                                 <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
                                 <button type="submit" class="submit-customizado">
-                                    <img src="../assets/img/lixo.png" alt="" class="acoes-img">
+                                    <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="return confirm('Deseja mesmo excluir essa categoria?'); return false;">
                                 </button>
                             </form>
                         </td>
