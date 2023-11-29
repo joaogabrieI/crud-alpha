@@ -43,7 +43,7 @@ if (!empty($busca)) {
     WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_ATIVO = 1 AND p.PRODUTO_NOME LIKE :busca OR c.CATEGORIA_NOME LIKE :busca
     ORDER BY p.PRODUTO_ID";
     $stmt = $pdo->prepare($sqlBusca);
-    $stmt->bindParam('busca', $busca, PDO::PARAM_STR);
+    $stmt->bindParam(':busca', $busca, PDO::PARAM_STR);
     $stmt->execute();
     $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {

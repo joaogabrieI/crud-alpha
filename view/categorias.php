@@ -21,8 +21,18 @@ $sql2 = "SELECT * FROM CATEGORIA";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
 
-$dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$busca = filter_input(INPUT_POST, 'busca');
 
+if (!empty($busca)) {
+    $busca = '%' . $busca . '%';
+    $sqlBusca = "SELECT * FROM CATEGORIA WHERE CATEGORIA_NOME LIKE :busca";
+    $stmtBusca = $pdo->prepare($sqlBusca);
+    $stmtBusca->bindParam(':busca', $busca, PDO::PARAM_STR);
+    $stmtBusca->execute();
+    $dados = $stmtBusca->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -76,6 +86,13 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <div class="nav-adm-produto">
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados"><a href="adicionaCategoriaForm.php">Nova Categoria</a></div>
+                <form method="post">
+                    <label for="busca">Buscar</label>
+                    <input type="text" name="busca" id="categoria" onkeyup="buscarCategorias()">
+                </form>
+                <a href="categorias.php" class="link">
+                    <div class="dados">Todos os Produtos</div>
+                </a>
             </div>
 
         </section>
@@ -148,6 +165,25 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </footer>
     <?php endforeach; ?>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+            function buscarCategorias() {
+                var termoBusca = $("#categoria").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "categorias.php", // Nome do script PHP que processa a busca
+                    data: {
+                        produto: termoBusca
+                    },
+                    success: function(response) {
+                        $("#dados-produtos").html(response);
+                    }
+                });
+            }
+    </script>
 
 </body>
 
