@@ -111,7 +111,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
 
                             <td class="ativo-dados">
-                                <?= $usuario['ADM_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                                <?= $usuario['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
                             </td>
 
                             <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img

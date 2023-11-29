@@ -107,7 +107,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         </td>
 
                         <td>
-                            <?= $dado['CATEGORIA_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                            <?= $dado['CATEGORIA_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
                         </td>
 
                         <td class="icones">

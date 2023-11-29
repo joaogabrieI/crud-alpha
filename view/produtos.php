@@ -84,6 +84,10 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <a href="adicionaProdutoForm.php" class="link">
                     <div class="dados">Novo Produto</div>
                 </a>
+                <form action="" method="post">
+                    <input type="search">
+                    <input type="submit" value="Buscar">
+                </form>
             </div>
 
         </section>
@@ -127,7 +131,7 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <?= $produto['CATEGORIA_NOME'] ?>
                         </td>
                         <td class="categorias-produtos">
-                            <?= $produto['PRODUTO_ATIVO'] === '1' ? 'Sim' : 'Não' ?>
+                            <?= $produto['PRODUTO_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
                         </td>
                         <td class="edit-viw">
                             <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>

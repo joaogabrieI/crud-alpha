@@ -119,10 +119,10 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
           <p>Ativo</p>
           <label for="ativoSim">Sim</label>
-          <input type="radio" name="ativo" id="" value="1" <?= $produto['PRODUTO_ATIVO'] === '1' ? 'checked' : '' ?>>
+          <input type="radio" name="ativo" id="" value="1" <?= $produto['PRODUTO_ATIVO'] === 1 ? 'checked' : '' ?>>
 
           <label for="ativoNão">Não</label>
-          <input type="radio" name="ativo" id="" value="0" <?= $produto['PRODUTO_ATIVO'] === '0' ? 'checked' : '' ?>>
+          <input type="radio" name="ativo" id="" value="0" <?= $produto['PRODUTO_ATIVO'] === 0 ? 'checked' : '' ?>>
 
         <input type="submit" value="Editar" class="botaoCadastro">
 

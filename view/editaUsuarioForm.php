@@ -73,10 +73,10 @@ $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     <p>Ativo</p>
                     <div class="radio"> 
                         <label for="ativoSim">Sim</label>
-                        <input type="radio" name="ativo" value="1" <?= $usuario['ADM_ATIVO'] === '1' ? 'checked' : '' ?>>
+                        <input type="radio" name="ativo" value="1" <?= $usuario['ADM_ATIVO'] === 1 ? 'checked' : '' ?>>
 
                         <label for="ativoNão">Não</label>
-                        <input type="radio" name="ativo" value="0" <?= $usuario['ADM_ATIVO'] === '0' ? 'checked' : '' ?>>
+                        <input type="radio" name="ativo" value="0" <?= $usuario['ADM_ATIVO'] === 0 ? 'checked' : '' ?>>
                     </div>
 
                     <input type="submit" value="Atualizar" class="botaoCadastro" onclick="return confirm('Deseja mesmo alterar o usuário?'); return false;">

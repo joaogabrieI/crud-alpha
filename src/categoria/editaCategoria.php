@@ -14,7 +14,7 @@ $sql = "UPDATE CATEGORIA SET CATEGORIA_NOME = :nomeCategoria, CATEGORIA_DESC = :
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nomeCategoria", $nomeCategoria, PDO::PARAM_STR);
 $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
-$stmt->bindParam(":ativo", $ativo, PDO::PARAM_STR);
+$stmt->bindParam(":ativo", $ativo, PDO::PARAM_INT);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
 if($stmt->execute()){
