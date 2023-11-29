@@ -98,11 +98,11 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                             <?= $dado['CATEGORIA_ID'] ?>
                         </td>
 
-                        <td class="produto">
+                        <td class="descrever">
                             <?= $dado['CATEGORIA_NOME'] ?>
                         </td>
 
-                        <td>
+                        <td class="descrever">
                             <?= $dado['CATEGORIA_DESC'] ?>
                         </td>
 

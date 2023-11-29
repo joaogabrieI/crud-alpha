@@ -61,7 +61,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section id="containerCadastro">
             <div id="voltarParaLista">
-                <button id="botao-voltar"><a href="usuarios.php">Voltar</a></button>
+                <img src="../assets/img/voltar.png" alt="">
+                <a href="usuarios.php"><button id="botao-voltar">Voltar</button></a>
             </div>
             <form action="../src/usuario/cadastraUsuario.php" method="post" id="cadastro">
                 <label for="nome">Nome</label>

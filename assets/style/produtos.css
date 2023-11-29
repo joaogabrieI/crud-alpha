@@ -75,10 +75,10 @@ nav p {
 
 #linhaVertical {
   width: 1px;
-  height: 100vh;
+  height: 87.1vh;
   background-color: #fafafa;
-  margin-left: 300px;
-  position: fixed;
+  margin-left: 200px;
+  position: absolute;
 }
 
 #usuario {
@@ -89,7 +89,7 @@ nav p {
   align-items: center;
   background-color: #ffd411;
   height: 70px;
-  width: 300px;
+  width: 200px;
   color: #fafafa;
 }
 
@@ -116,24 +116,28 @@ nav p {
 
 #cadastro {
   margin-top: 20px;
-  margin-left: 120px;
+  margin-left: 220px;
   padding: 35px 0 35px 35px;
-  width: 800px;
+  width: 650px;
   background-color: #163868;
   border-radius: 10px;
   flex-wrap: wrap;
-  height: 150px;
+  height: 500px;
+  color: #fafafa;
+  font-size: 17px;
 }
 
 #voltarParaLista {
   background-color: #163868;
   padding: 15px;
-  width: 800px;
-  height: 50px;
+  width: 650px;
+  height: 60px;
   display: inline-flex;
-  margin-left: 120px;
+  margin-left: 220px;
   margin-top: 20px;
   border-radius: 10px;
+  gap: 20px;
+  align-items: center;
 }
 
 #produtoadd {
@@ -169,12 +173,17 @@ nav p {
 }
 
 .dados{
+  border: none;
   background-color: #ffd411;
-  padding: 8px;
+  padding: 5px;
+  width: 100px;
   border-radius: 5px;
   color: #0b2447;
   font-weight: bold;
-  font-size: 20px;
+  margin-top: 3px;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
 }
 
 .dados:hover{
@@ -183,7 +192,9 @@ nav p {
 
 .icon-m{
   width: 30px;
+  height: 30px;
   margin-left: 20px;
+  margin-top: 10px;
 }
 
 .dados-produtos{
@@ -262,4 +273,38 @@ nav p {
 
 #imagemProduto {
   display: flexbox;
+}
+
+form, input, label{
+  display: block;
+  color: #fafafa;
+  padding-top: 10px;
+}
+
+.input-text {
+  width: 580px;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  color: #0b2447;
+  font-size: 25px;
+  padding-bottom: 10px;
+  text-overflow: ellipsis;
+}
+
+.ativos-s-n{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.botaoCadastro{
+  color: #0b2447;
+  font-size: 15px;
+  padding: 0px;
+}
+
+#categoria-ops{
+  font-size: 20px;
 }

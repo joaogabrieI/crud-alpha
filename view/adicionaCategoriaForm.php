@@ -60,6 +60,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section id="containerCadastro">
             <div id="voltarParaLista">
+                <img src="../assets/img/voltar.png" alt="">
                 <a href="categorias.php"><button id="botao-voltar">Voltar</button></a>
             </div>
             <form action="../src/categoria/adicionaCategoria.php" method="post" id="cadastro">

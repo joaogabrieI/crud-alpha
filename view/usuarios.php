@@ -73,10 +73,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <section>
 
             <div class="nav-adm-produto">
-
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <div class="dados"><a href="cadastroUsuarioForm.php">Novo Usuário</a></div>
-
+                <a href="cadastroUsuarioForm.php"><div class="dados">Novo Usuário</div></a>
             </div>
 
         </section>

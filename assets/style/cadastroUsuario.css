@@ -77,7 +77,7 @@ nav p {
   width: 1px;
   height: 100vh;
   background-color: #fafafa;
-  margin-left: 300px;
+  margin-left: 200px;
   position: fixed;
 }
 
@@ -89,7 +89,7 @@ nav p {
   align-items: center;
   background-color: #ffd411;
   height: 70px;
-  width: 300px;
+  width: 200px;
   color: #fafafa;
 }
 
@@ -134,6 +134,12 @@ nav p {
   margin-left: 220px;
   margin-top: 20px;
   border-radius: 10px;
+  gap: 20px;
+}
+
+#voltarParaLista a{
+  list-style: none;
+  text-decoration: none;
 }
 
 #containerCadastro{

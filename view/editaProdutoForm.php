@@ -65,7 +65,6 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
     <nav>
       <div class="logo">
         <img id="logo" src="../assets/img/logo.png" alt="" />
-        <p>Olá, Seja Bem-vindo!</p>
       </div>
       <p>Editar Produtos</p>
     </nav>
@@ -93,39 +92,38 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
     <section id="containerCadastro">
       <div id="voltarParaLista">
-        <button><a href="produtos.php">Voltar</a></button>
+        <img src="../assets/img/voltar.png" alt="" class="icon-m">
+        <a href="produtos.php" class="dados">Voltar</a>
       </div>
       <?php foreach ($produtos as $produto) : ?>
         <form action="../src/produto/editaProdutos.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>" method="post" enctype="multipart/form-data" id="cadastro">
+            <label for="nome">Nome do Produto:</label>
+            <input class="input-text" type="text" name="nome" id="" value="<?= $produto['PRODUTO_NOME'] ?>" required>
+            <label for="descricao">Descrição do Produto:</label>
+            <input class="input-text" type="text" name="descricao" id="" value="<?= $produto['PRODUTO_DESC'] ?>" required>
+            <label for="preco">Preço do Produto:</label>
+            <input class="input-text" type="number" name="preco" id="" step=".01" value="<?= $produto['PRODUTO_PRECO'] ?>" required>
+            <label for="desconto">Desconto a ser aplicado:</label>
+            <input class="input-text" type="number" name="desconto" id="" value="<?= $produto['PRODUTO_DESCONTO'] ?>" required>
+            <label for="qtd">Quantidade:</label>
+            <input class="input-text" type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>" required>
+            <label for="categoria">Categoria:</label>
+            <select name="categoria" id="categoria-ops" required>
+              <?php foreach ($categorias as $categoria) : ?>
+                <option value="<?= $produto['CATEGORIA_ID'] ?>"><?= $produto['CATEGORIA_NOME'] ?></option>
+                <option value="<?= $categoria['CATEGORIA_ID'] ?>"><?= $categoria['CATEGORIA_NOME'] ?></option>
+              <?php endforeach; ?>
+            </select>
 
-          <label for="nome">Nome do Produto</label>
-          <input type="text" name="nome" id="" value="<?= $produto['PRODUTO_NOME'] ?>" required>
-          <label for="descricao">Descrição do Produto</label>
-          <input type="text" name="descricao" id="" value="<?= $produto['PRODUTO_DESC'] ?>" required>
-          <label for="preco">Preço do Produto</label>
-          <input type="number" name="preco" id="" step=".01" value="<?= $produto['PRODUTO_PRECO'] ?>" required>
-          <label for="desconto">Desconto a ser aplicado</label>
-          <input type="number" name="desconto" id="" value="<?= $produto['PRODUTO_DESCONTO'] ?>" required>
-          <label for="qtd">Quantidade</label>
-          <input type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>" required>
-          <label for="categoria">Categoria</label>
-
-          <select name="categoria" id="" required>
-            <?php foreach ($categorias as $categoria) : ?>
-              <option value="<?= $produto['CATEGORIA_ID'] ?>"><?= $produto['CATEGORIA_NOME'] ?></option>
-              <option value="<?= $categoria['CATEGORIA_ID'] ?>"><?= $categoria['CATEGORIA_NOME'] ?></option>
-            <?php endforeach; ?>
-          </select>
-
-          <p>Ativo</p>
-          <label for="ativoSim">Sim</label>
-          <input type="radio" name="ativo" id="" value="1" <?= $produto['PRODUTO_ATIVO'] === '1' ? 'checked' : '' ?>>
-
-          <label for="ativoNão">Não</label>
-          <input type="radio" name="ativo" id="" value="0" <?= $produto['PRODUTO_ATIVO'] === '0' ? 'checked' : '' ?>>
-
-        <input type="submit" value="Editar" class="botaoCadastro">
-
+            <p>Ativo</p>
+            <div class="ativos-s-n">
+              <label for="ativoSim">Sim</label>
+              <input type="radio" name="ativo" id="" value="1" <?= $produto['PRODUTO_ATIVO'] === '1' ? 'checked' : '' ?>>
+              <label for="ativoNão">Não</label>
+              
+              <input type="radio" name="ativo" id="" value="0" <?= $produto['PRODUTO_ATIVO'] === '0' ? 'checked' : '' ?>>
+              <input type="submit" value="Editar" class="botaoCadastro">
+            </div>
         </form>
       <?php endforeach; ?>
 

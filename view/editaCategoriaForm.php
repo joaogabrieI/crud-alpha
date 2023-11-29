@@ -70,7 +70,8 @@ $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         <section id="containerCadastro">
         <div id="voltarParaLista">
-            <button id="botao-voltar"><a href="categorias.php">Voltar</a></button>
+            <img src="../assets/img/voltar.png" alt="">
+            <a href="categorias.php"><button id="botao-voltar">Voltar</button></a>
         </div>
         <?php foreach ($categorias as $categoria) : ?>
             <form action="../src/categoria/editaCategoria.php?id=<?= $categoria['CATEGORIA_ID'] ?>" method="post" id="cadastro">

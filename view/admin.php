@@ -36,7 +36,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <nav>
             <div class="logo">
                 <img id="logo" src="../assets/img/logo.png" alt="" />
-                <p>Olá, Seja Bem-vindo!</p>
             </div>
             <p>Administração</p>
         </nav>
@@ -64,28 +63,27 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </ul>
         </section>
 
-        <!-- <section>
+        <section>
 
             <div class="nav-adm-produto">
-                <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <a href="adicionaProdutoForm.php" class="link">
-                    <div class="dados">Novo Produto</div>
-                </a>
+                <div class="dados">Olá, seja Bem-vindo</div>
+                <img src="../assets/img/salve.png" alt="" class="icon-m">
+                
             </div>
 
-        </section> -->
+        </section>
 
         <section class="section-nav-home">
 
             <div class="nav-home">
-                <a href="produtos.php"><p class="n-prod"> <img src="../assets/img/database-icon.png" alt="" />Produtos</p></a>
-                <a href="categorias.php"><p class="n-cate"><img src="../assets/img/tags-icon.png" alt=""/>Categorias</p></a>
+                <a href="adicionaProdutoForm.php"><p class="n-prod"> <img src="../assets/img/database-icon.png" alt="" /> Adicionar novo Produto</p></a>
+                <a href="adicionaCategoriaForm.php"><p class="n-cate"><img src="../assets/img/tags-icon.png" alt=""/> Adicionar nova Categoria</p></a>
 
             </div>
 
             <div class="nav-home">
-                <a href="usuarios.php"><p class="n-user"><img src="../assets/img/person-icon.png" alt=""/>Usuários</p></a>
-                <a href="usuarios.php"><p class="n-user"><img src="../assets/img/person-icon.png" alt=""/>Usuários</p></a>
+                <a href="cadastroUsuarioForm.php"><p class="n-user"><img src="../assets/img/person-icon.png" alt=""/> Adicionar novo Usuário</p></a>
+                <a href="../src/login-cadastro/logout.php"><p class="n-sair"><img src="../assets/img/sair.png" alt="" class="sair"/> Sair</p></a>
             </div>
 
         </section>

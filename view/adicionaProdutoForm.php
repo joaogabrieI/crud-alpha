@@ -40,7 +40,6 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <nav>
       <div class="logo">
         <img id="logo" src="../assets/img/logo.png" alt="" />
-        <p>Olá, Seja Bem-vindo!</p>
       </div>
       <p>Cadastro Produtos</p>
     </nav>
@@ -75,49 +74,36 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <form action="../src/produto/adicionaProdutos.php" method="post" enctype="multipart/form-data" id="cadastro">
 
-        <div>
-          <label for="nome">Nome do Produto</label>
-          <input type="text" name="nome" id="">
-        </div>
+        <label for="nome">Nome do Produto:</label>
+        <input class="inputs" type="text" name="nome" id="">
 
-        <div>
-          <label for="descricao">Descrição do Produto</label>
-          <input type="text" name="descricao" id="">
-        </div>
+        <label for="descricao">Descrição do Produto:</label>
+        <input class="inputs" type="text" name="descricao" id="">
 
-        <div>
-          <label for="preco" class="preco">Preço do Produto</label>
-          <input type="number" name="preco" step=".01" id="">
-        </div>
+        <label for="preco" class="preco">Preço do Produto:</label>
+        <input class="inputs" type="number" name="preco" step=".01" id="">
 
-        <div>
-          <label for="qtd">Quantidade</label>
-          <input type="number" name="qtd" id="">
-        </div>
+        <label for="qtd">Quantidade:</label>
+        <input class="inputs" type="number" name="qtd" id="">
 
-        <div>
-          <label for="desconto">Desconto a ser aplicado</label>
-          <input type="number" name="desconto" id="">
-        </div>
+        <label for="desconto">Desconto a ser aplicado:</label>
+        <input class="inputs" type="number" name="desconto" id="">
 
-        <div>
-          <label for="categoria">Categoria</label>
+        <label for="categoria">Categoria:</label>
 
-          <select name="categoria" id="">
-            <?php foreach ($categorias as $categoria): ?>
-              <option value="<?= $categoria['CATEGORIA_ID'] ?>">
-                <?= $categoria['CATEGORIA_NOME'] ?>
-              </option>
-            <?php endforeach; ?>
-          </select>
-        </div>
+        <select name="categoria" id="">
+          <?php foreach ($categorias as $categoria) : ?>
+            <option value="<?= $categoria['CATEGORIA_ID'] ?>">
+              <?= $categoria['CATEGORIA_NOME'] ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
 
-        <div>
+        <div class="add-imgs">
           <label for="imagem">Imagem Produto</label>
           <input type="file" name="imagem[]" multiple accept="image/*">
           <input type="submit" value="Cadastrar" class="botaoCadastro">
         </div>
-
 
       </form>
 
@@ -134,7 +120,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
   </main>
 
-  <?php foreach ($usuarios as $usuario): ?>
+  <?php foreach ($usuarios as $usuario) : ?>
     <footer>
       <div id="usuario">
         <p id="nomeUsuario">
