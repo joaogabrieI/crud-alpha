@@ -74,7 +74,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="nav-adm-produto">
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <a href="cadastroUsuarioForm.php"><div class="dados">Novo Usuário</div></a>
+                <a href="cadastroUsuarioForm.php">
+                    <div class="dados">Novo Usuário</div>
+                </a>
             </div>
 
         </section>
@@ -115,36 +117,35 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img
                                         src="../assets/img/editar.png" alt="" class="acoes-img"></a>
 
-                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img src="../assets/img/key.svg" alt="" class="chave"></a>
+                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img
+                                        src="../assets/img/key.svg" alt="" class="chave"></a>
 
 
                                 <form action="../src/usuario/excluiUsuario.php">
                                     <input type="hidden" name="id" value="<?= $usuario['ADM_ID'] ?>">
-                                    <button type="submit" onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
+                                    <button class="btn-l" type="submit"
+                                        onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                     </button>
                                 </form>
                             </td>
 
                         </tr>
+                    </table>
+                </div>
+                <div id="error-msg">
+                    <p>
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
+                    </p>
+                </div>
 
-                    
+            </section>
 
-                </table>
-
-            </div>
-
-            <p>
-                <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-                ?>
-            </p>
-
-
-        </section>
             <section id="usuario">
                 <p id="nomeUsuario">
                     <?= $usuario["ADM_NOME"] ?>

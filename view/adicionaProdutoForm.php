@@ -92,7 +92,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <label for="categoria">Categoria:</label>
 
         <select name="categoria" id="">
-          <?php foreach ($categorias as $categoria) : ?>
+          <?php foreach ($categorias as $categoria): ?>
             <option value="<?= $categoria['CATEGORIA_ID'] ?>">
               <?= $categoria['CATEGORIA_NOME'] ?>
             </option>
@@ -102,8 +102,8 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="add-imgs">
           <label for="imagem">Imagem Produto</label>
           <input type="file" name="imagem[]" multiple accept="image/*">
-          <input type="submit" value="Cadastrar" class="botaoCadastro">
         </div>
+        <input type="submit" value="Cadastrar" class="botaoCadastro">
 
       </form>
 
@@ -120,7 +120,7 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
   </main>
 
-  <?php foreach ($usuarios as $usuario) : ?>
+  <?php foreach ($usuarios as $usuario): ?>
     <footer>
       <div id="usuario">
         <p id="nomeUsuario">

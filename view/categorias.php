@@ -87,11 +87,10 @@ if (!empty($busca)) {
                 <img src="../assets/img/icone.png" alt="" class="icon-m">
                 <div class="dados"><a href="adicionaCategoriaForm.php">Nova Categoria</a></div>
                 <form method="post">
-                    <label for="busca">Buscar</label>
-                    <input type="text" name="busca" id="categoria" onkeyup="buscarCategorias()">
+                    <input type="text" name="busca" id="categoria" onkeyup="buscarCategorias()" placeholder="Buscar" class="buscar-dados">
                 </form>
                 <a href="categorias.php" class="link">
-                    <div class="dados">Todos os Produtos</div>
+                    <div class="dados">Todos as Categorias</div>
                 </a>
             </div>
 

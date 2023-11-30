@@ -31,6 +31,7 @@ main {
 
 #logo {
   height: 100px;
+  margin-left: -60px;
 }
 
 .logo {
@@ -90,7 +91,7 @@ nav p {
   background-color: #ffd411;
   height: 70px;
   width: 200px;
-  color: #fafafa;
+  color: #0b2447;
 }
 
 #usuario a {
@@ -100,6 +101,7 @@ nav p {
   align-items: center;
   font-weight: bolder;
   text-decoration: none;
+  color: #0b2447;
 }
 
 #nomeUsuario {
@@ -115,7 +117,7 @@ nav p {
 
 #cadastro {
   margin-top: 20px;
-  margin-left: 290px;
+  margin-left: 390px;
   padding: 35px 0 35px 35px;
   width: 650px;
   background-color: #163868;
@@ -150,7 +152,7 @@ label{
   width: 650px;
   height: 60px;
   display: inline-flex;
-  margin-left: 290px;
+  margin-left: 390px;
   margin-top: 20px;
   border-radius: 10px;
   gap: 20px;
@@ -213,9 +215,18 @@ form, input, label{
 
 .botaoCadastro{
   color: #0b2447;
-  font-size: 13px;
-  padding: 2px;
+  font-size: 20px;
+  padding: 5px;
   font-weight: bold;
+  background-color: #ffd411;
+  width: 580px;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.botaoCadastro:hover {
+  cursor: pointer;
+  background-color: #f8de6c;
 }
 
 .add-imgs{

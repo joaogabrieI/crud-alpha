@@ -122,8 +122,9 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
               <label for="ativoNão">Não</label>
               
               <input type="radio" name="ativo" id="" value="0" <?= $produto['PRODUTO_ATIVO'] === 0 ? 'checked' : '' ?>>
-              <input type="submit" value="Editar" class="botaoCadastro">
             </div>
+            <input type="submit" value="Editar" class="botaoCadastro">
+            
         </form>
       <?php endforeach; ?>
 

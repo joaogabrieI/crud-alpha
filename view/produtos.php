@@ -24,7 +24,7 @@ $sql2 = "SELECT * FROM PRODUTO p
         ON p.CATEGORIA_ID = c.CATEGORIA_ID 
     JOIN PRODUTO_ESTOQUE pe
         ON p.PRODUTO_ID = pe.PRODUTO_ID
-    WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_ATIVO = 1
+    WHERE pi.IMAGEM_ORDEM = 1
     ORDER BY p.PRODUTO_ID";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
@@ -40,7 +40,7 @@ if (!empty($busca)) {
         ON p.CATEGORIA_ID = c.CATEGORIA_ID 
     JOIN PRODUTO_ESTOQUE pe
         ON p.PRODUTO_ID = pe.PRODUTO_ID
-    WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_ATIVO = 1 AND p.PRODUTO_NOME LIKE :busca OR c.CATEGORIA_NOME LIKE :busca
+    WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_NOME LIKE :busca
     ORDER BY p.PRODUTO_ID";
     $stmt = $pdo->prepare($sqlBusca);
     $stmt->bindParam(':busca', $busca, PDO::PARAM_STR);
@@ -68,9 +68,8 @@ if (!empty($busca)) {
         <nav>
             <div class="logo">
                 <img id="logo" src="../assets/img/logo.png" alt="" />
-                <p>Olá, Seja Bem-vindo!</p>
             </div>
-            <p>Administração</p>
+            <p>Produtos</p>
         </nav>
     </header>
 
@@ -104,8 +103,8 @@ if (!empty($busca)) {
                     <div class="dados">Novo Produto</div>
                 </a>
                 <form method="post">
-                    <label for="busca">Buscar</label>
-                    <input type="text" name="busca" id="produto" onkeyup="buscarProdutos()">
+                    <input type="text" name="busca" id="produto" onkeyup="buscarProdutos()" placeholder="Buscar"
+                        class="buscar-dados">
                 </form>
                 <a href="produtos.php" class="link">
                     <div class="dados">Todos os Produtos</div>
@@ -129,7 +128,7 @@ if (!empty($busca)) {
                     <th class="nav-produtos">Ação</th>
                 </tr>
 
-                <?php foreach ($produtos as $produto) : ?>
+                <?php foreach ($produtos as $produto): ?>
                     <tr class="dados-acoes">
                         <td class="id-valor">
                             <?= $produto['PRODUTO_ID'] ?>
@@ -156,11 +155,15 @@ if (!empty($busca)) {
                             <?= $produto['PRODUTO_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
                         </td>
                         <td class="edit-viw">
-                            <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img src="../assets/img/image-fill.svg" alt=""></a>
+                            <a
+                                href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img
+                                    src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img
+                                    src="../assets/img/image-fill.svg" alt=""></a>
                             <form action="../src/produto/excluiProduto.php">
                                 <input type="hidden" name="id" value="<?= $produto['PRODUTO_ID'] ?>">
-                                <button type="submit" onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
+                                <button class="btn-l" type="submit"
+                                    onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
                                     <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                 </button>
                             </form>
@@ -183,7 +186,7 @@ if (!empty($busca)) {
 
     </main>
 
-    <?php foreach ($usuarios as $usuario) : ?>
+    <?php foreach ($usuarios as $usuario): ?>
         <footer>
             <div id="usuario">
                 <p id="nomeUsuario">
@@ -205,7 +208,7 @@ if (!empty($busca)) {
                 data: {
                     produto: termoBusca
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#dados-produtos").html(response);
                 }
             });

@@ -31,6 +31,7 @@ main {
 
 #logo {
   height: 100px;
+  margin-left: -60px;
 }
 
 .logo {
@@ -100,6 +101,7 @@ nav p {
   align-items: center;
   font-weight: bolder;
   text-decoration: none;
+  color: #0b2447;
 }
 
 #nomeUsuario {
@@ -116,7 +118,7 @@ nav p {
 
 #cadastro {
   margin-top: 20px;
-  margin-left: 220px;
+  margin-left: 320px;
   padding: 5px 5px 10px 20px;
   width: 650px;
   background-color: #163868;
@@ -131,7 +133,7 @@ nav p {
   width: 650px;
   height: 60px;
   display: inline-flex;
-  margin-left: 220px;
+  margin-left: 320px;
   margin-top: 20px;
   border-radius: 10px;
   gap: 20px;
@@ -187,6 +189,7 @@ form, input, label{
     font-weight: bold;
     height: 40px;
     width: 600px;
+    font-size: 20px;
 }
 
 .botaoCadastro:hover {
