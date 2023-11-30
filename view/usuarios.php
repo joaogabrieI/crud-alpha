@@ -12,17 +12,17 @@ $id = $_SESSION["usuario"];
 
 $sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_STR);
+$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// $sql2 = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-// $stmt2->bindParam(":id", $id, PDO::PARAM_STR);
-// $stmt2 = $pdo->prepare($sql2);
-// $stmt2->execute();
+$sql2 = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID NOT LIKE :id";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->bindParam(":id", $id, PDO::PARAM_INT);
+$stmt2->execute();
 
-// $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -95,7 +95,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th class="nav-produtos" id="acao">Ação</th>
                     </tr>
 
-                    <?php foreach ($usuarios as $usuario): ?>
+                    <?php foreach ($usuarios as $usuario) : ?>
 
                         <tr class="teste">
                             <td class="id-dados">
@@ -114,47 +114,85 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?= $usuario['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
                             </td>
 
-                            <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img
-                                        src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
 
-                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img
-                                        src="../assets/img/key.svg" alt="" class="chave"></a>
+                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img src="../assets/img/key.svg" alt="" class="chave"></a>
 
 
                                 <form action="../src/usuario/excluiUsuario.php">
                                     <input type="hidden" name="id" value="<?= $usuario['ADM_ID'] ?>">
-                                    <button class="btn-l" type="submit"
-                                        onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
+                                    <button class="btn-l" type="submit" onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                     </button>
                                 </form>
                             </td>
 
                         </tr>
-                    </table>
-                </div>
-                <div id="error-msg">
-                    <p>
-                        <?php
-                        if (isset($_SESSION['msg'])) {
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
-                        }
-                        ?>
-                    </p>
-                </div>
+                    <?php endforeach; ?>
 
-            </section>
+                    <?php foreach ($dados as $dado) : ?>
 
-            <section id="usuario">
-                <p id="nomeUsuario">
-                    <?= $usuario["ADM_NOME"] ?>
+                        <tr class="teste">
+                            <td class="id-dados">
+                                <?= $dado['ADM_ID'] ?>
+                            </td>
+
+                            <td class="nome-dados">
+                                <?= $dado['ADM_NOME'] ?>
+                            </td>
+
+                            <td class="email-dados">
+                                <?= $dado['ADM_EMAIL'] ?>
+                            </td>
+
+                            <td class="ativo-dados">
+                                <?= $dado['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
+                            </td>
+
+                            <td class="dados-acoes">
+                                <a href="usuarios.php" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                                <a href="usuarios.php" class="senha-dados" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/key.svg" alt="" class="chave"></a>
+                                <form action="../src/usuario/excluiUsuario.php" id="aviso">
+                                    <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
+                                    <button class="btn-l" type="submit">
+                                        <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            <div id="error-msg">
+                <p>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
                 </p>
-                <a href="../src/login-cadastro/logout.php">Sair</a>
-            </section>
-        <?php endforeach; ?>
+            </div>
+
+        </section>
+
+        <section id="usuario">
+            <p id="nomeUsuario">
+                <?= $usuario["ADM_NOME"] ?>
+            </p>
+            <a href="../src/login-cadastro/logout.php">Sair</a>
+        </section>
+
 
     </main>
+
+    <script>
+        document.getElementById('aviso').addEventListener('submit', function(event) {
+            alert('Você não tem permissão para isso!');
+            event.preventDefault();
+        });
+    </script>
 
 </body>
 

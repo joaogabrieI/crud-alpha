@@ -199,6 +199,7 @@ nav p {
 }
 
 .dados-produtos{
+  overflow: auto;
   display: flex;
   margin-top: 150px;
   margin-left: 7%;
@@ -206,6 +207,10 @@ nav p {
   width: 80%;
   height: 370px;
   border-radius: 30px;
+}
+
+.dados-produtos::-webkit-scrollbar{
+  background-color: transparent;
 }
 
 .xbox{

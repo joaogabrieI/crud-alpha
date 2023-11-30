@@ -32,11 +32,11 @@ try {
             $_SESSION["usuario"] = $senha["ADM_ID"];
             header("location: ../../view/admin.php");
         } else {
-            $_SESSION['erroLogin'] = 'senha incorreta';
+            $_SESSION['erroLogin'] = 'Senha incorreta!';
             header("location: ../../view/login.php");
         }
     } else {
-        $_SESSION['erroLogin'] = 'email não cadastrado!';
+        $_SESSION['erroLogin'] = 'Email não cadastrado!';
         header("location: ../../view/login.php");
     }
 } catch (PDOException $e) {

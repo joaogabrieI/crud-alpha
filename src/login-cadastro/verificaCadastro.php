@@ -21,5 +21,5 @@ try {
     header("location: ../../view/admin.php");
 } catch (PDOException $e){
     header("location: ../../view/login.php");
-    $_SESSION['erroCadastro'] = 'erro ao cadastrar usuario ' . $e->getMessage();  
+    $_SESSION['erroCadastro'] = 'Erro ao cadastrar usuario!' . $e->getMessage();  
 }
