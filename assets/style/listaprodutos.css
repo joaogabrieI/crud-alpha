@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -6,18 +7,22 @@
   font-family: "Inter", sans-serif;
 }
 
+html,
 body {
   background-color: #0b2447;
-}
-
-header {
-  margin: 0 100px 0px 100px;
+  width: 100%;
+  height: 100%;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10%;
+}
+
+header {
+  border-bottom: 1px solid #fafafa;
 }
 
 header nav p {
@@ -25,13 +30,14 @@ header nav p {
 }
 
 main {
-  display: inline-flex;
+  display: flex;
   width: 100%;
+  height: 85%;
 }
 
 #logo {
   height: 100px;
-  margin-left: -60px;
+  margin-left: 50px;
 }
 
 .logo {
@@ -40,62 +46,46 @@ main {
   align-items: center;
 }
 
-.logo p {
-  padding-left: 100px;
-}
-
 nav p {
   font-size: 25px;
+  margin-right: 40px;
 }
 
-.acoes {
-  display: inline-flex;
-  justify-content: flex-start;
-  width: 200px;
-  height: 400px;
-  padding-left: 30px;
-  padding-top: 10px;
+.side-bar {
+  width: 15%;
+  height: 100%;
+  border-right: 1px solid #fafafa;
 }
 
-.acoes li {
+.side-bar li {
   list-style: none;
   padding-top: 10px;
 }
 
-.acoes a {
+.side-bar a {
   text-decoration: none;
   color: #fafafa;
   font-weight: bolder;
 }
 
-#linha {
-  width: 100%;
-  height: 1px;
-  background-color: #fafafa;
-}
-
-#linhaVertical {
-  width: 1px;
-  height: 87.1vh;
-  background-color: #fafafa;
-  margin-left: 200px;
-  position: absolute;
+#acoes {
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 #usuario {
   position: absolute;
   bottom: 0;
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #ffd411;
   height: 70px;
-  width: 200px;
+  width: 15%;
   color: #0b2447;
 }
 
 #usuario a {
-  padding-left: 20px;
   padding-right: 30px;
   display: flex;
   align-items: center;
@@ -109,6 +99,10 @@ nav p {
   padding-left: 20px;
   color: #0b2447;
   font-weight: bold;
+}
+
+#produtos {
+  width: 85%;
 }
 
 #containerCadastro {
@@ -138,7 +132,7 @@ nav p {
   border-radius: 10px;
 }
 
-#produtoadd{
+#produtoadd {
   background-color: #163868;
   padding: 15px;
   width: 800px;
@@ -153,7 +147,7 @@ nav p {
   background-color: #0b2447;
 }
 
-#containerCadastro{
+#containerCadastro {
   width: 100%;
 }
 
@@ -165,26 +159,105 @@ nav p {
   color: #fafafa;
 }
 
-.nav-adm-produto{
+#container-top-table {
   display: flex;
-  justify-content: left;
   align-items: center;
-  background-color: #163868;
+  justify-content: center;
+  width: 100%;
+  height: 15%;
+}
+
+.nav-adm-produto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
+  background-color: #163868;
   margin-top: 30px;
-  position: absolute;
-  margin-left: 4%;
-  width: 82.1%;
+  width: 90%;
   height: 80px;
   border-radius: 20px;
 }
 
-.nav-adm-produto a{
+.nav-adm-produto a {
   text-decoration: none;
   list-style: none;
 }
 
-.dados{
+#tabela-produtos {
+  display: flex;
+  background-color: #163868;
+  width: 90%;
+  color: #fafafa;
+  border-radius: 30px;
+  height: 470px;
+  overflow-y: auto;
+  margin-top: 20px;
+  margin-left: 65px;
+}
+
+#tabela-produtos::-webkit-scrollbar {
+  width: 0px; /* Largura da barra de rolagem */
+  background-color: transparent;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #0b2447;
+  height: 50px;
+}
+
+td {
+  height: 100px;
+  width: 150px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+td img {
+  width: 150px;
+  height: 150px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: bolder;
+}
+
+tbody {
+  margin-top: 50px;
+}
+
+#container-editar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-img {
+  width: 20px;
+  height: 20px;
+  margin-top: 60px;
+}
+
+.editar {
+  display: flex;
+  gap: 5px;
+}
+
+.dados {
   background-color: #ffd411;
   padding: 8px;
   border-radius: 5px;
@@ -193,103 +266,72 @@ nav p {
   font-size: 20px;
 }
 
-.dados:hover{
-    cursor: pointer;
+.dados:hover {
+  cursor: pointer;
 }
 
 
-.icon-m{
+.icon-m {
   width: 30px;
   margin-left: 20px;
 }
 
-.dados-produtos{
-  display: flex;
-  margin-top: 130px;
-  margin-left: 5%;
-  background-color: #163868;
-  width: 92%;
-  height: 525px;
-  border-radius: 30px;
-  overflow: auto;
-}
-
-.dados-produtos::-webkit-scrollbar{
-  background-color: transparent;
-}
-
-.imgs-jogos{
-  width: 100px;
-  border-radius: 10px;
-  margin-right: 50px;
-  margin-left: -40px;
-}
-
-.acoes-img{
-  width: 20px;
-  background-color: transparent ;
-}
-
-.dados-acoes{
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  margin-left: 35px;
-  margin-top: 80px;
-  font-size: 18px;
-  color: #fafafa;
-  gap: 108px;
-}
-
-.section{
+.section {
   width: 100%;
+  height: 100%;
 }
 
-.nav-produtos{
+.nav-produtos {
   font-size: 20px;
   color: #fafafa;
   padding: 20px;
   width: 300px;
 }
 
-.dados-geral{
+.dados-geral {
   background-color: #0b2447;
   margin: 0.5px 10px 0px 10px;
   position: fixed;
-  width:80%;
+  width: 80%;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
 
 
-#nome-produto{
+#nome-produto {
   margin-left: -100px;
   width: 100px;
   word-break: break-all;
   margin-right: -40px;
 }
 
-.qtd{
+.qtd {
   margin-left: 25px;
 }
 
-.edit-viw{
+.edit-viw {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
-  margin-left: -30px;
+  height: 100%;
+}
+
+.edit-viw img {
+  width: 20px;
+  height: 20px;
 }
 
 
-.buscar-dados{
-  padding: 8px;  
+.buscar-dados {
+  padding: 8px;
   font-size: 20px;
   border-radius: 5px;
   width: 150px;
 }
 
 
-.btn-l{
+.btn-l {
   background-color: transparent;
   border: none;
 }

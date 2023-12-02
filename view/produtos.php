@@ -9,7 +9,6 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $id = $_SESSION["usuario"];
-
 $sql = "SELECT ADM_NOME FROM ADMINISTRADOR WHERE ADM_ID = :id";
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":id", $id, PDO::PARAM_STR);
@@ -73,129 +72,116 @@ if (!empty($busca)) {
         </nav>
     </header>
 
-    <p id="linha"></p>
-    <p id="linhaVertical"></p>
-
     <main>
+        <section class="side-bar">
+            <div id="acoes">
+                <ul>
+                    <li>
+                        <a href="admin.php"><img src="../assets/img/house-icon.png" alt="" />Inicio</a>
+                    </li>
+                    <li>
+                        <a href="produtos.php"><img src="../assets/img/database-icon.png" alt="" />Produtos</a>
+                    </li>
+                    <li>
+                        <a href="categorias.php"><img src="../assets/img/tags-icon.png" alt="" />Categorias</a>
+                    </li>
+                    <li>
+                        <a href="usuarios.php"><img src="../assets/img/person-icon.png" alt="" />Usuários</a>
+                    </li>
+                </ul>
+            </div>
 
-        <section class="acoes">
-            <ul>
-                <li>
-                    <a href="admin.php"><img src="../assets/img/house-icon.png" alt="" />Inicio</a>
-                </li>
-                <li>
-                    <a href="produtos.php"><img src="../assets/img/database-icon.png" alt="" />Produtos</a>
-                </li>
-                <li>
-                    <a href="categorias.php"><img src="../assets/img/tags-icon.png" alt="" />Categorias</a>
-                </li>
-                <li>
-                    <a href="usuarios.php"><img src="../assets/img/person-icon.png" alt="" />Usuários</a>
-                </li>
-            </ul>
+
+            <?php foreach ($usuarios as $usuario) : ?>
+                <div id="usuario">
+                    <p id="nomeUsuario">
+                        <?= $usuario["ADM_NOME"] ?>
+                    </p>
+                    <a href="../src/login-cadastro/logout.php">Sair</a>
+                </div>
+            <?php endforeach; ?>
         </section>
 
-        <section>
+        <section id="produtos">
 
-            <div class="nav-adm-produto">
-                <img src="../assets/img/icone.png" alt="" class="icon-m">
-                <a href="adicionaProdutoForm.php" class="link">
-                    <div class="dados">Novo Produto</div>
-                </a>
-                <form method="post">
-                    <input type="text" name="busca" id="produto" onkeyup="buscarProdutos()" placeholder="Buscar"
-                        class="buscar-dados">
-                </form>
-                <a href="produtos.php" class="link">
-                    <div class="dados">Todos os Produtos</div>
-                </a>
+            <div id="container-top-table">
+                <div class="nav-adm-produto">
+                    <img src="../assets/img/icone.png" alt="" class="icon-m">
+                    <a href="adicionaProdutoForm.php" class="link">
+                        <div class="dados">Novo Produto</div>
+                    </a>
+                    <form method="post">
+                        <input type="text" name="busca" id="produto" onkeyup="buscarProdutos()" placeholder="Buscar" class="buscar-dados">
+                    </form>
+                    <a href="produtos.php" class="link">
+                        <div class="dados">Todos os Produtos</div>
+                    </a>
+                </div>
+            </div>
+
+            <div id="tabela-produtos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Desconto%</th>
+                            <th>QTD</th>
+                            <th>Categoria</th>
+                            <th>Ativo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($produtos as $produto) : ?>
+                            <tr>
+                                <td>
+                                    <?= $produto['PRODUTO_ID'] ?>
+                                </td>
+                                <td>
+                                    <img src="<?= $produto['IMAGEM_URL'] ?>" alt="">
+                                </td>
+                                <td>
+                                    <?= $produto['PRODUTO_NOME'] ?>
+                                </td>
+                                <td>
+                                    <?= $produto['PRODUTO_PRECO'] ?>
+                                </td>
+                                <td>
+                                    <?= $produto['PRODUTO_DESCONTO'] ?>
+                                </td>
+                                <td>
+                                    <?= $produto['PRODUTO_QTD'] ?>
+                                </td>
+                                <td>
+                                    <?= $produto['CATEGORIA_NOME'] ?>
+                                </td>
+                                <td>
+                                    <?= $produto['PRODUTO_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
+                                </td>
+                                <td id="container-editar">
+                                    <div class="editar">
+                                        <a href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="edit-img"></a>
+                                        <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img src="../assets/img/image-fill.svg" alt="" class="edit-img"></a>
+                                        <form action="../src/produto/excluiProduto.php">
+                                            <input type="hidden" name="id" value="<?= $produto['PRODUTO_ID'] ?>">
+                                            <button class="btn-l" type="submit" onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
+                                                <img src="../assets/img/lixo.png" alt="Excluir" class="edit-img">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
 
         </section>
-
-        <section class="section">
-
-            <table class="dados-produtos">
-                <tr class="dados-geral">
-                    <th class="nav-produtos">ID</th>
-                    <th class="nav-produtos">Imagem</th>
-                    <th class="nav-produtos">Nome</th>
-                    <th class="nav-produtos" id="preco">Preço</th>
-                    <th class="nav-produtos">Desconto%</th>
-                    <th class="nav-produtos">QTD</th>
-                    <th class="nav-produtos">Categoria</th>
-                    <th class="nav-produtos">Ativo</th>
-                    <th class="nav-produtos">Ação</th>
-                </tr>
-
-                <?php foreach ($produtos as $produto): ?>
-                    <tr class="dados-acoes">
-                        <td class="id-valor">
-                            <?= $produto['PRODUTO_ID'] ?>
-                        </td>
-                        <td>
-                            <img src="<?= $produto['IMAGEM_URL'] ?>" alt="" class="imgs-jogos">
-                        </td>
-                        <td class="produto" id="nome-produto">
-                            <?= $produto['PRODUTO_NOME'] ?>
-                        </td>
-                        <td id="preco-valor">
-                            <?= $produto['PRODUTO_PRECO'] ?>
-                        </td>
-                        <td class="desconto">
-                            <?= $produto['PRODUTO_DESCONTO'] ?>
-                        </td>
-                        <td class="qtd">
-                            <?= $produto['PRODUTO_QTD'] ?>
-                        </td>
-                        <td class="categorias-produtos">
-                            <?= $produto['CATEGORIA_NOME'] ?>
-                        </td>
-                        <td class="categorias-produtos">
-                            <?= $produto['PRODUTO_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
-                        </td>
-                        <td class="edit-viw">
-                            <a
-                                href="editaProdutoForm.php?id=<?= $produto['PRODUTO_ID'] ?>&categoria=<?= $produto['CATEGORIA_ID'] ?>"><img
-                                    src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <a href="ordenaImagensForm.php?id=<?= $produto['PRODUTO_ID'] ?>"><img
-                                    src="../assets/img/image-fill.svg" alt=""></a>
-                            <form action="../src/produto/excluiProduto.php">
-                                <input type="hidden" name="id" value="<?= $produto['PRODUTO_ID'] ?>">
-                                <button class="btn-l" type="submit"
-                                    onclick="return confirm('Deseja mesmo excluir esse produto?'); return false;">
-                                    <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <div id="error-msg">
-                <p>
-                    <?php
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
-                    ?>
-                </p>
-            </div>
-        </section>
-
     </main>
-
-    <?php foreach ($usuarios as $usuario): ?>
-        <footer>
-            <div id="usuario">
-                <p id="nomeUsuario">
-                    <?= $usuario["ADM_NOME"] ?>
-                </p>
-                <a href="../src/login-cadastro/logout.php">Sair</a>
-            </div>
-        </footer>
-    <?php endforeach; ?>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
@@ -208,7 +194,7 @@ if (!empty($busca)) {
                 data: {
                     produto: termoBusca
                 },
-                success: function (response) {
+                success: function(response) {
                     $("#dados-produtos").html(response);
                 }
             });
