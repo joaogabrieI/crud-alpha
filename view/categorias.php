@@ -97,49 +97,54 @@ if (!empty($busca)) {
         </section>
 
         <section>
-            <table class="dados-produtos">
+            <div class="dados-produtos">
+            <table>
 
-                <tr class="nav-produtos-dados">
-                    <th class="nav-produtos">ID</th>
-                    <th class="nav-produtos">Categoria</th>
-                    <th class="nav-produtos">Descrição</th>
-                    <th class="nav-produtos">Ativo</th>
-                    <th class="nav-produtos">Ação</th>
-                </tr>
-
-                <?php foreach ($dados as $dado) : ?>
-
-                    <tr class="dados-acoes">
-                        <td>
-                            <?= $dado['CATEGORIA_ID'] ?>
-                        </td>
-
-                        <td class="descrever">
-                            <?= $dado['CATEGORIA_NOME'] ?>
-                        </td>
-
-                        <td class="descrever">
-                            <?= $dado['CATEGORIA_DESC'] ?>
-                        </td>
-
-                        <td>
-                            <?= $dado['CATEGORIA_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
-                        </td>
-
-                        <td class="icones">
-                            <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
-                            <form action="../src/categoria/excluiCategoria.php">
-                                <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
-                                <button type="submit" class="submit-customizado">
-                                    <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="return confirm('Deseja mesmo excluir essa categoria?'); return false;">
-                                </button>
-                            </form>
-                        </td>
+                <thead>
+                    <tr class="nav-produtos-dados">
+                        <th class="nav-produtos">ID</th>
+                        <th class="nav-produtos">Categoria</th>
+                        <th class="nav-produtos">Descrição</th>
+                        <th class="nav-produtos">Ativo</th>
+                        <th class="nav-produtos">Ação</th>
                     </tr>
+                </thead>
 
-                <?php endforeach; ?>
+                <tbody>
+                    <?php foreach ($dados as $dado) : ?>
 
+                        <tr>
+                            <td>
+                                <?= $dado['CATEGORIA_ID'] ?>
+                            </td>
+
+                            <td>
+                                <?= $dado['CATEGORIA_NOME'] ?>
+                            </td>
+
+                            <td>
+                                <?= $dado['CATEGORIA_DESC'] ?>
+                            </td>
+
+                            <td>
+                                <?= $dado['CATEGORIA_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
+                            </td>
+
+                            <td class="icones">
+                                <a href="editaCategoriaForm.php?id=<?= $dado['CATEGORIA_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                                <form action="../src/categoria/excluiCategoria.php">
+                                    <input type="hidden" name="id" value="<?= $dado['CATEGORIA_ID'] ?>">
+                                    <button type="submit" class="submit-customizado">
+                                        <img src="../assets/img/lixo.png" alt="" class="acoes-img" onclick="return confirm('Deseja mesmo excluir essa categoria?'); return false;">
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    <?php endforeach; ?>
+                </tbody>
             </table>
+            </div>
 
             <p><?php
                 if (isset($_SESSION['msg'])) {
@@ -168,20 +173,20 @@ if (!empty($busca)) {
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-            function buscarCategorias() {
-                var termoBusca = $("#categoria").val();
+        function buscarCategorias() {
+            var termoBusca = $("#categoria").val();
 
-                $.ajax({
-                    type: "POST",
-                    url: "categorias.php", // Nome do script PHP que processa a busca
-                    data: {
-                        produto: termoBusca
-                    },
-                    success: function(response) {
-                        $("#dados-produtos").html(response);
-                    }
-                });
-            }
+            $.ajax({
+                type: "POST",
+                url: "categorias.php", // Nome do script PHP que processa a busca
+                data: {
+                    produto: termoBusca
+                },
+                success: function(response) {
+                    $("#dados-produtos").html(response);
+                }
+            });
+        }
     </script>
 
 </body>
