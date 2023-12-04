@@ -86,7 +86,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <div class="dados-produtos">
 
                 <table class="tbl-pai">
-
+                    <thead>
                     <tr class="dados-geral">
                         <th class="nav-produtos">ID</th>
                         <th class="nav-produtos">Nome</th>
@@ -94,7 +94,9 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         <th class="nav-produtos">Ativo</th>
                         <th class="nav-produtos" id="acao">Ação</th>
                     </tr>
+                    </thead>
 
+                    <tbody>
                     <?php foreach ($usuarios as $usuario) : ?>
 
                         <tr class="teste">
@@ -162,6 +164,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                         </tr>
                     <?php endforeach; ?>
+                    </tbody>
                 </table>
             </div>
             <div id="error-msg">
