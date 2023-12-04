@@ -9,7 +9,7 @@
 
 html,
 body {
-  background-color: #0b2447;
+  background-color: #472468;
   width: 100%;
   height: 100%;
 }
@@ -37,7 +37,7 @@ main {
 
 #logo {
   height: 100px;
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 .logo {
@@ -52,7 +52,7 @@ nav p {
 }
 
 .side-bar {
-  width: 15%;
+  width: 200px;
   height: 100%;
   border-right: 1px solid #fafafa;
 }
@@ -69,8 +69,12 @@ nav p {
 }
 
 #acoes {
-  margin-left: 20px;
-  margin-top: 20px;
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 300px;
+  height: 400px;
+  padding-left: 30px;
+  padding-top: 10px;
 }
 
 #usuario {
@@ -79,10 +83,10 @@ nav p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffd411;
+  background-color: #FFBD59;
   height: 70px;
-  width: 15%;
-  color: #0b2447;
+  width: 200px;
+  color: #472468;
 }
 
 #usuario a {
@@ -91,13 +95,13 @@ nav p {
   align-items: center;
   font-weight: bolder;
   text-decoration: none;
-  color: #0b2447;
+  color: #472468;
 }
 
 #nomeUsuario {
   font-weight: 900;
   padding-left: 20px;
-  color: #0b2447;
+  color: #472468;
   font-weight: bold;
 }
 
@@ -115,14 +119,14 @@ nav p {
   margin-left: 120px;
   padding: 35px 0 35px 35px;
   width: 800px;
-  background-color: #163868;
+  background-color: #674a85;
   border-radius: 10px;
   flex-wrap: wrap;
   height: 150px;
 }
 
 #voltarParaLista {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 15px;
   width: 800px;
   height: 50px;
@@ -133,7 +137,7 @@ nav p {
 }
 
 #produtoadd {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 15px;
   width: 800px;
   height: 50px;
@@ -144,7 +148,7 @@ nav p {
 }
 
 #cabecalhoListaProdutos {
-  background-color: #0b2447;
+  background-color: #472468;
 }
 
 #containerCadastro {
@@ -173,7 +177,7 @@ nav p {
   justify-content: center;
   justify-content: flex-start;
   gap: 20px;
-  background-color: #163868;
+  background-color: #674a85;
   margin-top: 30px;
   width: 90%;
   height: 80px;
@@ -187,7 +191,7 @@ nav p {
 
 #tabela-produtos {
   display: flex;
-  background-color: #163868;
+  background-color: #674a85;
   width: 90%;
   color: #fafafa;
   border-radius: 30px;
@@ -210,7 +214,7 @@ table {
 }
 
 th {
-  background-color: #0b2447;
+  background-color: #472468;
   height: 50px;
 }
 
@@ -258,10 +262,10 @@ tbody {
 }
 
 .dados {
-  background-color: #ffd411;
+  background-color: #FFBD59;
   padding: 8px;
   border-radius: 5px;
-  color: #0b2447;
+  color: #472468;
   font-weight: bold;
   font-size: 20px;
 }
@@ -289,7 +293,7 @@ tbody {
 }
 
 .dados-geral {
-  background-color: #0b2447;
+  background-color: #472468;
   margin: 0.5px 10px 0px 10px;
   position: fixed;
   width: 80%;

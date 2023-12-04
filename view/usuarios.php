@@ -42,7 +42,7 @@ $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <nav>
             <div class="logo">
-                <img id="logo" src="../assets/img/logo.png" alt="" />
+                <img id="logo" src="../assets/img/icon-logo2.png" alt="" />
             </div>
             <p>Usuários</p>
         </nav>

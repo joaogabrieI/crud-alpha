@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #0b2447;
+  background-color: #472468;
 }
 
 header {
@@ -88,10 +88,10 @@ nav p {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffd411;
+  background-color: #FFBD59;
   height: 70px;
   width: 200px;
-  color: #0b2447;
+  color: #472468;
 }
 
 #usuario a {
@@ -101,7 +101,7 @@ nav p {
   align-items: center;
   font-weight: bolder;
   text-decoration: none;
-  color: #0b2447;
+  color: #472468;
 }
 
 #nomeUsuario {
@@ -119,14 +119,14 @@ nav p {
   margin-left: 120px;
   padding: 35px 0 35px 35px;
   width: 800px;
-  background-color: #163868;
+  background-color: #674a85;
   border-radius: 10px;
   flex-wrap: wrap;
   height: 150px;
 }
 
 #voltarParaLista {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 15px;
   width: 800px;
   height: 50px;
@@ -137,7 +137,7 @@ nav p {
 }
 
 #produtoadd {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 15px;
   width: 800px;
   height: 50px;
@@ -148,7 +148,7 @@ nav p {
 }
 
 #cabecalhoListaProdutos {
-  background-color: #0b2447;
+  background-color: #472468;
 }
 
 #containerCadastro {
@@ -159,7 +159,7 @@ nav p {
   display: flex;
   justify-content: left;
   align-items: center;
-  background-color: #163868;
+  background-color: #674a85;
   gap: 20px;
   margin-top: 50px;
   position: absolute;
@@ -172,14 +172,14 @@ nav p {
 .nav-adm-produto a{
   text-decoration: none;
   list-style: none;
-  color: #0b2447;
+  color: #472468;
 }
 
 .dados {
-  background-color: #ffd411;
+  background-color: #FFBD59;
   padding: 8px;
   border-radius: 5px;
-  color: #0b2447;
+  color: #472468;
   font-weight: bold;
   font-size: 20px;
 }
@@ -202,7 +202,7 @@ nav p {
 }
 
 .nav-produtos-dados {
-  background-color: #0b2447;
+  background-color: #472468;
   margin: 0.5px 10px 0px 10px;
   position: fixed;
   width: 880px;
@@ -251,7 +251,7 @@ nav p {
   display: flex;
   margin-top: 150px;
   margin-left: 15%;
-  background-color: #163868;
+  background-color: #674a85;
   width: 900px;
   height: 520px;
   border-radius: 30px;

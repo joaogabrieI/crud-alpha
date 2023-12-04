@@ -37,13 +37,13 @@ h1.title{
 }
 
 .login-email-senha{
-    background-color: #11366b;
+    background-color: #674a85;
     font-size: 15px;
     color: #FAFAFA;
 }
 
 .registrar-login{
-    background-color: #11366b;
+    background-color: #654188;
     font-size: 15px;
 }
 
@@ -105,7 +105,7 @@ button{
     position: relative;
     border-radius: 20px;
     border: 1px solid #FAFAFA;
-    background-color:  #FFD411;
+    background-color:  #FFBD59;
     color: #FAFAFA;
     font-size: 15px;
     font-weight: 700;
@@ -158,7 +158,7 @@ button.ghost:hover i.login{
 }
 
 form{
-    background-color: #0b2447;
+    background-color: #472468;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,7 +178,7 @@ input{
 }
 
 .container{
-    background-color: #0b2447;
+    background-color: #472468;
     box-shadow: 0 14px 28px rgb(16, 64, 74, 0.25), 0 10px 10px rgb(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
@@ -346,11 +346,11 @@ input{
 
 .login-btn{
     font-size: 15px;
-    color: #0b2447;
+    color: #472468;
     font-weight: bold;
     padding: 10px;
     border: 1px solid #FAFAFA;
-    background-color: #FFD411;
+    background-color: #FFBD59;
     border-radius: 20px;
     width: 200px;
 }
@@ -358,7 +358,7 @@ input{
 .login-btn:hover{
     width: 230px;
     letter-spacing: 3px;
-    color: #0b2447;
+    color: #472468;
     transition: 0.3s ease-in-out;
 }
 
@@ -370,4 +370,9 @@ input{
     margin-left: 20px;
     z-index: 10;
     margin-left: 80px;
+}
+
+
+.logo{
+    width: 100px;
 }

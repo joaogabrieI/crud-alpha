@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #0b2447;
+  background-color: #472468;
 }
 
 header {
@@ -88,7 +88,7 @@ nav p {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffd411;
+  background-color: #FFBD59;
   height: 70px;
   width: 200px;
   color: #fafafa;
@@ -101,13 +101,13 @@ nav p {
   align-items: center;
   font-weight: bolder;
   text-decoration: none;
-  color: #0b2447;
+  color: #472468;
 }
 
 #nomeUsuario {
   font-weight: 900;
   padding-left: 20px;
-  color: #0b2447;
+  color: #472468;
   font-weight: bold;
 }
 
@@ -121,14 +121,14 @@ nav p {
   margin-left: 320px;
   padding: 5px 5px 10px 20px;
   width: 650px;
-  background-color: #163868;
+  background-color: #674a85;
   border-radius: 10px;
   flex-wrap: wrap;
   height: 250px;
 }
 
 #voltarParaLista {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 15px;
   width: 650px;
   height: 60px;
@@ -145,11 +145,11 @@ nav p {
 
 #botao-voltar {
     border: none;
-    background-color: #ffd411;
+    background-color: #FFBD59;
     padding: 5px;
     width: 100px;
     border-radius: 5px;
-    color: #0b2447;
+    color: #472468;
     font-weight: bold;
     margin-top: 3px;
 }
@@ -174,7 +174,7 @@ form, input, label{
     border-radius: 5px;
     border: none;
     height: 30px;
-    color: #0b2447;
+    color: #472468;
     font-size: 25px;
     padding-bottom: 10px;
 }
@@ -182,11 +182,11 @@ form, input, label{
 .botaoCadastro {
     margin-top: 10px;
     border: none;
-    background-color: #ffd411;
+    background-color: #FFBD59;
     padding: 5px;
     width: 100px;
     border-radius: 5px;
-    color: #0b2447;
+    color: #472468;
     font-weight: bold;
     height: 40px;
     width: 600px;

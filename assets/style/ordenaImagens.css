@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #0b2447;
+    background-color: #472468;
     color: #fafafa;
     font-size: 20px;
 }
@@ -52,10 +52,10 @@ ol {
 
 .salvar-ordem {
     border: none;
-    background-color: #ffd411;
+    background-color: #FFBD59;
     padding: 10px;
     border-radius: 5px;
-    color: #0b2447;
+    color: #472468;
     font-weight: bold;
 }
 
@@ -86,7 +86,7 @@ ol {
 
 .content {
     text-align: center;
-    background-color: #163868;
+    background-color: #674a85;
     width: 400px;
     padding: 20px;
     border-radius: 5px;

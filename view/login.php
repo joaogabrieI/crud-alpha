@@ -17,7 +17,7 @@
 
         <div class="form-container register-container">
             <form action="../src/login-cadastro/verificaCadastro.php" method="post">
-                <img src="../assets/img/logo.png" alt="">
+                <img src="../assets/img/icon-logo2.png" alt="" class="logo">
                 <h1>Registre - se</h1>
                 <input type="text" placeholder="Name" class="registrar-login" name="nome" required>
                 <input type="email" placeholder="Email" class="registrar-login" name="email" required>
@@ -27,7 +27,6 @@
 
 
 </div>
-
             <p class='teste'><?php
                     if (isset($_SESSION['erroLogin'])) {
                         echo $_SESSION['erroLogin'];
@@ -37,7 +36,7 @@
 
         <div class="form-container login-container">
             <form action="../src/login-cadastro/verificaLogin.php" method="post">
-                <img src="../assets/img/logo.png" alt="">
+                <img src="../assets/img/icon-logo2.png" alt="" class="logo">
                 <h1>Login</h1>
                 <input type="email" placeholder="Email" id="email" class="login-email-senha" name="email" required>
                 <input type="password" placeholder="Password" id="senha" class="login-email-senha" name="senha" required>

@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #0b2447;
+  background-color: #472468;
   color: #fafafa;
   font-size: 20px;
 }
@@ -39,10 +39,10 @@ body {
 
 #submit-add-img {
     border: none;
-    background-color: #ffd411;
+    background-color: #FFBD59;
     padding: 10px;
     border-radius: 5px;
-    color: #0b2447;
+    color: #472468;
     font-weight: bold;
 }
 
@@ -51,16 +51,16 @@ body {
 }
 
 .content {
-  background-color: #163868;
+  background-color: #674a85;
   padding: 60px;
   border-radius: 10px;
 }
 
 .botao-voltar-link {
-  background-color: #ffd411;
+  background-color: #FFBD59;
   padding: 10px 15px 10px 15px;
   border-radius: 5px;
-  color: #0b2447;
+  color: #472468;
   font-weight: bold;
   font-size: 20px;
 }
