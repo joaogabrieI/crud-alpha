@@ -10,10 +10,6 @@ body {
   background-color: #472468;
 }
 
-header {
-  margin: 0 100px 0px 100px;
-}
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -31,7 +27,7 @@ main {
 
 #logo {
   height: 100px;
-  margin-left: -60px;
+  margin-left: 50px;
 }
 
 .logo {
@@ -46,6 +42,7 @@ main {
 
 nav p {
   font-size: 25px;
+  margin-right: 40px;
 }
 
 .acoes {
@@ -118,7 +115,7 @@ nav p {
 #cadastro {
   margin-top: 20px;
   margin-left: 390px;
-  padding: 35px 0 35px 35px;
+  padding: 20px 0 35px 35px;
   width: 650px;
   background-color: #674a85;
   border-radius: 10px;

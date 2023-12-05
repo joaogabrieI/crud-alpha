@@ -57,7 +57,7 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/style/produtos.css" />
   <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
-  <title>Admin</title>
+  <title>Alpha</title>
 </head>
 
 <body>
@@ -66,7 +66,7 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
       <div class="logo">
         <img id="logo" src="../assets/img/icon-logo2.png" alt="" />
       </div>
-      <p>Editar Produtos</p>
+      <p>Edição de produtos</p>
     </nav>
   </header>
   <p id="linha"></p>

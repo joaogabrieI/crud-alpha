@@ -44,7 +44,7 @@ if (!empty($busca)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/style/categoria.css" />
     <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
-    <title>Admin</title>
+    <title>Alpha</title>
 
 </head>
 

@@ -25,7 +25,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/style/alteraSenha.css" />
     <link rel="shortcut icon" type="imagex/png" href="../assets/img/logo.ico">
-    <title>Admin</title>
+    <title>Alpha</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="logo">
                 <img id="logo" src="../assets/img/icon-logo2.png" alt="" />
             </div>
-            <p>Cadastro Usuários</p>
+            <p>Cadastro de categorias</p>
         </nav>
     </header>
     <p id="linha"></p>
