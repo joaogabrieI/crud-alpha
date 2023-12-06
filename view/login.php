@@ -32,7 +32,8 @@
                         echo $_SESSION['erroLogin'];
                         unset($_SESSION['erroLogin']);
                     }
-            ?></p>
+            ?>
+            </p>
 
         <div class="form-container login-container">
             <form action="../src/login-cadastro/verificaLogin.php" method="post">

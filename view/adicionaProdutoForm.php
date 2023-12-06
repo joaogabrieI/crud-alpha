@@ -17,7 +17,7 @@ $stmt->execute();
 
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM CATEGORIA";
+$sql = "SELECT * FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 

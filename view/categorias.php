@@ -146,13 +146,16 @@ if (!empty($busca)) {
             </table>
             </div>
 
-            <p><?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-                ?></p>
-
+            <div id="error-msg">
+                <p>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </p>
+            </div>
 
         </section>
 

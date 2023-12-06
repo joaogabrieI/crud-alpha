@@ -169,6 +169,7 @@ nav p {
   justify-content: center;
   width: 100%;
   height: 15%;
+  margin-left: 15px;
 }
 
 .nav-adm-produto {
@@ -190,15 +191,14 @@ nav p {
 }
 
 #tabela-produtos {
-  display: flex;
   background-color: #674a85;
   width: 90%;
   color: #fafafa;
   border-radius: 30px;
-  height: 470px;
+  height: 520px;
   overflow-y: auto;
-  margin-top: 20px;
-  margin-left: 65px;
+  margin-top: 30px;
+  margin-left: 85px;
 }
 
 #tabela-produtos::-webkit-scrollbar {
@@ -254,6 +254,10 @@ tbody {
   width: 20px;
   height: 20px;
   margin-top: 60px;
+}
+
+.edit-img:hover {
+  cursor: pointer;
 }
 
 .editar {

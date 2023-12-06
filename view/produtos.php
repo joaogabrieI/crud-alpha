@@ -23,7 +23,7 @@ $sql2 = "SELECT * FROM PRODUTO p
         ON p.CATEGORIA_ID = c.CATEGORIA_ID 
     JOIN PRODUTO_ESTOQUE pe
         ON p.PRODUTO_ID = pe.PRODUTO_ID
-    WHERE pi.IMAGEM_ORDEM = 1
+    WHERE pi.IMAGEM_ORDEM = 1 AND PRODUTO_ATIVO = 1
     ORDER BY p.PRODUTO_ID";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute();
@@ -41,10 +41,10 @@ if (!empty($busca)) {
         ON p.PRODUTO_ID = pe.PRODUTO_ID
     WHERE pi.IMAGEM_ORDEM = 1 AND p.PRODUTO_NOME LIKE :busca
     ORDER BY p.PRODUTO_ID";
-    $stmt = $pdo->prepare($sqlBusca);
-    $stmt->bindParam(':busca', $busca, PDO::PARAM_STR);
-    $stmt->execute();
-    $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmtBusca = $pdo->prepare($sqlBusca);
+    $stmtBusca->bindParam(':busca', $busca, PDO::PARAM_STR);
+    $stmtBusca->execute();
+    $produtos = $stmtBusca->fetchAll(PDO::FETCH_ASSOC);
 } else {
     $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -178,6 +178,17 @@ if (!empty($busca)) {
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            </div>
+
+            <div id="error-msg">
+                <p>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </p>
             </div>
 
         </section>

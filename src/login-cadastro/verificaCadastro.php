@@ -18,7 +18,8 @@ try {
 
     $stmt->execute();
     $_SESSION["usuario"] = $pdo->lastInsertId();
-    header("location: ../../view/admin.php");
+    header("location: ../../view/login.php");
+    $_SESSION['erroLogin'] = 'Usuário cadastrado com sucesso!'; 
 } catch (PDOException $e){
     header("location: ../../view/login.php");
     $_SESSION['erroCadastro'] = 'Erro ao cadastrar usuario!' . $e->getMessage();  

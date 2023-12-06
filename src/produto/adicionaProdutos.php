@@ -9,8 +9,8 @@ use GuzzleHttp\Client;
 
 $nome = filter_input(INPUT_POST, "nome", FILTER_DEFAULT);
 $descricao = filter_input(INPUT_POST, "descricao", FILTER_DEFAULT);
-$preco = floatval(filter_input(INPUT_POST, "preco", FILTER_DEFAULT));
-$desconto = floatval(filter_input(INPUT_POST, "desconto", FILTER_DEFAULT));
+$preco = str_replace(',', '.', floatval(filter_input(INPUT_POST, "preco", FILTER_DEFAULT)));
+$desconto = str_replace(',', '.', floatval(filter_input(INPUT_POST, "desconto", FILTER_DEFAULT)));
 $categoria = filter_input(INPUT_POST, "categoria", FILTER_DEFAULT);
 $qtd = filter_input(INPUT_POST, "qtd", FILTER_DEFAULT);
 
@@ -19,7 +19,7 @@ $sql = "INSERT INTO PRODUTO (PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
 $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
-$stmt->bindParam(":preco", $preco, PDO::PARAM_INT);
+$stmt->bindParam(":preco", $preco, PDO::PARAM_STR);
 $stmt->bindParam(":desconto", $desconto, PDO::PARAM_INT);
 $stmt->bindParam(":categoria", $categoria, PDO::PARAM_INT);
 
