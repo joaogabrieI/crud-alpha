@@ -11,8 +11,9 @@ class Produto {
     private Categoria $categoria;
     private int $quantidade;
     private int $ativo;
+    private Imagem $imagem;
 
-    public function __construct(int $id, string $nome, string $descricao, float $preco, int $desconto, Categoria $categoria, int $quantidade)
+    public function __construct(int $id, string $nome, string $descricao, float $preco, int $desconto, Categoria $categoria, int $quantidade, Imagem $imagem)
     {
         $this->$id = $id;
         $this->$nome = $nome;
@@ -21,6 +22,7 @@ class Produto {
         $this->$desconto = $desconto;
         $this->$categoria = $categoria;
         $this->quantidade = $quantidade;
+        $this->imagem = $imagem;
         $this->ativo = 1;
     }
 
