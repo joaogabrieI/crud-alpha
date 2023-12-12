@@ -2,10 +2,10 @@
 
 namespace Crud\Alpha\Model;
 
-class Imagem
+class Image
 {
     private $id;
-    private $ordem;
-    private $produto_id;
+    private $sequence;
+    private $product_id;
     private $url;
 }

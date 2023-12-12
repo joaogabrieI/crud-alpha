@@ -7,15 +7,15 @@ class Admin
     protected int $id;
     private string $nome;
     private string $email;
-    private string $senha;
-    private int $ativo;
+    private string $password;
+    private int $active;
     
-    public function __construct($id, $nome, $email, $senha){
+    public function __construct($id, $nome, $email, $password){
         $this->id = $id;
         $this->nome = $nome;
         $this->email = $email;
-        $this->senha = $senha;
-        $this->ativo = 1;
+        $this->password = $password;
+        $this->active = 1;
     }
 
     public function getId() : int
@@ -23,7 +23,7 @@ class Admin
         return $this->id;
     }
 
-    public function getNome() : string
+    public function getName() : string
     {
         return $this->nome;
     }
@@ -33,13 +33,13 @@ class Admin
         return $this->email;
     }
 
-    public function getSenha() : string
+    public function getPassword() : string
     {
-        return $this->senha;
+        return $this->password;
     }
 
-    public function getAtivo() : int
+    public function getActive() : int
     {
-        return $this->ativo;
+        return $this->active;
     }
 }

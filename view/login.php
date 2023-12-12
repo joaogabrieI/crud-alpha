@@ -55,17 +55,13 @@
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
                     <h1 class="title">Seja Bem-Vindo</h1>
-                    <p>se já possuí uma conta, faça o login aqui e divirta-se</p>
+                    <p>se já possuí uma conta, faça o login aqui</p>
                     <button class="ghost" id="login">Login
                         <i class="lni lni-arrow-left login"></i>
                     </button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1 class="title">Comece sua jornada agora</h1>
-                    <p>se você ainda não tem uma conta, junte-se a nós e comece sua jornada</p>
-                    <button class="ghost" id="register">Registrar
-                        <i class="lni lni-arrow-right register"></i>
-                    </button>
                 </div>
             </div>
         </div>

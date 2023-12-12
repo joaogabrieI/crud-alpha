@@ -33,9 +33,9 @@ $produtos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 $idCategoria = $_GET["categoria"];
 
-$sql3 = "SELECT * FROM CATEGORIA WHERE CATEGORIA_ID != :id";
+$sql3 = "SELECT * FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1";
 $stmt3 = $pdo->prepare($sql3);
-$stmt3->bindParam(":id", $idCategoria, PDO::PARAM_INT);
+// $stmt3->bindParam(":id", $idCategoria, PDO::PARAM_INT);
 $stmt3->execute();
 
 $categorias = $stmt3->fetchAll(PDO::FETCH_ASSOC);
@@ -109,8 +109,8 @@ $imagens = $stmt4->fetchAll(PDO::FETCH_ASSOC);
             <input class="input-text" type="number" name="qtd" id="" value="<?= $produto['PRODUTO_QTD'] ?>" required>
             <label for="categoria">Categoria:</label>
             <select name="categoria" id="categoria-ops" required>
+              <option value="<?= $produto['CATEGORIA_ID'] ?>"><?= $produto['CATEGORIA_NOME'] ?></option>
               <?php foreach ($categorias as $categoria) : ?>
-                <option value="<?= $produto['CATEGORIA_ID'] ?>"><?= $produto['CATEGORIA_NOME'] ?></option>
                 <option value="<?= $categoria['CATEGORIA_ID'] ?>"><?= $categoria['CATEGORIA_NOME'] ?></option>
               <?php endforeach; ?>
             </select>
