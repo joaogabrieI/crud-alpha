@@ -42,4 +42,16 @@ class User
     {
         return $this->active;
     }
+
+    public static function loggedIn()
+    {
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: ../../../view/login.php');
+            exit();
+        } else {
+            return $_SESSION['usuario'];
+        }
+    }
+
+    
 }

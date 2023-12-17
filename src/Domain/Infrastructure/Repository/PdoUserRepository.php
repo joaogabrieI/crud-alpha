@@ -17,7 +17,8 @@ class PdoUserRepository implements AdminRepository
     }
     public function listAll() : array
     {
-        $stmt = $this->connection->prepare("SELECT * FROM ADMINISTRADOR");
+        $query = "SELECT * FROM ADMINISTRADOR";
+        $stmt = $this->connection->prepare($query);
         $stmt->execute();
 
         $users = [];

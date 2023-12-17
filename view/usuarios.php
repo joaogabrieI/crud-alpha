@@ -4,13 +4,9 @@ session_start();
 require "../vendor/autoload.php";
 
 use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
+use Alpha\Domain\Model\User;
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../../login.php');
-    exit();
-}
-
-$id = $_SESSION["usuario"];
+$id = User::loggedIn();
 
 $repo = new PdoUserRepository();
 $users = $repo->listAll();
