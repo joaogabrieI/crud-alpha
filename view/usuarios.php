@@ -2,6 +2,9 @@
 session_start();
 
 require "../src/conexao-banco.php";
+require "../vendor/autoload.php";
+
+use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
 
 if (!isset($_SESSION['usuario'])) {
     header('Location: ../../login.php');
@@ -23,6 +26,12 @@ $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt2->execute();
 
 $dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+$repo = new PdoUserRepository();
+$users = $repo->listAll();
+
+var_dump($repo->findById($id));
+exit; 
 
 ?>
 <!DOCTYPE html>
