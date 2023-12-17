@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require "../src/conexao-banco.php";
 require "../vendor/autoload.php";
 
 use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
@@ -13,25 +12,10 @@ if (!isset($_SESSION['usuario'])) {
 
 $id = $_SESSION["usuario"];
 
-$sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_INT);
-$stmt->execute();
-
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$sql2 = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID NOT LIKE :id";
-$stmt2 = $pdo->prepare($sql2);
-$stmt2->bindParam(":id", $id, PDO::PARAM_INT);
-$stmt2->execute();
-
-$dados = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
 $repo = new PdoUserRepository();
 $users = $repo->listAll();
 
-var_dump($repo->findById($id));
-exit; 
+$userLogged = $repo->findById($id);
 
 ?>
 <!DOCTYPE html>
@@ -106,32 +90,30 @@ exit;
                     </thead>
 
                     <tbody>
-                    <?php foreach ($usuarios as $usuario) : ?>
-
                         <tr class="teste">
                             <td class="id-dados">
-                                <?= $usuario['ADM_ID'] ?>
+                                <?= $userLogged->getId(); ?>
                             </td>
 
                             <td class="nome-dados">
-                                <?= $usuario['ADM_NOME'] ?>
+                                <?= $userLogged->getName(); ?>
                             </td>
 
                             <td class="email-dados">
-                                <?= $usuario['ADM_EMAIL'] ?>
+                                <?= $userLogged->getEmail(); ?>
                             </td>
 
                             <td class="ativo-dados">
-                                <?= $usuario['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
+                                <?= $userLogged->getActive() === 1 ? 'Sim' : 'Não' ?>
                             </td>
 
-                            <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $usuario['ADM_ID'] ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
+                            <td class="dados-acoes"><a href="editaUsuarioForm.php?id=<?= $userLogged->getId(); ?>"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
 
-                                <a href="alteraSenhaForm.php?id=<?= $usuario['ADM_ID'] ?>" class="senha-dados"><img src="../assets/img/key.svg" alt="" class="chave"></a>
+                                <a href="alteraSenhaForm.php?id=<?= $userLogged->getId(); ?>" class="senha-dados"><img src="../assets/img/key.svg" alt="" class="chave"></a>
 
 
                                 <form action="../src/usuario/excluiUsuario.php">
-                                    <input type="hidden" name="id" value="<?= $usuario['ADM_ID'] ?>">
+                                    <input type="hidden" name="id" value="<?= $userLogged->getId(); ?>">
                                     <button class="btn-l" type="submit" onclick="return confirm('Deseja mesmo excluir esse usuário?'); return false;">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                     </button>
@@ -139,32 +121,31 @@ exit;
                             </td>
 
                         </tr>
-                    <?php endforeach; ?>
 
-                    <?php foreach ($dados as $dado) : ?>
+                    <?php foreach ($users as $users) : ?>
 
                         <tr class="teste">
                             <td class="id-dados">
-                                <?= $dado['ADM_ID'] ?>
+                                <?= $users->getId(); ?>
                             </td>
 
                             <td class="nome-dados">
-                                <?= $dado['ADM_NOME'] ?>
+                                <?= $users->getName(); ?>
                             </td>
 
                             <td class="email-dados">
-                                <?= $dado['ADM_EMAIL'] ?>
+                                <?= $users->getEmail(); ?>
                             </td>
 
                             <td class="ativo-dados">
-                                <?= $dado['ADM_ATIVO'] === 1 ? 'Sim' : 'Não' ?>
+                                <?= $users->getActive() === 1 ? 'Sim' : 'Não' ?>
                             </td>
 
                             <td class="dados-acoes">
                                 <a href="usuarios.php" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                                 <a href="usuarios.php" class="senha-dados" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/key.svg" alt="" class="chave"></a>
                                 <form action="../src/usuario/excluiUsuario.php" id="aviso">
-                                    <input type="hidden" name="id" value="<?= $dado['ADM_ID'] ?>">
+                                    <input type="hidden" name="id" value="<?= $users->getId() ?>">
                                     <button class="btn-l" type="submit">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
                                     </button>
@@ -191,7 +172,7 @@ exit;
 
         <section id="usuario">
             <p id="nomeUsuario">
-                <?= $usuario["ADM_NOME"] ?>
+                <?= $userLogged->getName(); ?>
             </p>
             <a href="../src/login-cadastro/logout.php">Sair</a>
         </section>
