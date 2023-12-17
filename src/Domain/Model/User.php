@@ -5,17 +5,17 @@ namespace Alpha\Domain\Model;
 class User
 {
     protected int $id;
-    private string $nome;
+    private string $name;
     private string $email;
     private string $password;
     private int $active;
     
-    public function __construct($id, $nome, $email, $password){
+    public function __construct($id, $name, $email, $password, $active){
         $this->id = $id;
-        $this->nome = $nome;
+        $this->name = $name;
         $this->email = $email;
         $this->password = $password;
-        $this->active = 1;
+        $this->active = $active;
     }
 
     public function getId() : int
@@ -25,7 +25,7 @@ class User
 
     public function getName() : string
     {
-        return $this->nome;
+        return $this->name;
     }
 
     public function getEmail() : string
