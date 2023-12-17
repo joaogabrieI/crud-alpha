@@ -1,6 +1,6 @@
 <?php 
 
-namespace Crud\Alpha\Model;
+namespace Alpha\Domain\Model;
 
 class Image
 {

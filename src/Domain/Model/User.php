@@ -1,8 +1,8 @@
 <?php
 
-namespace Crud\Alpha\Model;
+namespace Alpha\Domain\Model;
 
-class Admin
+class User
 {
     protected int $id;
     private string $nome;
