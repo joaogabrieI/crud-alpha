@@ -3,9 +3,9 @@
 namespace Alpha\Domain\Infrastructure\Repository;
 
 use Alpha\Domain\Infrastructure\Persistence\ConnectCreator;
+use Alpha\Domain\Model\Produto;
 use Alpha\Domain\Model\Repository\AdminRepository;
 use Alpha\Domain\Model\User;
-use stdClass;
 use PDO;
 
 class PdoUserRepository implements AdminRepository
@@ -17,7 +17,7 @@ class PdoUserRepository implements AdminRepository
     }
     public function listAll() : array
     {
-        $query = "SELECT * FROM ADMINISTRADOR";
+        $query = "SELECT * FROM administrador";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
 
@@ -32,7 +32,7 @@ class PdoUserRepository implements AdminRepository
 
     public function findById(int $id)
     {
-        $query = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
+        $query = "SELECT * FROM administrador WHERE ADM_ID = :id";
         $stmt = $this->connection->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -46,12 +46,17 @@ class PdoUserRepository implements AdminRepository
         return null;
     }
 
-    public function save(stdClass $object) : bool
+    public function save(Produto $produto) : bool
     {
         return true;
     }
 
-    public function remove(stdClass $objct) : bool
+    public function remove(Produto $produto) : bool
+    {
+        return true;
+    }
+
+    public function update(Produto $produto) : bool
     {
         return true;
     }
