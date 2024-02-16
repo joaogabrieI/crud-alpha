@@ -1,18 +1,12 @@
 <?php
 session_start();
 
-require "../conexao-banco.php";
+require "../../vendor/autoload.php";
 
-$id = $_GET["id"];
+use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
 
-$sql = "DELETE FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+$repo = new PdoUserRepository();
+$repo->remove($_GET["id"]);
 
-if($stmt->execute()){
-    $_SESSION["erroLogin"] = "Usuário excluído com sucesso!";
-} else {
-    $_SESSION["erroLogin"] = "Erro ao excluir o usuário!" . $stmt->errorInfo();
-}
 
-header("Location: ../login-cadastro/logout.php");
+header("Location: ../../../view/usuarios.php");

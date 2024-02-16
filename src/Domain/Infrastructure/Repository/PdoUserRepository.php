@@ -4,11 +4,11 @@ namespace Alpha\Domain\Infrastructure\Repository;
 
 use Alpha\Domain\Infrastructure\Persistence\ConnectCreator;
 use Alpha\Domain\Model\Produto;
-use Alpha\Domain\Model\Repository\AdminRepository;
+use Alpha\Domain\Model\Repository\UserRepository;
 use Alpha\Domain\Model\User;
 use PDO;
 
-class PdoUserRepository implements AdminRepository
+class PdoUserRepository implements UserRepository
 {
     private $connection;
     public function __construct()
@@ -51,9 +51,20 @@ class PdoUserRepository implements AdminRepository
         return true;
     }
 
-    public function remove(Produto $produto) : bool
+    public function remove(int $id) : void
     {
-        return true;
+        session_start();
+
+        $query = "DELETE FROM administrador WHERE ADM_ID = :id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        
+        if($stmt->execute()){
+            $_SESSION["msg"] = "Usuário excluído com sucesso!";
+        } else {
+            $_SESSION["msg"] = "Erro ao excluir o usuário!" . $stmt->errorInfo();
+        }
+        
     }
 
     public function update(Produto $produto) : bool
