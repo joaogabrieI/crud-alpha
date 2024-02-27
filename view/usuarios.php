@@ -141,7 +141,7 @@ $userLogged = $repo->findById($id);
                             <td class="dados-acoes">
                                 <a href="usuarios.php" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/editar.png" alt="" class="acoes-img"></a>
                                 <a href="usuarios.php" class="senha-dados" onclick="alert('Você não tem permissão para editar esse usuário!')"><img src="../assets/img/key.svg" alt="" class="chave"></a>
-                                <form action="../src/usuario/excluiUsuario.php" id="aviso">
+                                <form action="../src/usuario/excluiUsuario.php" method="post" id="aviso">
                                     <input type="hidden" name="id" value="<?= $user->getId() ?>">
                                     <button class="btn-l" type="submit">
                                         <img src="../assets/img/lixo.png" alt="Excluir" class="acoes-img">
