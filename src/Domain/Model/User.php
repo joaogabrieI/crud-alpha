@@ -53,4 +53,9 @@ class User
             return $_SESSION['usuario'];
         }
     }
+
+    public function hashPassword(string $password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
 }

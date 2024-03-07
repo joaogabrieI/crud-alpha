@@ -49,11 +49,12 @@ class PdoUserRepository implements UserRepository
     public function save(User $user): bool
     {
         $sql = "INSERT INTO ADMINISTRADOR (ADM_NOME, ADM_EMAIL, ADM_SENHA, ADM_ATIVO) VALUES (:nome, :email, :senha, :ativo)";
+        $senha = $user->hashPassword($user->getPassword());
         
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue(':nome', $user->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
-        $stmt->bindValue(':senha', $user->getPassword(), PDO::PARAM_STR);
+        $stmt->bindValue(':senha', $senha, PDO::PARAM_STR);
         $stmt->bindValue(':ativo', $user->getActive(), PDO::PARAM_STR);
 
         return $stmt->execute();
