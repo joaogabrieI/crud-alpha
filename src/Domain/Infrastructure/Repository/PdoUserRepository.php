@@ -50,7 +50,7 @@ class PdoUserRepository implements UserRepository
     {
         $sql = "INSERT INTO ADMINISTRADOR (ADM_NOME, ADM_EMAIL, ADM_SENHA, ADM_ATIVO) VALUES (:nome, :email, :senha, :ativo)";
         $senha = $user->hashPassword($user->getPassword());
-        
+
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue(':nome', $user->getName(), PDO::PARAM_STR);
         $stmt->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
@@ -75,8 +75,20 @@ class PdoUserRepository implements UserRepository
         }
     }
 
-    public function update(User $user): bool
+    public function update(User $user): void
     {
-        return true;
+        $sql = "UPDATE ADMINISTRADOR SET ADM_NOME = :nome, ADM_EMAIL = :email, ADM_ATIVO = :ativo WHERE ADM_ID = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(":nome", $user->getName(), PDO::PARAM_STR);
+        $stmt->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
+        $stmt->bindValue(":ativo", $user->getActive(), PDO::PARAM_INT);
+        $stmt->bindValue(":id", $user->getId(), PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            $_SESSION["msg"] = "Usuário alterado com sucesso!";
+            header("Location: usuarios.php");
+        } else {
+            $_SESSION["msg"] = "Erro ao alterar o usuário!" . $stmt->errorInfo();
+        }
     }
 }

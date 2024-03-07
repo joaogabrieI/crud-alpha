@@ -10,5 +10,5 @@ interface UserRepository
     public function save(User $user) : bool;
     public function remove(int $id) : void;
 
-    public function update(User $user) : bool;
+    public function update(User $user) : void;
 }

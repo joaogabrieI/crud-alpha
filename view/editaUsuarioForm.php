@@ -1,19 +1,30 @@
-<?php session_start();
-require "../src/conexao-banco.php";
+<?php
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../../login.php');
-    exit();
+session_start();
+
+require "../vendor/autoload.php";
+
+use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
+use Alpha\Domain\Model\User;
+
+$id = User::loggedIn();
+
+$repo = new PdoUserRepository();
+
+$userLogged = $repo->findById($id);
+$user = $repo->findById($_GET['id']);
+
+if (isset($_POST['cadastro'])) {
+    $newUser = new User(
+            $user->getId(),
+            $_POST['nome'],
+            $_POST['email'],
+            $user->getPassword(),
+            $_POST['ativo']
+        );
+
+        $repo->update($newUser);
 }
-
-$id = $_SESSION["usuario"];
-
-$sql2 = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt2 = $pdo->prepare($sql2);
-$stmt2->bindParam(":id", $id, PDO::PARAM_STR);
-$stmt2->execute();
-
-$usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -63,26 +74,24 @@ $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 <img src="../assets/img/voltar.png" alt="">
                 <a href="usuarios.php"><button id="botao-voltar">Voltar</button></a>
             </div>
-            <?php foreach ($usuarios as $usuario) : ?>
-                <form action="../src/usuario/editaUsuario.php?id=<?= $usuario['ADM_ID'] ?>" method="post" id="cadastro">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" required value="<?= $usuario['ADM_NOME'] ?>" class="input-text">
+            <form method="post" id="cadastro">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" required value="<?= $user->getName() ?>" class="input-text">
 
-                    <label for="email">Email</label>
-                    <input type="email" name="email" value="<?= $usuario['ADM_EMAIL'] ?>" required class="input-text">
+                <label for="email">Email</label>
+                <input type="email" name="email" value="<?= $user->getEmail() ?>" required class="input-text">
 
-                    <p>Ativo</p>
-                    <div class="radio"> 
-                        <label for="ativoSim">Sim</label>
-                        <input type="radio" name="ativo" value="1" <?= $usuario['ADM_ATIVO'] === 1 ? 'checked' : '' ?>>
+                <p>Ativo</p>
+                <div class="radio">
+                    <label for="ativoSim">Sim</label>
+                    <input type="radio" name="ativo" value="1" <?= $user->getActive() === 1 ? 'checked' : '' ?>>
 
-                        <label for="ativoNão">Não</label>
-                        <input type="radio" name="ativo" value="0" <?= $usuario['ADM_ATIVO'] === 0 ? 'checked' : '' ?>>
-                    </div>
+                    <label for="ativoNão">Não</label>
+                    <input type="radio" name="ativo" value="0" <?= $user->getActive() === 0 ? 'checked' : '' ?>>
+                </div>
 
-                    <input type="submit" value="Atualizar" class="botaoCadastro" onclick="return confirm('Deseja mesmo alterar o usuário?'); return false;">
-                </form>
-            <?php endforeach ?>
+                <input type="submit" value="Atualizar" name="cadastro" class="botaoCadastro" onclick="return confirm('Deseja mesmo alterar o usuário?'); return false;">
+            </form>
             <div>
                 <p id="error-msg"><?php
                                     if (isset($_SESSION['msg'])) {
@@ -95,17 +104,14 @@ $usuarios = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 
     </main>
-
-    <?php foreach ($usuarios as $usuario) : ?>
-        <footer>
-            <div id="usuario">
-                <p id="nomeUsuario">
-                    <?= $usuario["ADM_NOME"] ?>
-                </p>
-                <a href="../src/login-cadastro/logout.php">Sair</a>
-            </div>
-        </footer>
-    <?php endforeach; ?>
+    <footer>
+        <div id="usuario">
+            <p id="nomeUsuario">
+                <?= $userLogged->getName() ?>
+            </p>
+            <a href="../src/login-cadastro/logout.php">Sair</a>
+        </div>
+    </footer>
 </body>
 
 </html>
