@@ -4,13 +4,13 @@ namespace Alpha\Domain\Model;
 
 class User
 {
-    protected int $id;
+    protected ?int $id;
     private string $name;
     private string $email;
     private string $password;
     private int $active;
 
-    public function __construct($id, $name, $email, $password, $active)
+    public function __construct(?int $id, string $name, string $email, string $password, int $active)
     {
         $this->id = $id;
         $this->name = $name;

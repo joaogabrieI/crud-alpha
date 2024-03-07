@@ -1,21 +1,32 @@
 <?php
 session_start();
 
-require "../src/conexao-banco.php";
+require "../vendor/autoload.php";
 
-if (!isset($_SESSION['usuario'])) {
-    header('Location: ../../login.php');
-    exit();
+use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
+use Alpha\Domain\Model\User;
+
+$id = User::loggedIn();
+
+$repo = new PdoUserRepository();
+$userLogged = $repo->findById($id);
+
+if (isset($_POST['cadastro'])) {
+    $user = new User(
+        null,
+        $_POST['nome'],
+        $_POST['email'],
+        $_POST['senha'],
+        1
+    );
+    if ($repo->save($user)) {
+        header("Location: usuarios.php");
+        $_SESSION['msg'] = 'Usuário cadastrado com sucesso!';
+    } else {
+        header("Location: cadastroUsuarioForm.php");
+        $_SESSION['msg'] = 'Erro ao cadastrar usuario: ' . $stmt->errorInfo();
+    }
 }
-
-$id = $_SESSION["usuario"];
-
-$sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_STR);
-$stmt->execute();
-
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -64,7 +75,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img src="../assets/img/voltar.png" alt="">
                 <a href="usuarios.php"><button id="botao-voltar">Voltar</button></a>
             </div>
-            <form action="../src/usuario/cadastraUsuario.php" method="post" id="cadastro">
+            <form method="post" id="cadastro">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" required class="input-text">
 
@@ -74,7 +85,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" required class="input-text">
 
-                <input type="submit" value="Cadastrar" class="botaoCadastro">
+                <input type="submit" value="Cadastrar" class="botaoCadastro" name="cadastro">
             </form>
             <div>
                 <p id="error-msg"><?php
@@ -89,18 +100,14 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     </main>
-
-    <?php foreach ($usuarios as $usuario) : ?>
-        <footer>
-            <div id="usuario">
-                <p id="nomeUsuario">
-                    <?= $usuario["ADM_NOME"] ?>
-                </p>
-                <a href="../src/login-cadastro/logout.php">Sair</a>
-            </div>
-        </footer>
-    <?php endforeach; ?>
-    
+    <footer>
+        <div id="usuario">
+            <p id="nomeUsuario">
+                <?= $userLogged->getName(); ?>
+            </p>
+            <a href="../src/login-cadastro/logout.php">Sair</a>
+        </div>
+    </footer>
 </body>
 
 </html>
