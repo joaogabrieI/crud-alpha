@@ -4,7 +4,7 @@ namespace Alpha\Domain\Model;
 
 class Category
 {
-    protected int $id;
+    protected ?int $id;
     private string $name;
     private string $description;
     private int $active;
