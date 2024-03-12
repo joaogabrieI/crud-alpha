@@ -58,4 +58,13 @@ class User
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
+
+    public function checkPassword($password, $confirmPassword) : bool
+    {
+        if ($password != $confirmPassword) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

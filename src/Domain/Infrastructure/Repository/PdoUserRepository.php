@@ -91,4 +91,20 @@ class PdoUserRepository implements UserRepository
             $_SESSION["msg"] = "Erro ao alterar o usuário!" . $stmt->errorInfo();
         }
     }
+
+    public function changePassword(User $user, string $confirmPassword)
+    {
+        if ($user->checkPassword($user->getPassword(), $confirmPassword)) {
+            $password = $user->hashPassword($user->getPassword());
+            
+            $sql = "UPDATE ADMINISTRADOR SET ADM_SENHA = :senha WHERE ADM_ID = :id";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindValue(":senha", $password, PDO::PARAM_STR);
+            $stmt->bindValue(":id", $user->getId(), PDO::PARAM_INT);
+
+            return $stmt->execute();
+        } else {
+            return false;
+        }
+    }
 }

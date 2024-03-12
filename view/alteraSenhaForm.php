@@ -1,15 +1,32 @@
 <?php
 session_start();
-require "../src/conexao-banco.php";
 
-$id = $_GET["id"];
+require "../vendor/autoload.php";
 
-$sql = "SELECT * FROM ADMINISTRADOR WHERE ADM_ID = :id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(":id", $id, PDO::PARAM_INT);
-$stmt->execute();
+use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
+use Alpha\Domain\Model\User;
 
-$usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$id = User::loggedIn();
+
+$repo = new PdoUserRepository();
+$users = $repo->listAll();
+
+
+$userLogged = $repo->findById($id);
+$user = $repo->findById($_GET['id']);
+
+if (isset($_POST['cadastro'])) {
+    $newUser = new User(
+            $user->getId(),
+            $user->getName(),
+            $user->getEmail(),
+            $_POST['senha'],
+            $user->getActive()
+        );
+
+        $repo->changePassword($newUser, $_POST['senha2']);
+        
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -58,17 +75,15 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img src="../assets/img/voltar.png" alt="">
                 <a href="usuarios.php"><button id="botao-voltar">Voltar</button></a>
             </div>
-            <?php foreach ($usuarios as $usuario) : ?>
-                <form action="../src/usuario/alteraSenha.php?id=<?= $usuario['ADM_ID'] ?>" method="post" id="cadastro">
+                <form method="post" id="cadastro">
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" required class="input-text">
 
                     <label for="senha">Confirmar senha</label>
                     <input type="password" name="senha2" required class="input-text">
 
-                    <input type="submit" value="Atualizar" class="botaoCadastro">
+                    <input type="submit" value="Atualizar" class="botaoCadastro" name="cadastro">
                 </form>
-            <?php endforeach; ?>
             <div>
                 <p id="error-msg"><?php
                                     if (isset($_SESSION['msg'])) {
@@ -81,17 +96,14 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     </main>
-
-    <?php foreach ($usuarios as $usuario) : ?>
         <footer>
             <div id="usuario">
                 <p id="nomeUsuario">
-                    <?= $usuario["ADM_NOME"] ?>
+                    <?= $userLogged->getName() ?>
                 </p>
                 <a href="../src/login-cadastro/logout.php">Sair</a>
             </div>
         </footer>
-    <?php endforeach; ?>
     
 </body>
 
