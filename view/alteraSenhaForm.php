@@ -13,18 +13,18 @@ $users = $repo->listAll();
 
 
 $userLogged = $repo->findById($id);
-$user = $repo->findById($_GET['id']);
+$user = $repo->findById(filter_input(INPUT_GET, $_GET['id']));
 
 if (isset($_POST['cadastro'])) {
     $newUser = new User(
             $user->getId(),
             $user->getName(),
             $user->getEmail(),
-            $_POST['senha'],
+            filter_input(INPUT_POST, $_POST['senha']),
             $user->getActive()
         );
 
-        $repo->changePassword($newUser, $_POST['senha2']);
+        $repo->changePassword($newUser, filter_input(INPUT_POST, $_POST['senha2']));
         
 }
 ?>

@@ -12,15 +12,15 @@ $id = User::loggedIn();
 $repo = new PdoUserRepository();
 
 $userLogged = $repo->findById($id);
-$user = $repo->findById($_GET['id']);
+$user = $repo->findById(filter_input(INPUT_GET,$_GET['id']));
 
 if (isset($_POST['cadastro'])) {
     $newUser = new User(
             $user->getId(),
-            $_POST['nome'],
-            $_POST['email'],
+            filter_input(INPUT_POST, $_POST['nome']),
+            filter_input(INPUT_POST, $_POST['email']),
             $user->getPassword(),
-            $_POST['ativo']
+            filter_input(INPUT_POST, $_POST['ativo'])
         );
 
         $repo->update($newUser);

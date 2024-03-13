@@ -14,9 +14,9 @@ $userLogged = $repo->findById($id);
 if (isset($_POST['cadastro'])) {
     $user = new User(
         null,
-        $_POST['nome'],
-        $_POST['email'],
-        $_POST['senha'],
+        filter_input(INPUT_POST, $_POST['nome'], FILTER_SANITIZE_SPECIAL_CHARS),
+        filter_input(INPUT_POST, $_POST['email'], FILTER_SANITIZE_EMAIL),
+        filter_input(INPUT_POST, $_POST['senha']),
         1
     );
     if ($repo->save($user)) {
