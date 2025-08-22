@@ -58,12 +58,12 @@ class Auth
     public static function verifyToken()
     {
         if (!isset($_COOKIE['token'])) {
-            header('Location: /login');
+            header('Location: /admin/login');
         } else {
             try {
                 JWT::decode($_COOKIE['token'], new Key(JWT_SECRET, 'HS256'));
             } catch (Exception $e) {
-                header('Location: /login');
+                header('Location: /admin/login');
             }
         }
     }

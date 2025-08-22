@@ -23,7 +23,7 @@
     <main>
         <section class="form-container login-container">
             <h1>Login</h1>
-            <form action="/login" method="post">
+            <form action="/admin/login" method="post">
                 <input type="email" placeholder="Email" id="email" class="login-email-senha" name="email" required>
                 <input type="password" placeholder="Password" id="senha" class="login-email-senha" name="password"
                     required>

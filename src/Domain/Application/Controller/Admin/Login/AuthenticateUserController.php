@@ -19,12 +19,12 @@ class AuthenticateUserController implements Controller
         
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         if ($email === false) {
-            header('Location: /login');
+            header('Location: /admin/login');
             MessageHandler::add('O campo email é obrigatório!', MSG_ERROR);
         }
         $password = filter_input(INPUT_POST, 'password');
         if ($password === false) {
-            header('Location: /login');
+            header('Location: /admin/login');
             MessageHandler::add('Por favor, digite a senha!', MSG_ERROR);
         }
 
@@ -34,7 +34,7 @@ class AuthenticateUserController implements Controller
             header('Location: /admin');
         } else {
             MessageHandler::add('Credenciais Inválidas!', MSG_ERROR);
-            header('Location: /login');
+            header('Location: /admin/login');
         }
     }
 }
