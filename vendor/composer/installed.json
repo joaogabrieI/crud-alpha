@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "d15efcb544bb07f403ec1ae944b94b9e",
     "packages": [
         {
             "name": "firebase/php-jwt",
             "version": "dev-main",
+            "version_normalized": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
@@ -35,8 +30,10 @@
                 "ext-sodium": "Support EdDSA (Ed25519) signatures",
                 "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
             },
+            "time": "2025-08-19T15:14:18+00:00",
             "default-branch": true,
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Firebase\\JWT\\": "src"
@@ -68,18 +65,9 @@
                 "issues": "https://github.com/firebase/php-jwt/issues",
                 "source": "https://github.com/firebase/php-jwt/tree/main"
             },
-            "time": "2025-08-19T15:14:18+00:00"
+            "install-path": "../firebase/php-jwt"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "firebase/php-jwt": 20
-    },
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "dev": true,
+    "dev-package-names": []
 }
