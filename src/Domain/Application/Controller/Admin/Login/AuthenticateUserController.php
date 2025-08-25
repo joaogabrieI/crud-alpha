@@ -20,12 +20,14 @@ class AuthenticateUserController implements Controller
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         if ($email === false) {
             header('Location: /admin/login');
-            MessageHandler::add('O campo email é obrigatório!', MSG_ERROR);
+            MessageHandler::add('Preencha o email corretamente!', MSG_ERROR);
+            return;
         }
         $password = filter_input(INPUT_POST, 'password');
         if ($password === false) {
             header('Location: /admin/login');
             MessageHandler::add('Por favor, digite a senha!', MSG_ERROR);
+            return;
         }
 
         $auth = new Auth();
