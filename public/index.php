@@ -12,7 +12,7 @@ $auth = new Auth();
 
 $key = "$httpMethod|$pathInfo";
 
-$isLoginRoute = $pathInfo === '/login';
+$isLoginRoute = $pathInfo === '/admin/login';
 if (!$isLoginRoute) {
     Auth::verifyToken();
 }
