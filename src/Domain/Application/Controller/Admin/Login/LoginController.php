@@ -4,9 +4,7 @@ namespace Alpha\Domain\Application\Controller\Admin\Login;
 
 require_once __DIR__ . '/../../../../../../config/config.php';
 
-use Alpha\Domain\Application\Auth\Auth;
 use Alpha\Domain\Application\MessageHandler;
-use PDO;
 use Alpha\Domain\Application\Controller\Controller;
 
 class LoginController implements Controller
