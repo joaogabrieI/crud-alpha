@@ -2,11 +2,13 @@
 
 namespace Alpha\Domain\Application;
 
-class MessageHandler
+use Alpha\Domain\Application\Contracts\MessageHandlerInterface;
+
+class MessageHandler implements MessageHandlerInterface
 {
     private static $messages = [];
 
-    public static function add($message, $type = MSG_INFO)
+    public function add($message, $type = MSG_INFO): void
     {
         if (!isset($_SESSION['flash_messages'])) {
             $_SESSION['flash_messages'] = [];
@@ -18,24 +20,24 @@ class MessageHandler
         ];
     }
 
-    public static function getMessages()
+    public function getMessages(): mixed
     {
         $messages = $_SESSION['flash_messages'] ?? [];
         unset($_SESSION['flash_messages']);
         return $messages;
     }
 
-    public static function clear()
+    public function clear(): void
     {
         self::$messages = [];
     }
 
-    public static function persistInSession()
+    public function persistInSession(): void
     {
         $_SESSION['messages'] = self::$messages;
     }
 
-    public static function loadFromSession()
+    public function loadFromSession(): void
     {
         if (!empty($_SESSION['messages'])) {
             self::$messages = $_SESSION['messages'];
