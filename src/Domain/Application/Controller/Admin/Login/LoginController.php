@@ -5,20 +5,30 @@ namespace Alpha\Domain\Application\Controller\Admin\Login;
 require_once __DIR__ . '/../../../../../../config/config.php';
 
 use Alpha\Domain\Application\Contracts\MessageHandlerInterface;
-use Alpha\Domain\Application\MessageHandler;
-use Alpha\Domain\Application\Controller\Controller;
+use League\Plates\Engine;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class LoginController implements Controller
+class LoginController implements RequestHandlerInterface
 {
-    public function __construct(private MessageHandlerInterface $messageHandler) {}
-    public function processRequest(): void
+    public function __construct(
+        private MessageHandlerInterface $messageHandler,
+        private Engine $templates
+    ) {
+    }
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         session_start();
 
         if (isset($_COOKIE['token'])) {
-            header('Location: /admin');
+            return new Response(302, [
+                'Location' => '/admin'
+            ]);
         }
-        
+
+
         $this->messageHandler->loadFromSession();
         $messages = $this->messageHandler->getMessages();
 
@@ -26,12 +36,6 @@ class LoginController implements Controller
             'messages' => $messages
         ];
 
-        $this->loadView('login', $data);
-    }
-
-    private function loadView($view, $data = [])
-    {
-        extract($data);
-        require __DIR__ . "/../../../../../../views/{$view}.php";
+        return new Response(200, body: $this->templates->render('login', $data));
     }
 }

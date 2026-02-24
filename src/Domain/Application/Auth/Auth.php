@@ -4,31 +4,28 @@ namespace Alpha\Domain\Application\Auth;
 
 require_once __DIR__ . '/../../../../config/config.php';
 
-use Alpha\Domain\Infrastructure\Repository\PdoUserRepository;
+use Alpha\Domain\Entity\Repository\UserRepository;
 use Alpha\Domain\Entity\User;
-use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 class Auth
 {
-    public $pdo;
 
     public function __construct()
     {
-        $this->pdo = new PdoUserRepository();
+
     }
 
-    public function authenticate(string $email, string $password): bool
+    public function authenticate(string $email, string $password, UserRepository $userRepository): bool
     {
-        $user = $this->pdo->findByEmail($email);
+        $user = $userRepository->findByEmail($email);
         if ($user != null) {
             $correctPassword = password_verify($password, $user->getPassword() ?? '');
             if ($correctPassword) {
                 if (password_needs_rehash($user->getPassword(), PASSWORD_ARGON2ID)) {
-                    $this->pdo->changePassword($user, $password);
+                    $userRepository->changePassword($user, $password);
                 }
-                $this->setToken($user);
                 return $correctPassword;
             }
             return false;
@@ -36,7 +33,7 @@ class Auth
         return false;
     }
 
-    private function setToken(User $user): void
+    public function setToken(User $user): string
     {
         $payload = [
             'sub' => $user->getId(),
@@ -44,27 +41,29 @@ class Auth
             'exp' => time() + JWT_EXPIRATION
         ];
 
-        $jwt = JWT::encode($payload, JWT_SECRET, 'HS256');
+        return JWT::encode($payload, JWT_SECRET, 'HS256');
 
-        setcookie('token', $jwt, [
-            'expires' => time() + JWT_EXPIRATION,
-            'path' => '/',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict'
-        ]);
+        // setcookie('token', $jwt, [
+        //     'expires' => time() + JWT_EXPIRATION,
+        //     'path' => '/',
+        //     'secure' => true,
+        //     'httponly' => true,
+        //     'samesite' => 'Strict'
+        // ]);
     }
 
-    public static function verifyToken()
+    public static function validateToken(?string $token): bool
     {
-        if (!isset($_COOKIE['token'])) {
-            header('Location: /admin/login');
-        } else {
-            try {
-                JWT::decode($_COOKIE['token'], new Key(JWT_SECRET, 'HS256'));
-            } catch (Exception $e) {
-                header('Location: /admin/login');
-            }
+        if (!$token) {
+            return false;
         }
+
+        try {
+            JWT::decode($token, new Key(JWT_SECRET, 'HS256'));
+            return true;
+        } catch (\Throwable) {
+            return false;
+        }
+
     }
 }
